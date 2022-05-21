@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <link href="/style.css" rel="stylesheet">
+    <title> PC SIW Masters - Your Cart</title>
+</head>
+
+<body>
+
+        <!-- Header Menu -->
+        <div id="section-header">
+            <div id="overlay"></div>
+            <header>
+                <div id="sidebar">
+                    <div id="sidebar-content" >
+                        <div class="sidebar-item">
+                            <a th:href="@{/index}" class="heading link  ">
+                                <div>
+                                    home
+                                </div>
+                            </a>
+                        </div>
+                        <div class="sidebar-item">
+                            <a th:href="@{/allproducts}" class="heading link">
+                                <div>
+                                    all products
+                                </div>
+                            </a>
+                        </div>
+                        <div class="sidebar-item">
+                            <a href="/" class="heading link">
+                                <div>
+                                    builds
+                                </div>
+                            </a>
+                        </div>
+                        <div class="sidebar-item">
+                            <a href="/" class="heading link">
+                                <div>
+                                    notebooks
+                                </div>
+                            </a>
+                        </div>
+                        <div class="sidebar-item">
+                            <a href="/" class="heading link">
+                                <div>
+                                    accessories
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sidebar-names">
+                        <p>@LeandroPlacidi</p>
+                        <p>@ReinerRomeo</p>
+                        <p>@RiccardoScudieri</p>
+                    </div>
+                </div>
+                <div class="headerwrapper">
+                    <div class="flexitem-center start">
+                        <a th:href="@{/index}">
+                            <img class="logo" src="/images/logoarancio.png">
+                        </a>
+                    </div>
+                    <div class="flexitem-center end">
+                        <img class="mini-img" src="/images/account.png">
+                        <img class="mini-img" src="/images/search.png">
+                        <a th:href="@{/cart}">
+                            <img class="mini-img" src="/images/cart.png">
+                        </a>
+                        <img id="sbmenu" class="mini-img" src="/images/menu.png">
+                    </div>
+                </div>
+            </header>
+        </div>
+
+    <!-- Cart -->
+    <main id="main">
+        <header class="heading flexitem-center"> Your cart </header>
+        <div class="pagecontent flexitem-center">
+            <!--Cart Items-->
+            <div class="cart-itemlist">
+                <div class="flexitem-horiz">
+                    <div class="cart-item">
+                        <!--Image-->
+                        <div class="imagewrapper">
+                            <img class="cart-imageitem" src="/images/ramimg.jpg">
+                        </div>
+                        <!--Infos-->
+                        <div class="flexitem-column">
+                            <div class="cart-itemnospace">
+                                <p class="heading title"> Ram Corsair 16gb RGB</p>
+                            </div>
+                            <div class="cart-itemspace ">
+                                <p class="heading xsmalltext gray"> Single slot</p>
+                            </div>
+                            <div class="cart-itemspace ">
+                                <p class="heading xsmalltext gray">Quantity:1</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="cart-itemquantity">
+                        <div class="cart-itemspace ">
+                            <p class="heading xsmalltext gray">price eur</p>
+                        </div>
+                        <div class="cart-itemnospace">
+                            <p class="heading title">€20.00</p>
+                        </div>
+                        <div class="flexitem-horiz">
+                            <button id="removebutton" class="quantitybutton">
+                                <p class="heading xsmalltext">-</p>
+                            </button>
+                            <p class="heading xsmalltext">1</p>
+                            <div id="addbutton" class="quantitybutton">
+                                <p class="heading xsmalltext">+</p>
+                            </div>
+                        </div>
+                        <div class="cart-itemspace">
+                            <p class="heading xsmalltext gray">Remove</p>
+                        </div>
+                    </div>
+                </div>
+                <hr class="cart-hr">
+            </div>
+
+            <!--Payment-->
+            <div class="flexitem-horiz">
+                <div class="cart-footernote">
+                    <p class="heading smalltext">
+                        Add order note
+                    </p>
+                    <textarea id="cart-textarea" rows="4" placeholder="Add here something we need to know"></textarea>
+                </div>
+                <div class="cart-footertotal">
+                    <p id="cart-total">TOTAL: €20.00</b>
+                    <p>Shipping & taxes calculated at checkout</p>
+                    <div class="cart-buttonwrapper">
+                        <button class="checkoutbutton">Checkout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div class="main-footer">
+        <div class="footerwrapper">
+            <div>
+                <img class="logo" src="/images/logoarancio.png">
+            </div>
+            <div>
+                <h2>SIW PROJECT</h2>
+                <p>Year 2021/22</p>
+            </div>
+            <div>
+                <h2>STUDENTS</h2>
+                <p>Leandro Placidi</p>
+                <p>Reiner Romeo</p>
+                <p>Riccardo Scudieri</p>
+            </div>
+
+            <div>
+                <h2>INFO</h2>
+                <!-- Credits -->
+            </div>
+        </div>
+        <div class="copyright-footer"><i>©PC SIW Masters</i></div>
+    </div>
+    <script src="/script.js"></script>
+</body>
+
+</html>

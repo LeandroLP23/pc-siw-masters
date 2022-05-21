@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <link href="/style.css" rel="stylesheet">
+    <title>Pc SIW Masters</title>
+</head>
+
+<body>
+        <!-- Header Menu -->
+        <div id="section-header">
+            <div id="overlay"></div>
+            <header>
+                <div id="sidebar">
+                    <div id="sidebar-content" >
+                        <div class="sidebar-item">
+                            <a th:href="@{/index}" class="heading link  ">
+                                <div>
+                                    home
+                                </div>
+                            </a>
+                        </div>
+                        <div class="sidebar-item">
+                            <a th:href="@{/allproducts}" class="heading link">
+                                <div>
+                                    all products
+                                </div>
+                            </a>
+                        </div>
+                        <div class="sidebar-item">
+                            <a href="/" class="heading link">
+                                <div>
+                                    builds
+                                </div>
+                            </a>
+                        </div>
+                        <div class="sidebar-item">
+                            <a href="/" class="heading link">
+                                <div>
+                                    notebooks
+                                </div>
+                            </a>
+                        </div>
+                        <div class="sidebar-item">
+                            <a href="/" class="heading link">
+                                <div>
+                                    accessories
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sidebar-names">
+                        <p>@LeandroPlacidi</p>
+                        <p>@ReinerRomeo</p>
+                        <p>@RiccardoScudieri</p>
+                    </div>
+                </div>
+                <div class="headerwrapper">
+                    <div class="flexitem-center start">
+                        <a th:href="@{/index}">
+                            <img class="logo" src="/images/logoarancio.png">
+                        </a>
+                    </div>
+                    <div class="flexitem-center end">
+                        <img class="mini-img" src="/images/account.png">
+                        <img class="mini-img" src="/images/search.png">
+                        <a th:href="@{/cart}">
+                            <img class="mini-img" src="/images/cart.png">
+                        </a>
+                        <img id="sbmenu" class="mini-img" src="/images/menu.png">
+                    </div>
+                </div>
+            </header>
+        </div>
+    
+    <div class="rei_scorrimento-flex-container">
+        <div class="rei_scorrimento_div"></div>
+    </div>
+
+    <div class="rei_centra_testo">
+        <h1>
+            OUR FAVORITES
+        </h1>
+    </div>
+
+    <div class="rei_flex-container">
+        <div class="rei_divisorio">
+            <a href="https://www.google.it" class="link">
+                <div class="rei_picture_box">
+                    <img src="/images/cuffie.png" class="rei_custom_img" />
+                </div>
+                <b>KRAKEN PRO V2</b>
+            </a>
+        </div>
+        <div class="rei_divisorio">
+            <div class="rei_picture_box">
+                <img src="/images/desktop.png" class="rei_custom_img" />
+            </div>
+            <b>COOLER MASTER BOX MB511</b>
+        </div>
+        <div class="rei_divisorio">
+            <div class="rei_picture_box">
+                <img src="/images/keyboard.png" class="rei_custom_img" />
+            </div>
+            <b>ROSEWILL RGB MECHANICAL KEYBOARD</b>
+        </div>
+        <div class="rei_divisorio">
+            <div class="rei_picture_box">
+                <img src="/images/mouse.png" class="rei_custom_img" />
+            </div>
+            <b>RGB PRO SE WIRELESS GAMING MOUSE</b>
+        </div>
+    </div>
+
+    <div class="rei_flex_container_category">
+        <div class="rei_category">
+            <b>BUILDS</b>
+            <div class="rei_picture_box">
+                <img src="/images/desktop.png" class="rei_custom_img">
+            </div>
+        </div>
+        <div class="rei_category">
+            <b>NOTEBOOKS</b>
+            <div class="rei_picture_box">
+                <img src="/images/notebook.png" class="rei_custom_img">
+            </div>
+        </div>
+    </div>
+
+    <div class="rei_flex_container_category">
+        <div class="rei_category">
+            <b>HARDWARE</b>
+            <div class="rei_picture_box">
+                <img src="/images/ramimg.jpg" class="rei_custom_img">
+            </div>
+        </div>
+        <div class="rei_category">
+            <b>ACCESSORIES</b>
+            <div class="rei_picture_box">
+                <img src="/images/accessories.png" class="rei_custom_img">
+            </div>
+        </div>
+    </div>
+
+    <div class="main-footer">
+        <div class="footerwrapper">
+            <div>
+                <img class="logo" src="/images/logoarancio.png">
+            </div>
+            <div>
+                <h2>SIW PROJECT</h2>
+                <p>Year 2021/22</p>
+            </div>
+            <div>
+                <h2>STUDENTS</h2>
+                <p>Leandro Placidi</p>
+                <p>Reiner Romeo</p>
+                <p>Riccardo Scudieri</p>
+            </div>
+    
+            <div>
+                <h2>INFO</h2>
+                <!-- Credits -->
+            </div>
+        </div>
+        <div class="copyright-footer"><i>©PC SIW Masters</i></div>
+    </div>
+
+    <script src="/script.js"></script>
+</body>
+
+</html>
