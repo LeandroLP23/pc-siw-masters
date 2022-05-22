@@ -11,72 +11,9 @@
 </head>
 <body>
         <!-- Header Menu -->
-        <div id="section-header">
-            <div id="overlay"></div>
-            <header>
-                <div id="sidebar">
-                    <div id="sidebar-content" >
-                        <div class="sidebar-item">
-                            <a th:href="@{/index}" class="heading link  ">
-                                <div>
-                                    home
-                                </div>
-                            </a>
-                        </div>
-                        <div class="sidebar-item">
-                            <a th:href="@{/allproducts}" class="heading link">
-                                <div>
-                                    all products
-                                </div>
-                            </a>
-                        </div>
-                        <div class="sidebar-item">
-                            <a href="/" class="heading link">
-                                <div>
-                                    builds
-                                </div>
-                            </a>
-                        </div>
-                        <div class="sidebar-item">
-                            <a href="/" class="heading link">
-                                <div>
-                                    notebooks
-                                </div>
-                            </a>
-                        </div>
-                        <div class="sidebar-item">
-                            <a href="/" class="heading link">
-                                <div>
-                                    accessories
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="sidebar-names">
-                        <p>@LeandroPlacidi</p>
-                        <p>@ReinerRomeo</p>
-                        <p>@RiccardoScudieri</p>
-                    </div>
-                </div>
-                <div class="headerwrapper">
-                    <div class="flexitem-center start">
-                        <a th:href="@{/index}">
-                            <img class="logo" src="/images/logoarancio.png">
-                        </a>
-                    </div>
-                    <div class="flexitem-center end">
-                        <img class="mini-img" src="/images/account.png">
-                        <img class="mini-img" src="/images/search.png">
-                        <a th:href="@{/cart}">
-                            <img class="mini-img" src="/images/cart.png">
-                        </a>
-                        <img id="sbmenu" class="mini-img" src="/images/menu.png">
-                    </div>
-                </div>
-            </header>
-        </div>
+        <div th:insert="fragments/headerfooter.html :: header"> </div>
     
-        
+        <!-- All Products Content-->
         <div class = "product-grid">
             <div class = "container">
             <div class = "heading-title">
@@ -371,30 +308,9 @@
     </div>
 
     <!-- Footer -->
-    <div class="main-footer">
-        <div class="footerwrapper">
-            <div>
-                <img class="logo" src="/images/logoarancio.png">
-            </div>
-            <div>
-                <h2>SIW PROJECT</h2>
-                <p>Year 2021/22</p>
-            </div>
-            <div>
-                <h2>STUDENTS</h2>
-                <p>Leandro Placidi</p>
-                <p>Reiner Romeo</p>
-                <p>Riccardo Scudieri</p>
-            </div>
-            
-            <div>
-                <h2>INFO</h2>
-                <!-- Credits -->
-            </div>
-        </div>
-        <div class="copyright-footer"><i>©PC SIW Masters</i></div>
-    </div>
-
+    
+    <div th:insert="fragments/headerfooter.html :: footer"> </div>
+    
     <!-- JScript -->
     <script>
         let view = document.querySelectorAll('.view');
@@ -412,7 +328,5 @@
         }
     </script>
     
-    <script src="/script.js"></script>
-
 </body>
 </html>
