@@ -26,6 +26,7 @@
     margin: .5em;
     padding: .2em;
     cursor: pointer;
+    filter: invert(100%);
 }
 
 #section-header{
@@ -37,9 +38,9 @@
 }
 
 .headerwrapper{
-    margin-inline: .9em;
+    margin-right: 1.2em;
     display: flex;
-    background-color: bisque;
+    background-color: #1c1b1b	;
     justify-content: space-between;
 }
 
@@ -96,6 +97,10 @@
     color: gray;
 }
 
+.white{
+	color: white;
+}
+
 .smalltext{
     font-size: 18px;
     font-weight: bold;
@@ -114,7 +119,7 @@
     height: 100vh;
     padding-top: 4em;
     transition: all 0.4s ease-in-out;
-    background-color: chocolate;
+    background-color: #373737;
     
     /*element priority*/
     z-index: 2;
@@ -146,7 +151,6 @@
     justify-items: center;
     position: fixed;
     bottom: 0;
-    color: #1c1b1b;
 }
 
 #overlay{
@@ -292,6 +296,24 @@
     background-color: #1c1b1b;  
 }
 
+.allproducts-button{
+	margin-top: 16px;
+	align-self: center;
+    padding: 14px 28px;
+    line-height: normal;
+    cursor: pointer;
+    
+    border: 1px solid transparent;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-size: 26px;
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    font-style: normal;
+    background-color: #1c1b1b;
+}
+
 .quantitybutton{
     display: flex;
     align-items: center;
@@ -306,7 +328,7 @@
 }
 
 .main-footer{
-    background-color: aquamarine;
+    background-color: #373737;
     align-items: center;
     padding-inline: 4.5em;
 }
@@ -320,7 +342,7 @@
 .copyright-footer{
     text-align: center;
     margin-top: -.7em;
-    margin-bottom: .3em;
+	padding-block: 1em;
     font-size: 14px;
 }
 
@@ -517,6 +539,13 @@
             opacity:0;
         }
     }
+    
+    /*Check*/
+    .button-allproducts{
+		color: white; 
+		font-size: 2em; 
+		background-color: rgb(50,50,50);
+	}
 
 /* --------------------------------------- */
     /*Riccardo*/
@@ -536,7 +565,7 @@
         text-align: center;
         font-size: 25px;
     }
-
+	
     .heading-title p{
         margin: 16px auto 32px auto;
         max-width: 600px;

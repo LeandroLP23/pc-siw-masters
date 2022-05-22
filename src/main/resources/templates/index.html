@@ -8,72 +8,10 @@
 </head>
 
 <body>
-        <!-- Header Menu -->
-        <div id="section-header">
-            <div id="overlay"></div>
-            <header>
-                <div id="sidebar">
-                    <div id="sidebar-content" >
-                        <div class="sidebar-item">
-                            <a th:href="@{/index}" class="heading link  ">
-                                <div>
-                                    home
-                                </div>
-                            </a>
-                        </div>
-                        <div class="sidebar-item">
-                            <a th:href="@{/allproducts}" class="heading link">
-                                <div>
-                                    all products
-                                </div>
-                            </a>
-                        </div>
-                        <div class="sidebar-item">
-                            <a href="/" class="heading link">
-                                <div>
-                                    builds
-                                </div>
-                            </a>
-                        </div>
-                        <div class="sidebar-item">
-                            <a href="/" class="heading link">
-                                <div>
-                                    notebooks
-                                </div>
-                            </a>
-                        </div>
-                        <div class="sidebar-item">
-                            <a href="/" class="heading link">
-                                <div>
-                                    accessories
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="sidebar-names">
-                        <p>@LeandroPlacidi</p>
-                        <p>@ReinerRomeo</p>
-                        <p>@RiccardoScudieri</p>
-                    </div>
-                </div>
-                <div class="headerwrapper">
-                    <div class="flexitem-center start">
-                        <a th:href="@{/index}">
-                            <img class="logo" src="/images/logoarancio.png">
-                        </a>
-                    </div>
-                    <div class="flexitem-center end">
-                        <img class="mini-img" src="/images/account.png">
-                        <img class="mini-img" src="/images/search.png">
-                        <a th:href="@{/cart}">
-                            <img class="mini-img" src="/images/cart.png">
-                        </a>
-                        <img id="sbmenu" class="mini-img" src="/images/menu.png">
-                    </div>
-                </div>
-            </header>
-        </div>
-    
+    <!-- Header Menu -->
+    <div th:insert="fragments/headerfooter.html :: header"> </div>
+
+    <!-- Index Content-->
     <div class="rei_scorrimento-flex-container">
         <div class="rei_scorrimento_div"></div>
     </div>
@@ -86,7 +24,7 @@
 
     <div class="rei_flex-container">
         <div class="rei_divisorio">
-            <a href="https://www.google.it" class="link">
+            <a href="https://www.google.it" class="link white">
                 <div class="rei_picture_box">
                     <img src="/images/cuffie.png" class="rei_custom_img" />
                 </div>
@@ -144,36 +82,15 @@
     </div>
     
     <div class="rei_centra_testo">
-    	<a th:href="@{/allproducts}" class="link">
-    		<b style="color: white; font-size: 2em; background-color: rgb(50,50,50);">ALL PRODUCTS</b>
+    	<a th:href="@{/allproducts}" >
+    		<button class="allproducts-button">
+    		ALL PRODUCTS
+    		</button>
     	</a>
     </div>
 
-    <div class="main-footer">
-        <div class="footerwrapper">
-            <div>
-                <img class="logo" src="/images/logoarancio.png">
-            </div>
-            <div>
-                <h2>SIW PROJECT</h2>
-                <p>Year 2021/22</p>
-            </div>
-            <div>
-                <h2>STUDENTS</h2>
-                <p>Leandro Placidi</p>
-                <p>Reiner Romeo</p>
-                <p>Riccardo Scudieri</p>
-            </div>
-    
-            <div>
-                <h2>INFO</h2>
-                <!-- Credits -->
-            </div>
-        </div>
-        <div class="copyright-footer"><i>©PC SIW Masters</i></div>
-    </div>
-
-    <script src="/script.js"></script>
+	<!-- Footer -->
+	<div th:insert="fragments/headerfooter.html :: footer"> </div>
 </body>
 
 </html>
