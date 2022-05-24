@@ -17,6 +17,11 @@ public class SiteController {
 		return "allproducts.html";
 	}
 	
+	@GetMapping("/productpage")
+	public String getProductPage(Model model) {
+		return "productpage.html";
+	}
+	
 	@GetMapping("/index")
 	public String getIdex(Model model) {
 		return "index.html";
