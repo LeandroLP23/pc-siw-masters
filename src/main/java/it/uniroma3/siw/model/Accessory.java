@@ -16,7 +16,7 @@ public class Accessory {
     private String category;
 
     @Column(nullable = false)
-    private String price;
+    private float price;
 
     @ManyToOne
     private Vendor vendor;
@@ -53,11 +53,11 @@ public class Accessory {
         this.vendor = vendor;
     }
 
-    public String getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 

@@ -13,7 +13,7 @@ public class ComputerBuild {
     private String name;
 
     @Column(nullable = false)
-    private String price;
+    private float price;
 
     @ManyToMany
     private List<Hardware> hardwareList;
@@ -21,8 +21,8 @@ public class ComputerBuild {
     @ManyToMany
     private List<Accessory> accessoryList;
 
-    @ManyToMany
-    private List<ComputerCase> computerCaseList;
+    @ManyToOne
+    private ComputerCase computerCase;
 
     public Long getId() {
         return id;
@@ -40,11 +40,11 @@ public class ComputerBuild {
         this.name = name;
     }
 
-    public String getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 
@@ -64,11 +64,11 @@ public class ComputerBuild {
         this.accessoryList = accessoryList;
     }
 
-    public List<ComputerCase> getComputerCaseList() {
-        return computerCaseList;
+    public ComputerCase getComputerCase() {
+        return computerCase;
     }
 
-    public void setComputerCaseList(List<ComputerCase> computerCaseList) {
-        this.computerCaseList = computerCaseList;
+    public void setComputerCase(ComputerCase computerCase) {
+        this.computerCase = computerCase;
     }
 }
