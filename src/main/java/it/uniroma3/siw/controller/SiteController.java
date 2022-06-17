@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package it.uniroma3.siw.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,21 +9,21 @@ public class SiteController {
 
 	@GetMapping("/cart")
 	public String getCart(Model model) {
-		return "cart.html";
+		return "cart";
 	}
 	
 	@GetMapping("/allproducts")
 	public String getAllProducts(Model model) {
-		return "allproducts.html";
+		return "allproducts";
 	}
 	
 	@GetMapping("/productpage")
 	public String getProductPage(Model model) {
-		return "productpage.html";
+		return "productpage";
 	}
 	
 	@GetMapping("/index")
 	public String getIdex(Model model) {
-		return "index.html";
+		return "index";
 	}
 }
