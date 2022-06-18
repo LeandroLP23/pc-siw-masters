@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8" />
+    <link href="/css/style.css" rel="stylesheet" />
+    <title>Catering SIW</title>
+</head>
+
+<body>
+<!-- Header -->
+<div th:insert="fragments/header.html :: header"> </div>
+
+<!-- Content -->
+<div class="item-container">
+
+    <!-- Left Column -->
+    <div class="item-left-column">
+        <img class="item-img" src="/images/cuffie.png" />
+    </div>
+
+    <!-- Right Column -->
+    <div class="item-right-column">
+
+        <!-- Item Description -->
+        <div class="item-product-description">
+
+            <!-- Nome
+            <h1 th:text="${piatto.nome}"></h1>-->
+
+            <!-- Descrizione
+            <p th:text="${piatto.descrizione}"></p>-->
+
+            <!-- Elenco ingredienti -->
+            <h4>Conosci al meglio i nostri ingredienti:</h4>
+            <ul>
+                <!--<li th:each="ingrediente : ${piatto.ingredienti}">
+                    <a th:href="@{'/show/ingredientePage/' + ${ingrediente.id}}"
+                       th:text="${ingrediente.nome}" class="link"></a>-->
+                </li>
+            </ul>
+        </div>
+
+        <!-- Bottone Modifica
+        <a th:href="@{'/admin/editPiatto' +'/'+ ${piatto.id}}">-->
+        <a>
+            <button class="item-button">Modifica piatto</button>
+        </a>
+    </div>
+</div>

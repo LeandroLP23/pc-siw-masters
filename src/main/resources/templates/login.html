@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<link href="/css/style.css" rel="stylesheet" />
+	<title>Login - Catering SIW</title>
+</head>
+
+<body>
+<!-- Header -->
+<div th:insert="fragments/header.html :: header"> </div>
+
+<!-- Content -->
+<div class="login-content">
+	<form method="POST" th:action="@{/login}" class="login">
+		<h2>Accedi</h2>
+		<p class="xsmall">Bentornato! Accedi al tuo account</p>
+		<p><strong>Nome Utente o indirizzo email*</strong></p>
+		<input name="username" placeholder="Username">
+		<p><strong>Password*</strong></p>
+		<input name="password" placeholder="Password" type="password">
+		<button class="login-button"><strong>Accedi</strong></button>
+		<!--<a class="xsmall">Password dimenticata?</a>-->
+	</form>
+
+	<hr>
+
+	<form th:action="@{/register}" method="POST" class="registration">
+		<h2>Registrati</h2>
+
+		<p class="xsmall">Crea il tuo account per tenere sotto controllo i tuoi ordini</p>
+
+		<!-- Email -->
+		<p><strong>Indirizzo email*</strong></p>
+		<input th:field="${user.email}" placeholder="Email">
+		<span class="error-message-register" th:if="${#fields.hasErrors('user.email')}" th:errors="${user.email}"></span>
+
+		<!-- Nome -->
+		<p><strong>Nome*</strong></p>
+		<input th:field="${user.nome}" placeholder="Nome">
+		<span class="error-message-register" th:if="${#fields.hasErrors('user.nome')}" th:errors="${user.nome}"></span>
+
+		<!-- Cognome -->
+		<p><strong>Cognome*</strong></p>
+		<input th:field="${user.cognome}" placeholder="Cognome">
+		<span class="error-message-register" th:if="${#fields.hasErrors('user.cognome')}" th:errors="${user.cognome}"></span>
+
+		<!-- Username -->
+		<p><strong>Username*</strong></p>
+		<input th:field="${credentials.username}" placeholder="Username">
+		<span class="error-message-register" th:if="${#fields.hasErrors('credentials.username')}" th:errors="${credentials.username}"></span>
+
+		<!-- Password -->
+		<p><strong>Password*</strong></p>
+		<input th:field="${credentials.password}" type="password" placeholder="Password">
+		<span class="error-message-register" th:if="${#fields.hasErrors('credentials.password')}" th:errors="${credentials.password}"></span>
+
+		<button class="login-button"><strong>Registrati</strong></button>
+	</form>
+</div>
+
+</body>
+
+</html>
