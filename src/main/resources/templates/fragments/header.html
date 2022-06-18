@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+    <title>Pc SIW Masters</title>
+</head>
+
+<body>
+<!-- Header Menu -->
+<div th:fragment="header" id="section-header">
+    <div id="overlay"></div>
+    <div id="sidebar">
+        <div id="sidebar-content" >
+            <div class="sidebar-item">
+                <a th:href="@{/index}" class="heading link  ">
+                    <div>
+                        home
+                    </div>
+                </a>
+            </div>
+            <a th:href="@{/allproducts}" class="heading link">
+                <div class="sidebar-item">
+                    <div>
+                        all products
+                    </div>
+                </div>
+            </a>
+            <a href="/" class="heading link">
+                <div class="sidebar-item">
+                    <div>
+                        builds
+                    </div>
+                </div>
+            </a>
+            <a href="/" class="heading link">
+                <div class="sidebar-item">
+                    <div>
+                        notebooks
+                    </div>
+                </div>
+            </a>
+            <a href="/" class="heading link">
+                <div class="sidebar-item">
+                    <div>
+                        accessories
+                    </div>
+                </div>
+            </a>
+            <a th:href="@{/admin/addHardware}" class="heading link">
+                <div class="sidebar-item">
+                    <div>
+                        add hardware
+                    </div>
+                </div>
+            </a>
+            <a th:href="@{/admin/addNotebook}" class="heading link">
+                <div class="sidebar-item">
+                    <div>
+                        add notebook
+                    </div>
+                </div>
+            </a>
+            <a th:href="@{/admin/addVendor}" class="heading link">
+                <div class="sidebar-item">
+                    <div>
+                        add produttore
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="sidebar-names">
+            <p class="white">@LeandroPlacidi</p>
+            <p class="white">@ReinerRomeo</p>
+            <p class="white">@RiccardoScudieri</p>
+        </div>
+    </div>
+    <div class="headerwrapper">
+        <div class="flexitem-center start">
+            <a th:href="@{/index}">
+                <img class="logo" src="/images/logowhiteorange.png">
+            </a>
+        </div>
+        <div class="flexitem-center end">
+            <img class="mini-img" src="/images/account.png">
+            <img class="mini-img" src="/images/search.png">
+            <a th:href="@{/cart}">
+                <img class="mini-img" src="/images/cart.png">
+            </a>
+            <img id="sbmenu" class="mini-img" src="/images/menu.png">
+        </div>
+    </div>
+    <script src="/script/script.js"></script>
+</div>
+
+<!-- Footer -->
+<div th:fragment="footer" class="main-footer">
+    <div class="footerwrapper">
+        <div>
+            <img class="logo" src="/images/logowhiteorange.png">
+        </div>
+        <div>
+            <h2>SIW PROJECT</h2>
+            <p>Year 2021/22</p>
+        </div>
+        <div>
+            <h2>STUDENTS</h2>
+            <p>Leandro Placidi</p>
+            <p>Reiner Romeo</p>
+            <p>Riccardo Scudieri</p>
+        </div>
+
+        <div>
+            <h2>INFO</h2>
+            <!-- Credits -->
+        </div>
+    </div>
+    <div class="copyright-footer"><i>©PC SIW Masters</i></div>
+</div>
+
+
+</body>
+</html>
