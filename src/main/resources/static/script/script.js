@@ -1,4 +1,4 @@
-const sbmenu = document.getElementById('sbmenu')
+const sidebarmenu = document.getElementById('side-bar-menu')
 const sidebar = document.getElementById('sidebar')
 const overlay = document.getElementById('overlay')
 
@@ -16,7 +16,7 @@ function closeMenu() {
     sidebar.style.width = '0px'
 }
 
-sbmenu.addEventListener('click',function(){
+sidebarmenu.addEventListener('click',function(){
     if(!menuOpen){
         openMenu()
     }

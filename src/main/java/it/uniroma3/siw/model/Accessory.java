@@ -1,5 +1,7 @@
 package it.uniroma3.siw.model;
 
+import it.uniroma3.siw.model.category.AccessoryCategory;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,7 +15,7 @@ public class Accessory {
     private String name;
 
     @Column(nullable = false)
-    private String category;
+    private AccessoryCategory category;
 
     @Column(nullable = false)
     private float price;
@@ -37,11 +39,11 @@ public class Accessory {
         this.name = name;
     }
 
-    public String getCategory() {
+    public AccessoryCategory getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(AccessoryCategory category) {
         this.category = category;
     }
 

@@ -26,9 +26,8 @@ public class HardwareController {
     @GetMapping("/pageHardware/{id}")
     public String getPageHardware(Model model, @PathVariable("id") Long id){
 
-        Hardware hardware = this.hardwareService.findById(id);
+        model.addAttribute("hardware",this.hardwareService.findById(id));
 
-        model.addAttribute("hardware",hardware);
         return "pageHardware";
     }
 

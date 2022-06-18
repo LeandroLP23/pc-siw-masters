@@ -7,10 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class SiteController {
 
-	@GetMapping("/cart")
-	public String getCart(Model model) {
-		return "cart";
-	}
 	
 	@GetMapping("/allproducts")
 	public String getAllProducts(Model model) {
@@ -22,8 +18,8 @@ public class SiteController {
 		return "productpage";
 	}
 	
-	@GetMapping("/index")
-	public String getIdex(Model model) {
+	@GetMapping(path = {"", "/index","/"})
+	public String getIndex(Model model) {
 		return "index";
 	}
 }

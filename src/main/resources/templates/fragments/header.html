@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" 
+      lang="">
 <head>
     <meta charset="UTF-8" />
     <link th:href="@{/css/style.css}" rel="stylesheet" />
@@ -68,6 +69,27 @@
                     </div>
                 </div>
             </a>
+            <a th:href="@{/admin/addAccessory}" class="heading link">
+                <div class="sidebar-item">
+                    <div>
+                        add accessorio
+                    </div>
+                </div>
+            </a>
+            <a th:href="@{/admin/addComputerCase}" class="heading link">
+                <div class="sidebar-item">
+                    <div>
+                        add computer case
+                    </div>
+                </div>
+            </a>
+            <a th:href="@{/admin/addComputerBuild}" class="heading link">
+                <div class="sidebar-item">
+                    <div>
+                        add computer build
+                    </div>
+                </div>
+            </a>
         </div>
         <div class="sidebar-names">
             <p class="white">@LeandroPlacidi</p>
@@ -77,17 +99,14 @@
     </div>
     <div class="headerwrapper">
         <div class="flexitem-center start">
-            <a th:href="@{/index}">
-                <img class="logo" src="/images/logowhiteorange.png">
+            <a th:href="@{/}">
+                <img class="logo" src="/images/logowhiteorange.png" alt="Logo PC SIW Masters">
             </a>
         </div>
         <div class="flexitem-center end">
-            <img class="mini-img" src="/images/account.png">
-            <img class="mini-img" src="/images/search.png">
-            <a th:href="@{/cart}">
-                <img class="mini-img" src="/images/cart.png">
-            </a>
-            <img id="sbmenu" class="mini-img" src="/images/menu.png">
+            <img class="mini-img" src="/images/account.png" alt="Login pic">
+            <!--<img class="mini-img" src="/images/search.png">-->
+            <img id="side-bar-menu" class="mini-img" src="/images/menu.png" alt="Menu pic">
         </div>
     </div>
     <script src="/script/script.js"></script>
@@ -97,7 +116,7 @@
 <div th:fragment="footer" class="main-footer">
     <div class="footerwrapper">
         <div>
-            <img class="logo" src="/images/logowhiteorange.png">
+            <img class="logo" src="/images/logowhiteorange.png" alt="Logo PC SIW Masters">
         </div>
         <div>
             <h2>SIW PROJECT</h2>

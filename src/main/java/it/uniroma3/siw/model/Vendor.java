@@ -22,6 +22,12 @@ public class Vendor {
     @OneToMany(mappedBy = "vendor")
     private List<Hardware> hardwareList;
 
+    @Override
+    public boolean equals(Object obj) {
+        Vendor that = (Vendor) obj;
+        return this.name.equals(that.getName());
+    }
+
     public Long getId() {
         return id;
     }

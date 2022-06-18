@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="">
+<head>
+    <meta charset="UTF-8" />
+    <link href="/css/style.css" rel="stylesheet" />
+    <title>Pc SIW Masters - Aggiungi Computer Build</title>
+</head>
+
+<body>
+
+<!-- Header -->
+<div th:insert="fragments/header.html :: header"> </div>
+
+<!-- Content -->
+<form th:action="@{/admin/pageComputerBuild}" method="POST" th:object="${computerBuild}" class="add-item-container">
+    <div class="add-item-container">
+
+        <h2>Aggiungi Computer Build </h2>
+
+        <!-- Global Error -->
+        <div class="global-error-message" th:if="${#fields.hasGlobalErrors()}">
+            <p th:each="err : ${#fields.globalErrors()}" th:text="${err}"></p>
+        </div>
+
+        <div class="add-item-infos">
+
+            <!-- Name -->
+            <p>Inserisci nome:</p>
+            <input placeholder="Nome" th:field="${computerBuild.name}">
+            <span class="error-message" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+
+            <!-- ComputerCase -->
+            <p>Seleziona il case per la tua configurazione:</p>
+            <select name="idComputerCase">
+                <option value="0">Seleziona una categoria:</option>
+                <option th:each="computerCase : ${computerCaseList}" th:value="${computerCase}"
+                        th:text="${computerCase.name}"
+                        >
+                    <!--th:selected="${chef.equals(chefSelected)}"-->
+                </option>
+            </select>
+
+            <!-- Accessory Selector -->
+            <p>Seleziona gli accessori: </p>
+            <div class="checkbox-grid">
+                <label th:each="accessory : ${accessoryList}" class="checkbox-elem">
+                    <input type="checkbox" th:value="${accessory.id}" th:text="${accessory.name}"
+                           th:name="idAccessory"/>
+                           <!--th:checked="${ingredientiSelected.contains(ingrediente)}" -->
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+
+            <!-- Hardware Selector -->
+            <p>Seleziona le componenti hardware: </p>
+            <div class="checkbox-grid">
+                <label th:each="hardware : ${hardwareList}" class="checkbox-elem">
+                    <input type="checkbox" th:value="${hardware.id}" th:text="${hardware.name}"
+                           th:name="idHardware"/>
+                    <!--th:checked="${ingredientiSelected.contains(ingrediente)}" -->
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+
+            <!-- Immagine
+            <p>Seleziona un'immagine:</p>
+            <input type="file" accept="image/*">-->
+
+        </div>
+
+        <!-- Bottone -->
+        <button type="submit" class="item-button">Salva</button>
+    </div>
+</form>
+
+<script src="/script/script.js"></script>
+</body>
+
+</html>

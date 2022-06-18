@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="">
 
 <head>
     <meta charset="UTF-8" />
@@ -26,23 +27,23 @@
         <!-- Item Description -->
         <div class="item-product-description">
 
-            <!-- Nome
-            <h1 th:text="${accessory.nome}"></h1>-->
+            <!-- Name -->
+            <h1 th:text="${accessory.name}"></h1>
 
-            <!-- Categoria
-            <p th:text="${accessory.categoria}"></p>-->
+            <!-- Category -->
+            <p th:text="${accessory.category}"></p>
 
-            <!-- Venditore
-            <p th:text="${accessory.venditore}"></p>-->
+            <!-- Vendor -->
+            <p th:text="${accessory.vendor}"></p>
 
-            <!-- Prezzo
-            <p th:text="${accessory.prezzo}"></p>-->
+            <!-- Price -->
+            <p th:text="${accessory.price}"></p>
         </div>
 
         <!-- Bottone Modifica
         <a th:href="@{'/admin/editPiatto' +'/'+ ${piatto.id}}">-->
         <a>
-            <button class="item-button">Modifica piatto</button>
+            <button class="item-button">Modifica accessorio</button>
         </a>
     </div>
 </div>

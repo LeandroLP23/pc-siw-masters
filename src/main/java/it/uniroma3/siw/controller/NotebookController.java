@@ -25,9 +25,8 @@ public class NotebookController {
     @GetMapping("/pageNotebook/{id}")
     public String getPageHardware(Model model, @PathVariable("id") Long id){
 
-        Notebook notebook = this.notebookService.findById(id);
+        model.addAttribute("notebook",this.notebookService.findById(id));
 
-        model.addAttribute("notebook",notebook);
         return "pageNotebook";
     }
 

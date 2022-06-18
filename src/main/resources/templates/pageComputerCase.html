@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-      lang="">
+ lang="">
 
 <head>
     <meta charset="UTF-8" />
@@ -29,13 +29,13 @@
         <div class="item-product-description">
 
             <!-- Name -->
-            <h1 th:text="${notebook.name}"></h1>
-
-            <!-- Price -->
-            <p th:text="${notebook.price}"></p>
+            <h1 th:text="${computerCase.name}"></h1>
 
             <!-- Vendor -->
-            <p th:text="${notebook.vendor}"></p>
+            <p th:text="${computerCase.vendor}"></p>
+
+            <!-- Price -->
+            <p th:text="${computerCase.price}"></p>
 
         </div>
 

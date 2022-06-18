@@ -1,5 +1,7 @@
 package it.uniroma3.siw.model;
 
+import it.uniroma3.siw.model.category.HardwareCategory;
+
 import javax.persistence.*;
 
 @Entity
@@ -12,7 +14,7 @@ public class Hardware {
     private String name;
 
     @Column(nullable = false)
-    private String category;
+    private HardwareCategory category;
 
     @Column(nullable = false)
     private float price;
@@ -36,11 +38,11 @@ public class Hardware {
         this.name = name;
     }
 
-    public String getCategory() {
+    public HardwareCategory getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(HardwareCategory category) {
         this.category = category;
     }
 
