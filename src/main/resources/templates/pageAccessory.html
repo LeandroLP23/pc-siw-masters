@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8" />
+    <link href="/css/style.css" rel="stylesheet" />
+    <title>Catering SIW</title>
+</head>
+
+<body>
+<!-- Header -->
+<div th:insert="fragments/header.html :: header"> </div>
+
+<!-- Content -->
+<div class="item-container">
+
+    <!-- Left Column -->
+    <div class="item-left-column">
+        <img class="item-img" src="/images/cuffie.png" />
+    </div>
+
+    <!-- Right Column -->
+    <div class="item-right-column">
+
+        <!-- Item Description -->
+        <div class="item-product-description">
+
+            <!-- Nome
+            <h1 th:text="${accessory.nome}"></h1>-->
+
+            <!-- Categoria
+            <p th:text="${accessory.categoria}"></p>-->
+
+            <!-- Venditore
+            <p th:text="${accessory.venditore}"></p>-->
+
+            <!-- Prezzo
+            <p th:text="${accessory.prezzo}"></p>-->
+        </div>
+
+        <!-- Bottone Modifica
+        <a th:href="@{'/admin/editPiatto' +'/'+ ${piatto.id}}">-->
+        <a>
+            <button class="item-button">Modifica piatto</button>
+        </a>
+    </div>
+</div>
