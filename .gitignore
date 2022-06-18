@@ -210,4 +210,5 @@ dist/
 nbdist/
 .nb-gradle/
 
+.idea/
 # End of https://www.toptal.com/developers/gitignore/api/eclipse,intellij,maven,netbeans
