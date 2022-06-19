@@ -3,6 +3,8 @@ package it.uniroma3.siw.model;
 import it.uniroma3.siw.model.category.HardwareCategory;
 
 import javax.persistence.*;
+import java.util.Map;
+import java.util.TreeMap;
 
 @Entity
 public class Hardware {
@@ -21,6 +23,18 @@ public class Hardware {
 
     @ManyToOne
     private Vendor vendor;
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj != null && obj.getClass().equals(this.getClass())) {
+            Hardware that = (Hardware) obj;
+            return this.name.equals(that.getName())
+                    && this.category.getDisplayValue().equals(that.getCategory().getDisplayValue())
+                    && this.price == (that.getPrice())
+                    && this.vendor == (that.getVendor());
+        }
+        return false;
+    }
 
     public Long getId() {
         return id;

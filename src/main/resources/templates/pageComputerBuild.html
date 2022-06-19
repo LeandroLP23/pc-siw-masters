@@ -35,7 +35,7 @@
             <p th:text="${computerBuild.price}"></p>
 
             <!-- Computer Case -->
-            <p th:text="${computerBuild.computerCase}"></p>
+            <p th:text="${computerBuild.computerCase.name}"></p>
 
             <!-- Accessory List -->
             <h4>Controlla i nostri accessori:</h4>
@@ -57,9 +57,8 @@
 
         </div>
 
-        <!-- Bottone Modifica
-        <a th:href="@{'/admin/editHardware' +'/'+ ${hardware.id}}">-->
-        <a>
+        <!-- Bottone Modifica -->
+        <a th:href="@{'/admin/editComputerBuild/'+ ${computerBuild.id}}">
             <button class="item-button">Modifica Computer Build</button>
         </a>
     </div>

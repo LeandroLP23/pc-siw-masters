@@ -1,13 +1,13 @@
 package it.uniroma3.siw.service;
 
 import it.uniroma3.siw.model.Hardware;
+import it.uniroma3.siw.model.category.HardwareCategory;
 import it.uniroma3.siw.repository.HardwareRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class HardwareService {
@@ -26,10 +26,21 @@ public class HardwareService {
 
     public List<Hardware> findAll(){
         List<Hardware> hardwareList = new ArrayList<>();
-        for(Hardware vendor : this.hardwareRepository.findAll()){
-            hardwareList.add(vendor);
+        for(Hardware hardware : this.hardwareRepository.findAll()){
+            hardwareList.add(hardware);
         }
         return hardwareList;
+    }
+
+    public Map<HardwareCategory, List<Hardware>> findOnCategory(){
+        Map<HardwareCategory,List<Hardware>> hardwareMap = new TreeMap<>();
+        for(Hardware hardware: this.hardwareRepository.findAll() ){
+            if(hardwareMap.get(hardware.getCategory())==null){
+                hardwareMap.put(hardware.getCategory(), new LinkedList<>());
+            }
+            hardwareMap.get(hardware.getCategory()).add(hardware);
+        }
+        return hardwareMap;
     }
 
     public boolean alreadyExists (Hardware hardware){

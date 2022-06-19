@@ -25,7 +25,7 @@ public class NotebookController {
     @Autowired
     private VendorService vendorService;
 
-    @GetMapping("/pageNotebook/{id}")
+    @GetMapping("/show/pageNotebook/{id}")
     public String getPageHardware(Model model, @PathVariable("id") Long id) {
 
         model.addAttribute("notebook", this.notebookService.findById(id));

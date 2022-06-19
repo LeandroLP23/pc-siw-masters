@@ -17,6 +17,17 @@ public class ComputerCase {
     @ManyToOne
     private Vendor vendor;
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj != null && obj.getClass().equals(this.getClass())) {
+            ComputerCase that = (ComputerCase) obj;
+            return this.name.equals(that.getName())
+                    && this.price == (that.getPrice())
+                    && this.vendor == (that.getVendor());
+        }
+        return false;
+    }
+
     public Long getId() {
         return id;
     }

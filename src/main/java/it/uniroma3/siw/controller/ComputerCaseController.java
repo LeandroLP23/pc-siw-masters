@@ -25,7 +25,7 @@ public class ComputerCaseController {
     @Autowired
     private VendorService vendorService;
 
-    @GetMapping("/pageComputerCase/{id}")
+    @GetMapping("/show/pageComputerCase/{id}")
     public String getPageComputerCase(Model model, @PathVariable("id") Long id){
 
         model.addAttribute("computerCase",this.computerCaseService.findById(id));

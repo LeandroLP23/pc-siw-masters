@@ -26,7 +26,7 @@ public class HardwareController {
     @Autowired
     private VendorService vendorService;
 
-    @GetMapping("/pageHardware/{id}")
+    @GetMapping("/show/pageHardware/{id}")
     public String getPageHardware(Model model, @PathVariable("id") Long id){
 
         model.addAttribute("hardware",this.hardwareService.findById(id));

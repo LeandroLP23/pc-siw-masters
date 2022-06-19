@@ -1,7 +1,11 @@
 package it.uniroma3.siw.model;
 
+import it.uniroma3.siw.model.category.HardwareCategory;
+
 import javax.persistence.*;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 @Entity
 public class ComputerBuild {
@@ -23,6 +27,14 @@ public class ComputerBuild {
 
     @ManyToOne
     private ComputerCase computerCase;
+
+    public Map<HardwareCategory,Hardware> getMappedHardware(){
+        Map<HardwareCategory,Hardware> hardwareMap = new TreeMap<>();
+        for(Hardware hardware: this.hardwareList){
+            hardwareMap.put(hardware.getCategory(),hardware);
+        }
+        return hardwareMap;
+    }
 
     public Long getId() {
         return id;
