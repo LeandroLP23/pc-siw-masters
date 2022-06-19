@@ -32,7 +32,7 @@
             <h1 th:text="${computerCase.name}"></h1>
 
             <!-- Vendor -->
-            <p th:text="${computerCase.vendor}"></p>
+            <p th:text="${computerCase.vendor.name}"></p>
 
             <!-- Price -->
             <p th:text="${computerCase.price}"></p>
@@ -42,7 +42,7 @@
         <!-- Bottone Modifica
         <a th:href="@{'/admin/editNotebook' +'/'+ ${notebook.id}}">-->
         <a>
-            <button class="item-button">Modifica piatto</button>
+            <button class="item-button">Modifica Computer Case</button>
         </a>
     </div>
 </div>

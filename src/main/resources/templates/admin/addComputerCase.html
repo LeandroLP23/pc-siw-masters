@@ -42,8 +42,7 @@
                 <option value="0">Seleziona un produttore:</option>
                 <option th:each="vendor : ${vendorList}" th:value="${vendor.id}"
                         th:text="${vendor.name} "
-                >
-                        <!--th:selected="${chef.equals(chefSelected)}"-->
+                        th:selected="${vendor.equals(vendorSelected)}">
                 </option>
             </select>
 

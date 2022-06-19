@@ -31,10 +31,10 @@
             <h1 th:text="${accessory.name}"></h1>
 
             <!-- Category -->
-            <p th:text="${accessory.category}"></p>
+            <p th:text="${accessory.category.displayValue}"></p>
 
             <!-- Vendor -->
-            <p th:text="${accessory.vendor}"></p>
+            <p th:text="${accessory.vendor.name}"></p>
 
             <!-- Price -->
             <p th:text="${accessory.price}"></p>
@@ -43,7 +43,7 @@
         <!-- Bottone Modifica
         <a th:href="@{'/admin/editPiatto' +'/'+ ${piatto.id}}">-->
         <a>
-            <button class="item-button">Modifica accessorio</button>
+            <button class="item-button">Modifica Accessorio</button>
         </a>
     </div>
 </div>

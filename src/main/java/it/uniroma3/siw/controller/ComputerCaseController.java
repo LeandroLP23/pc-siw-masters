@@ -1,17 +1,14 @@
 package it.uniroma3.siw.controller;
 
 import it.uniroma3.siw.controller.validator.ComputerCaseValidator;
-import it.uniroma3.siw.controller.validator.NotebookValidator;
 import it.uniroma3.siw.model.ComputerCase;
-import it.uniroma3.siw.model.Notebook;
 import it.uniroma3.siw.service.ComputerCaseService;
-import it.uniroma3.siw.service.NotebookService;
 import it.uniroma3.siw.service.VendorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class ComputerCaseController {
@@ -42,4 +39,35 @@ public class ComputerCaseController {
         return "admin/addComputerCase";
     }
 
+    @PostMapping("/admin/pageComputerCase")
+    public String addComputerCase (@ModelAttribute("computerCase") ComputerCase computerCase,
+                               @RequestParam(value = "idVendor",required = false) Long idVendor,
+                               Model model, BindingResult bindingResult ) {
+
+        if (idVendor == 0)
+            bindingResult.reject("computerCase.vendor");
+
+        this.computerCaseValidator.validate(computerCase, bindingResult);
+
+        if (!bindingResult.hasErrors()) {
+
+            computerCase.setVendor(this.vendorService.findById(idVendor));
+
+            this.computerCaseService.save(computerCase);
+
+            model.addAttribute("computerCase", this.computerCaseService.findById(computerCase.getId()));
+
+            return "pageComputerCase";
+        } else {
+
+            model.addAttribute("computerCase", computerCase);
+            model.addAttribute("vendorList", this.vendorService.findAll());
+
+            if(idVendor != 0) {
+                model.addAttribute("vendorSelected", this.vendorService.findById(idVendor));
+            }
+
+            return "admin/addComputerCase";
+        }
+    }
 }

@@ -35,14 +35,14 @@
             <p th:text="${notebook.price}"></p>
 
             <!-- Vendor -->
-            <p th:text="${notebook.vendor}"></p>
+            <p th:text="${notebook.vendor.name}"></p>
 
         </div>
 
         <!-- Bottone Modifica
         <a th:href="@{'/admin/editNotebook' +'/'+ ${notebook.id}}">-->
         <a>
-            <button class="item-button">Modifica piatto</button>
+            <button class="item-button">Modifica Notebook</button>
         </a>
     </div>
 </div>

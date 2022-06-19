@@ -8,8 +8,8 @@ import it.uniroma3.siw.service.VendorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class HardwareController {
@@ -35,9 +35,52 @@ public class HardwareController {
     public String getAddHardware(Model model){
 
         model.addAttribute("hardware", new Hardware());
-        model.addAttribute("vendors", this.vendorService.findAll());
-        model.addAttribute("categories", HardwareCategory.values());
+        model.addAttribute("vendorList", this.vendorService.findAll());
 
         return "admin/addHardware";
+    }
+
+    @PostMapping("/admin/pageHardware")
+    public String addHardware(@ModelAttribute("hardware") Hardware hardware,
+                               @RequestParam(value = "category",required = false) HardwareCategory category,
+                               @RequestParam(value = "idVendor",required = false) Long idVendor,
+                               Model model, BindingResult bindingResult) {
+
+        if(category ==  null){
+            bindingResult.reject("hardware.category");
+        }
+
+        if(idVendor == 0){
+            bindingResult.reject("hardware.vendor");
+        }
+
+        this.hardwareValidator.validate(hardware, bindingResult);
+
+        if (!bindingResult.hasErrors()) {
+
+            hardware.setCategory(category);
+
+            hardware.setVendor(this.vendorService.findById(idVendor));
+
+            this.hardwareService.save(hardware);
+
+            model.addAttribute("hardware", this.hardwareService.findById(hardware.getId()));
+
+            return "pageHardware";
+        }else{
+
+            model.addAttribute("hardware", hardware);
+            model.addAttribute("vendorList", this.vendorService.findAll());
+
+            if(idVendor != 0) {
+                model.addAttribute("vendorSelected", this.vendorService.findById(idVendor));
+            }
+
+            if(category!=null){
+                model.addAttribute("categorySelected", category);
+            }
+
+            return "admin/addHardware";
+        }
     }
 }

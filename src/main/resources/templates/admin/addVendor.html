@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="">
 
 <head>
     <meta charset="UTF-8" />
@@ -13,7 +14,7 @@
 <div th:insert="fragments/header.html :: header"> </div>
 
 <!-- Content -->
-<form th:action="@{/admin/pageVendor}" method="POST" th:object="${vendor}" class="add-item-container">
+<form th:action="@{/admin/pageAllVendor}" method="POST" th:object="${vendor}" class="add-item-container">
     <div class="add-item-container">
 
         <h2>Aggiungi Produttore </h2>

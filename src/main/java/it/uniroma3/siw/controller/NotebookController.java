@@ -7,8 +7,8 @@ import it.uniroma3.siw.service.VendorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class NotebookController {
@@ -34,9 +34,41 @@ public class NotebookController {
     public String getAddNotebook(Model model){
 
         model.addAttribute("notebook", new Notebook());
-        model.addAttribute("vendors", this.vendorService.findAll());
+        model.addAttribute("vendorList", this.vendorService.findAll());
 
         return "admin/addNotebook";
+    }
+
+    @PostMapping("/admin/pageNotebook")
+    public String addNotebook (@ModelAttribute("notebook") Notebook notebook,
+                               @RequestParam(value = "idVendor",required = false) Long idVendor,
+                               Model model, BindingResult bindingResult ) {
+
+        if (idVendor == 0)
+            bindingResult.reject("notebook.vendor");
+
+        this.notebookValidator.validate(notebook, bindingResult);
+
+        if (!bindingResult.hasErrors()) {
+
+            notebook.setVendor(this.vendorService.findById(idVendor));
+
+            this.notebookService.save(notebook);
+
+            model.addAttribute("notebook", this.notebookService.findById(notebook.getId()));
+
+            return "pageNotebook";
+        } else {
+
+            model.addAttribute("notebook", notebook);
+            model.addAttribute("vendorList", this.vendorService.findAll());
+
+            if(idVendor != 0) {
+                model.addAttribute("vendorSelected", this.vendorService.findById(idVendor));
+            }
+
+            return "admin/addNotebook";
+        }
     }
 
 }

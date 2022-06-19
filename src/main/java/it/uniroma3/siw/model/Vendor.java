@@ -24,8 +24,11 @@ public class Vendor {
 
     @Override
     public boolean equals(Object obj) {
-        Vendor that = (Vendor) obj;
-        return this.name.equals(that.getName());
+        if (obj != null && obj.getClass().equals(this.getClass())) {
+            Vendor that = (Vendor) obj;
+            return this.name.equals(that.getName());
+        }
+        return false;
     }
 
     public Long getId() {

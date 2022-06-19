@@ -28,12 +28,11 @@
 
             <!-- Category -->
             <p>Seleziona una categoria:</p>
-            <select name="idCategory">
-                <option value="0">Seleziona una categoria:</option>
-                <option th:each="category : ${categories}" th:value="${category}"
-                        th:text="${category}"
-                        >
-                    <!--th:selected="${chef.equals(chefSelected)}"-->
+            <select name="category">
+                <option value="">Seleziona una categoria:</option>
+                <option th:each="category : ${T(it.uniroma3.siw.model.category.HardwareCategory).values()}"
+                        th:value="${category}" th:text="${category.displayValue}"
+                        th:selected="${category.equals(categorySelected)}">
                 </option>
             </select>
 
@@ -51,10 +50,9 @@
             <p>Seleziona un produttore:</p>
             <select name="idVendor">
                 <option value="0">Seleziona un produttore:</option>
-                <option th:each="vendor : ${vendors}" th:value="${vendor.id}"
+                <option th:each="vendor : ${vendorList}" th:value="${vendor.id}"
                         th:text="${vendor.name} "
-                >
-                        <!--th:selected="${chef.equals(chefSelected)}"-->
+                        th:selected="${vendor.equals(vendorSelected)}">
                 </option>
             </select>
 

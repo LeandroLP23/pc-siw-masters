@@ -32,20 +32,20 @@
             <h1 th:text="${hardware.name}"></h1>
 
             <!-- Category -->
-            <p th:text="${hardware.category}"></p>
+            <p th:text="${hardware.category.displayValue}"></p>
 
             <!-- Price -->
             <p th:text="${hardware.price}"></p>
 
             <!-- Vendor -->
-            <p th:text="${hardware.vendor}"></p>
+            <p th:text="${hardware.vendor.name}"></p>
 
         </div>
 
         <!-- Bottone Modifica
         <a th:href="@{'/admin/editHardware' +'/'+ ${hardware.id}}">-->
         <a>
-            <button class="item-button">Modifica piatto</button>
+            <button class="item-button">Modifica Hardware</button>
         </a>
     </div>
 </div>

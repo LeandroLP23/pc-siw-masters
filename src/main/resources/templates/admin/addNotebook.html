@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="">
 
 <head>
     <meta charset="UTF-8" />
@@ -39,10 +40,9 @@
             <p>Seleziona un produttore:</p>
             <select name="idVendor">
                 <option value="0">Seleziona un produttore:</option>
-                <option th:each="vendor : ${vendors}" th:value="${vendor.id}"
+                <option th:each="vendor : ${vendorList}" th:value="${vendor.id}"
                         th:text="${vendor.name} "
-                >
-                        <!--th:selected="${chef.equals(chefSelected)}"-->
+                        th:selected="${vendor.equals(vendorSelected)}">
                 </option>
             </select>
 
