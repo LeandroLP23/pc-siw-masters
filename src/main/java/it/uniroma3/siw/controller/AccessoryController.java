@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import it.uniroma3.siw.controller.validator.AccessoryValidator;
 import it.uniroma3.siw.service.AccessoryService;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -87,5 +88,61 @@ public class AccessoryController {
 
             return "admin/addAccessory";
         }
+    }
+
+    @Transactional
+    @PostMapping("/admin/updateAccessory/{id}")
+    public String editAccessory(@PathVariable Long id, @ModelAttribute("accessory") Accessory accessory,
+                                @RequestParam(value = "category",required = false) AccessoryCategory category,
+                                @RequestParam(value = "idVendor",required = false) Long idVendor,
+                                Model model, BindingResult bindingResult) {
+
+        if (category == null) {
+            bindingResult.reject("accessory.category");
+        }
+
+        if (idVendor == 0) {
+            bindingResult.reject("accessory.vendor");
+        }
+
+        this.accessoryValidator.validate(accessory, bindingResult);
+
+        if (!bindingResult.hasErrors()) {
+
+            accessory.setCategory(category);
+
+            accessory.setVendor(this.vendorService.findById(idVendor));
+
+            this.accessoryService.save(accessory);
+
+            model.addAttribute("accessory", this.accessoryService.findById(accessory.getId()));
+
+            return "pageAccessory";
+        } else {
+
+            model.addAttribute("accessory", accessory);
+            model.addAttribute("vendorList", this.vendorService.findAll());
+
+            if (idVendor != 0) {
+                model.addAttribute("vendorSelected", this.vendorService.findById(idVendor));
+            }
+
+            if (category != null) {
+                model.addAttribute("categorySelected", category);
+            }
+
+            return "admin/editAccessory";
+        }
+    }
+
+    @GetMapping("/admin/editAccessory/{id}")
+    public String editAccessory(@PathVariable("id") Long id, Model model) {
+        Accessory accessory = accessoryService.findById(id);
+        model.addAttribute("accessory", accessory);
+        model.addAttribute("vendorList", vendorService.findAll());
+        model.addAttribute("categorySelected", accessory.getCategory());
+        model.addAttribute("vendorSelected", accessory.getVendor());
+
+        return "admin/editAccessory";
     }
 }

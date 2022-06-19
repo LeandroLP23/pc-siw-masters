@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="">
+
+<head>
+    <meta charset="UTF-8" />
+    <link href="/css/style.css" rel="stylesheet" />
+    <title>Pc SIW Masters - Aggiungi Hardware</title>
+</head>
+
+<body>
+
+<!-- Header -->
+<div th:insert="fragments/header.html :: header"> </div>
+
+<!-- Content -->
+<form th:action="@{'/admin/updateHardware/'+ ${hardware.id}}" method="POST" th:object="${hardware}" class="add-item-container">
+    <div class="add-item-container">
+
+        <h2>Modifica hardware </h2>
+
+        <!-- Global Error -->
+        <div class="global-error-message" th:if="${#fields.hasGlobalErrors()}">
+            <p th:each="err : ${#fields.globalErrors()}" th:text="${err}"></p>
+        </div>
+
+        <div class="add-item-infos">
+
+            <!-- Category -->
+            <p>Seleziona una categoria:</p>
+            <select name="category">
+                <option value="">Seleziona una categoria:</option>
+                <option th:each="category : ${T(it.uniroma3.siw.model.category.HardwareCategory).values()}"
+                        th:value="${category}" th:text="${category.displayValue}"
+                        th:selected="${category.equals(categorySelected)}">
+                </option>
+            </select>
+
+            <!-- Name -->
+            <p>Modifica nome:</p>
+            <input placeholder="Nome" th:field="${hardware.name}">
+            <span class="error-message" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+
+            <!-- Price -->
+            <p>Modifica prezzo:</p>
+            <input placeholder="Prezzo" th:field="${hardware.price}">
+            <span class="error-message" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span>
+
+            <!-- Vendor -->
+            <p>Seleziona un produttore:</p>
+            <select name="idVendor">
+                <option value="0">Seleziona un produttore:</option>
+                <option th:each="vendor : ${vendorList}" th:value="${vendor.id}"
+                        th:text="${vendor.name} "
+                        th:selected="${vendor.equals(vendorSelected)}">
+                </option>
+            </select>
+
+            <!-- Immagine
+            <p>Seleziona un'immagine:</p>
+            <input type="file" accept="image/*">-->
+
+        </div>
+
+        <!-- Bottone -->
+        <button type="submit" class="item-button">Modifica</button>
+        <!-- <button type="submit" class="item-button">Elimina</button> -->
+    </div>
+</form>
+
+<script src="/script/script.js"></script>
+</body>
+
+</html>
