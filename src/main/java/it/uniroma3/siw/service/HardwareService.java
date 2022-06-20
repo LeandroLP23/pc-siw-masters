@@ -1,5 +1,6 @@
 package it.uniroma3.siw.service;
 
+import it.uniroma3.siw.model.Accessory;
 import it.uniroma3.siw.model.Hardware;
 import it.uniroma3.siw.model.Vendor;
 import it.uniroma3.siw.model.category.HardwareCategory;
@@ -55,5 +56,12 @@ public class HardwareService {
     @Transactional
     public void deleteById(Long id) {
         this.hardwareRepository.deleteById(id);
+    }
+
+    public Hardware findRandom() {
+        List<Hardware> hardwareList = (List<Hardware>) this.hardwareRepository.findAll();
+        Collections.shuffle(hardwareList);
+        //Ritorna il primo elemento dopo aver fatto lo shuffle della lista
+        return hardwareList.get(0);
     }
 }

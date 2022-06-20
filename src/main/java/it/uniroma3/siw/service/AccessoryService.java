@@ -6,9 +6,12 @@ import it.uniroma3.siw.repository.AccessoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.Access;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class AccessoryService {
@@ -31,6 +34,13 @@ public class AccessoryService {
             accessoryList.add(accessory);
         }
         return accessoryList;
+    }
+
+    public Accessory findRandom(){
+        List<Accessory> accessoryList = (List<Accessory>) this.accessoryRepository.findAll();
+        Collections.shuffle(accessoryList);
+        //Ritorna il primo elemento dopo aver fatto lo shuffle della lista
+        return accessoryList.get(0);
     }
 
     public List<Accessory> findByVendor(Vendor vendor){

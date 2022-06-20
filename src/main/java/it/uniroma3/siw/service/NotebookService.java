@@ -1,5 +1,6 @@
 package it.uniroma3.siw.service;
 
+import it.uniroma3.siw.model.Accessory;
 import it.uniroma3.siw.model.Notebook;
 import it.uniroma3.siw.repository.NotebookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -39,5 +41,12 @@ public class NotebookService {
     @Transactional
     public void deleteById(Long id) {
         this.notebookRepository.deleteById(id);
+    }
+
+    public Notebook findRandom() {
+        List<Notebook> notebookList = (List<Notebook>) this.notebookRepository.findAll();
+        Collections.shuffle(notebookList);
+        //Ritorna il primo elemento dopo aver fatto lo shuffle della lista
+        return notebookList.get(0);
     }
 }

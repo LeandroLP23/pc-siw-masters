@@ -25,41 +25,47 @@
 
 <div class="rei_flex-container">
     <div class="rei_divisorio">
-        <a href="https://www.google.it" class="link white">
+        <a th:href="@{'/show/pageHardware/' +  ${randomHardware.id}}" class="link white">
             <div class="rei_picture_box">
                 <img src="/images/cuffie.png" class="rei_custom_img" />
             </div>
-            <b>KRAKEN PRO V2</b>
+            <h2 th:text="${randomHardware.name}"></h2>
         </a>
     </div>
     <div class="rei_divisorio">
-        <div class="rei_picture_box">
-            <img src="/images/desktop.png" class="rei_custom_img" />
-        </div>
-        <b>COOLER MASTER BOX MB511</b>
+        <a th:href="@{'/show/pageNotebook/' +  ${randomNotebook.id}}" class="link white">
+            <div class="rei_picture_box">
+                <img src="/images/desktop.png" class="rei_custom_img" />
+            </div>
+            <h2 th:text="${randomNotebook.name}"></h2>
+        </a>
     </div>
     <div class="rei_divisorio">
-        <div class="rei_picture_box">
-            <img src="/images/keyboard.png" class="rei_custom_img" />
-        </div>
-        <b>ROSEWILL RGB MECHANICAL KEYBOARD</b>
+        <a th:href="@{'/show/pageComputerBuild/' +  ${randomComputerBuild.id}}" class="link white">
+            <div class="rei_picture_box">
+                <img src="/images/keyboard.png" class="rei_custom_img" />
+            </div>
+            <h2 th:text="${randomComputerBuild.name}"></h2>
+        </a>
     </div>
     <div class="rei_divisorio">
-        <div class="rei_picture_box">
-            <img src="/images/mouse.png" class="rei_custom_img" />
-        </div>
-        <b>RGB PRO SE WIRELESS GAMING MOUSE</b>
+        <a th:href="@{'/show/pageAccessory/' +  ${randomAccessory.id}}" class="link white">
+            <div class="rei_picture_box">
+                <img src="/images/mouse.png" class="rei_custom_img" />
+            </div>
+            <h2 th:text="${randomAccessory.name}"></h2>
+        </a>
     </div>
 </div>
 
 <div class="rei_flex_container_category">
-    <a th:href="${'/show/pageAllComputerBuild'}" class="rei_category link">
+    <a th:href="@{'/show/pageAllComputerBuild'}" class="rei_category link white">
         <b>BUILDS</b>
         <div class="rei_picture_box">
             <img src="/images/desktop.png" class="rei_custom_img">
         </div>
     </a>
-    <a th:href="${'/show/pageAllNotebook'}" class="rei_category link">
+    <a th:href="@{'/show/pageAllNotebook'}" class="rei_category link white">
         <b>NOTEBOOKS</b>
         <div class="rei_picture_box">
             <img src="/images/notebook.png" class="rei_custom_img">
@@ -68,14 +74,14 @@
 </div>
 
 <div class="rei_flex_container_category">
-    <a th:href="${'/show/pageAllHardware'}" class="rei_category link">
+    <a th:href="@{'/show/pageAllHardware'}" class="rei_category link white">
         <b>HARDWARE</b>
         <div class="rei_picture_box">
             <img src="/images/ramimg.png" class="rei_custom_img">
         </div>
     </a>
 
-    <a th:href="${'/show/pageAllAccessory'}" class="rei_category link">
+    <a th:href="@{'/show/pageAllAccessory'}" class="rei_category link white">
         <b>ACCESSORIES</b>
         <div class="rei_picture_box">
             <img src="/images/accessories.png" class="rei_custom_img">
@@ -84,8 +90,8 @@
 </div>
 
 <div class="rei_centra_testo">
-    <a th:href="${'/show/pageAllItems'}" >
-        <button class="allproducts-button">
+    <a th:href="@{'/show/pageAllItems'}" >
+        <button class="allproducts-button link white">
             ALL PRODUCTS
         </button>
     </a>
