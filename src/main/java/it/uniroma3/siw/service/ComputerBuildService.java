@@ -47,7 +47,7 @@ public class ComputerBuildService {
         List<ComputerBuild> computerBuildList = (List<ComputerBuild>) this.computerBuildRepository.findAll();
         Collections.shuffle(computerBuildList);
         //Ritorna il primo elemento dopo aver fatto lo shuffle della lista
-        if(computerBuildList!=null){
+        if(computerBuildList.size()!=0){
             return computerBuildList.get(0);
         }
         return null;

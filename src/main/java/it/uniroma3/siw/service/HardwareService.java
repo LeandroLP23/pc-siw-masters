@@ -62,7 +62,7 @@ public class HardwareService {
         List<Hardware> hardwareList = (List<Hardware>) this.hardwareRepository.findAll();
         Collections.shuffle(hardwareList);
         //Ritorna il primo elemento dopo aver fatto lo shuffle della lista
-        if(hardwareList!=null){
+        if(hardwareList.size()!=0){
             return hardwareList.get(0);
         }
         return null;

@@ -40,7 +40,7 @@ public class AccessoryService {
         List<Accessory> accessoryList = (List<Accessory>) this.accessoryRepository.findAll();
         Collections.shuffle(accessoryList);
         //Ritorna il primo elemento dopo aver fatto lo shuffle della lista
-        if(accessoryList!=null){
+        if(accessoryList.size()!=0){
             return accessoryList.get(0);
         }
         return null;

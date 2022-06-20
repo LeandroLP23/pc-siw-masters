@@ -47,7 +47,7 @@ public class NotebookService {
         List<Notebook> notebookList = (List<Notebook>) this.notebookRepository.findAll();
         Collections.shuffle(notebookList);
         //Ritorna il primo elemento dopo aver fatto lo shuffle della lista
-        if(notebookList!=null){
+        if(notebookList.size()!=0){
             return notebookList.get(0);
         }
         return null;
