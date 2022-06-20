@@ -1,6 +1,7 @@
 package it.uniroma3.siw.service;
 
 import it.uniroma3.siw.model.Hardware;
+import it.uniroma3.siw.model.Vendor;
 import it.uniroma3.siw.model.category.HardwareCategory;
 import it.uniroma3.siw.repository.HardwareRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,10 @@ public class HardwareService {
             hardwareList.add(hardware);
         }
         return hardwareList;
+    }
+
+    public List<Hardware> findByVendor(Vendor vendor){
+        return this.hardwareRepository.findHardwareByVendor(vendor);
     }
 
     public Map<HardwareCategory, List<Hardware>> findOnCategory(){

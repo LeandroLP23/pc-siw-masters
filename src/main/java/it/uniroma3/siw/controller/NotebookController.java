@@ -116,6 +116,14 @@ public class NotebookController {
     @GetMapping("/admin/deleteNotebook/{id}")
     public String deleteNotebook(@PathVariable("id") Long id, Model model) {
         this.notebookService.deleteById(id);
-        return "redirect:/";
+        return "redirect:/index";
+    }
+
+    @GetMapping("/show/pageAllNotebook")
+    public String getPageAllNotebook(Model model){
+
+        model.addAttribute("notebookList",this.notebookService.findAll());
+
+        return "pageAllProducts";
     }
 }

@@ -1,6 +1,7 @@
 package it.uniroma3.siw.service;
 
 import it.uniroma3.siw.model.ComputerCase;
+import it.uniroma3.siw.model.Vendor;
 import it.uniroma3.siw.repository.ComputerCaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,6 +31,10 @@ public class ComputerCaseService {
             computerCaseList.add(computerCase);
         }
         return computerCaseList;
+    }
+
+    public List<ComputerCase> findByVendor(Vendor vendor){
+        return this.computerCaseRepository.findComputerCasesByVendor(vendor);
     }
 
     public boolean alreadyExists (ComputerCase computerCase){

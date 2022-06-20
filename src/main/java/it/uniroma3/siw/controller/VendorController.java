@@ -4,6 +4,7 @@ import it.uniroma3.siw.controller.validator.VendorValidator;
 import it.uniroma3.siw.model.ComputerCase;
 import it.uniroma3.siw.model.Hardware;
 import it.uniroma3.siw.model.Vendor;
+import it.uniroma3.siw.service.AccessoryService;
 import it.uniroma3.siw.service.ComputerCaseService;
 import it.uniroma3.siw.service.HardwareService;
 import it.uniroma3.siw.service.VendorService;
@@ -22,6 +23,15 @@ public class VendorController {
 
     @Autowired
     private VendorValidator vendorValidator;
+
+    @Autowired
+    private ComputerCaseService computerCaseService;
+
+    @Autowired
+    private HardwareService hardwareService;
+
+    @Autowired
+    private AccessoryService accessoryService;
 
     @GetMapping("/admin/addVendor")
     public String getAddVendor(Model model) {
@@ -73,6 +83,36 @@ public class VendorController {
     @GetMapping("/admin/deleteVendor/{id}")
     public String deleteVendor(@PathVariable("id") Long id, Model model) {
         this.vendorService.deleteById(id);
-        return "redirect:/";
+        return "redirect:/index";
+    }
+
+    @GetMapping("/show/pageAllVendor")
+    public String getPageAllVendor(Model model){
+
+        model.addAttribute("vendorList",this.vendorService.findAll());
+
+        return "pageAllProducts";
+    }
+
+    @GetMapping("/show/pageAllVendorItems/{id}")
+    public String getPageAllVendorItems(@PathVariable("id") Long id, Model model){
+
+        Vendor vendor = this.vendorService.findById(id);
+
+        model.addAttribute("vendorHardwareList",this.hardwareService.findByVendor(vendor));
+        model.addAttribute("vendorAccessoryList",this.accessoryService.findByVendor(vendor));
+        model.addAttribute("vendorComputerCaseList",this.computerCaseService.findByVendor(vendor));
+
+        return "pageAllProducts";
+    }
+
+    @GetMapping("/show/pageAllItems")
+    public String getPageAllItems(Model model){
+
+        model.addAttribute("allHardwareList",this.hardwareService.findAll());
+        model.addAttribute("allAccessoryList",this.accessoryService.findAll());
+        model.addAttribute("allComputerCaseList",this.computerCaseService.findAll());
+
+        return "pageAllProducts";
     }
 }

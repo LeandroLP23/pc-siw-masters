@@ -53,13 +53,13 @@
 </div>
 
 <div class="rei_flex_container_category">
-    <a th:href="${'/show/pageAllComputerBuild'}" class="rei_category">
+    <a th:href="${'/show/pageAllComputerBuild'}" class="rei_category link">
         <b>BUILDS</b>
         <div class="rei_picture_box">
             <img src="/images/desktop.png" class="rei_custom_img">
         </div>
     </a>
-    <a th:href="${'/show/pageAllNotebook'}" class="rei_category">
+    <a th:href="${'/show/pageAllNotebook'}" class="rei_category link">
         <b>NOTEBOOKS</b>
         <div class="rei_picture_box">
             <img src="/images/notebook.png" class="rei_custom_img">
@@ -68,7 +68,7 @@
 </div>
 
 <div class="rei_flex_container_category">
-    <a th:href="${'/show/pageAllHardware'}" class="rei_category">
+    <a th:href="${'/show/pageAllHardware'}" class="rei_category link">
         <b>HARDWARE</b>
         <div class="rei_picture_box">
             <img src="/images/ramimg.png" class="rei_custom_img">
@@ -84,7 +84,7 @@
 </div>
 
 <div class="rei_centra_testo">
-    <a th:href="@{/allproducts}" >
+    <a th:href="${'/show/pageAllItems'}" >
         <button class="allproducts-button">
             ALL PRODUCTS
         </button>

@@ -43,9 +43,9 @@ public class HardwareController {
 
     @PostMapping("/admin/pageHardware")
     public String addHardware(@ModelAttribute("hardware") Hardware hardware,
-                               @RequestParam(value = "category",required = false) HardwareCategory category,
-                               @RequestParam(value = "idVendor",required = false) Long idVendor,
-                               Model model, BindingResult bindingResult) {
+                              @RequestParam(value = "category",required = false) HardwareCategory category,
+                              @RequestParam(value = "idVendor",required = false) Long idVendor,
+                              Model model, BindingResult bindingResult) {
 
         if(category ==  null){
             bindingResult.reject("hardware.category");
@@ -99,9 +99,9 @@ public class HardwareController {
     @Transactional
     @PostMapping("/admin/updateHardware/{id}")
     public String editHardware(@PathVariable Long id, @ModelAttribute("hardware") Hardware hardware,
-                                @RequestParam(value = "category",required = false) HardwareCategory category,
-                                @RequestParam(value = "idVendor",required = false) Long idVendor,
-                                Model model, BindingResult bindingResult) {
+                               @RequestParam(value = "category",required = false) HardwareCategory category,
+                               @RequestParam(value = "idVendor",required = false) Long idVendor,
+                               Model model, BindingResult bindingResult) {
         if(category ==  null){
             bindingResult.reject("hardware.category");
         }
@@ -140,8 +140,16 @@ public class HardwareController {
         }
     }
     @GetMapping("/admin/deleteHardware/{id}")
-    public String deleteNotebook(@PathVariable("id") Long id, Model model) {
+    public String deleteHardware(@PathVariable("id") Long id, Model model) {
         this.hardwareService.deleteById(id);
-        return "redirect:/";
+        return "redirect:/index";
     }
+
+    @GetMapping("/show/pageAllHardware")
+    public String getPageAllHardware(Model model){
+
+        model.addAttribute("hardwareList",this.hardwareService.findAll());
+
+        return "pageAllProducts";
     }
+}

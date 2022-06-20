@@ -19,17 +19,17 @@
         <h1 th:if="${accessoryList!=null}">Tutti i nostri gli accessori</h1>
         <h1 th:if="${computerCaseList!=null}">Tutti i nostri computer case</h1>
         <h1 th:if="${computerBuildList!=null}">Tutte le nostre computer build</h1>
+        <h1 th:if="${hardwareList!=null}">Tutte le nostre componenti hardware</h1>
+        <h1 th:if="${notebookList!=null}">Tutti i nostri notebook</h1>
+        <h1 th:if="${vendorList!=null}">Tutti i nostri produttori</h1>
     </div>
 
     <!-- Vendor -->
     <div th:if="vendorList!=null" class="container">
         <div th:each="vendor: ${vendorList}">
-            <a th:href="@{'/show/allVendorItemsPage'+ ${vendor.id}}" class = "view">
-                <div class = "img-all-item">
-                    <img src = "/images/CPUi3.png" alt = "">
-                    <div class = "item-action">
-                    </div>
-                </div>
+            <a th:href="@{'/show/pageAllVendorItems/'+ ${vendor.id}}" class = "view">
+
+                <img class = "img-all-item" src = "/images/CPUi3.png" alt = "">
 
                 <div class = "item-details">
                     <p th:text="${vendor.name}"></p>
@@ -59,12 +59,13 @@
     <div th:if="hardwareList!=null" class="container">
         <div th:each="hardware: ${hardwareList}">
             <a th:href="@{'/show/pageHardware/'+ ${hardware.id}}" class = "view">
+
                 <img class = "img-all-item" src = "/images/CPUi3.png" alt = "">
 
                 <div class = "item-details">
                     <p th:text="${hardware.name}"></p>
-                    <h2 th:text="${hardware.vendor}"></h2>
                     <span th:text="${hardware.category}"></span>
+                    <h2 th:text="${hardware.vendor.name}"></h2>
                     <p th:text="${hardware.price}"></p>
                 </div>
             </a>
@@ -74,12 +75,13 @@
     <!-- Computer Case -->
     <div th:if="computerCaseList!=null" class="container">
         <div th:each="computerCase: ${computerCaseList}">
-            <a th:href="@{'/show/pagecomputerCase'+ ${computerCase.id}}" class = "view">
+            <a th:href="@{'/show/pageComputerCase/'+ ${computerCase.id}}" class = "view">
+
                 <img class = "img-all-item" src = "/images/CPUi3.png" alt = "">
 
                 <div class = "item-details">
                     <p th:text="${computerCase.name}"></p>
-                    <h2 th:text="${computerCase.vendor}"></h2>
+                    <h2 th:text="${computerCase.vendor.name}"></h2>
                     <p th:text="${computerCase.price}"></p>
                 </div>
             </a>
@@ -89,12 +91,12 @@
     <!-- Notebook -->
     <div th:if="notebookList!=null" class="container">
         <div th:each="notebook: ${notebookList}">
-            <a th:href="@{'/show/pagenotebook'+ ${notebook.id}}" class = "view">
+            <a th:href="@{'/show/pageNotebook/'+ ${notebook.id}}" class = "view">
                 <img  class = "img-all-item" src = "/images/CPUi3.png" alt = "">
 
                 <div class = "item-details">
                     <p th:text="${notebook.name}"></p>
-                    <h2 th:text="${notebook.vendor}"></h2>
+                    <h2 th:text="${notebook.vendor.name}"></h2>
                     <p th:text="${notebook.price}"></p>
                 </div>
             </a>
@@ -128,6 +130,8 @@
                 </div>
             </a>
         </div>
+    </div>
+    <div th:if="vendorAccessoryList!=null" class="container">
         <div th:each="vendorAccessory: ${vendorAccessoryList}">
             <a th:href="@{'/show/pageAccessory'+ ${vendorAccessory.id}}" class = "view">
                 <img class = "img-all-item" src = "/images/CPUi3.png" alt = "">
@@ -139,6 +143,8 @@
                 </div>
             </a>
         </div>
+    </div>
+    <div th:if="vendorComputerCaseList!=null" class="container">
         <div th:each="vendorComputerCase: ${vendorComputerCaseList}">
             <a th:href="@{'/show/pageComputerCase'+ ${vendorComputerCase.id}}" class = "view">
                 <img src = "/images/CPUi3.png"  class = "img-all-item" alt = "">
@@ -151,37 +157,41 @@
         </div>
     </div>
 
-    <!-- Vendor Item -->
-    <div th:if="vendorHardwareList!=null" class="container">
-        <div th:each="vendorHardware: ${vendorHardwareList}">
-            <a th:href="@{'/show/pageHardware'+ ${vendorHardware.id}}" class = "view">
+    <!-- All Items -->
+    <div th:if="allHardwareList!=null" class="container">
+        <div th:each="allHardware: ${allHardwareList}">
+            <a th:href="@{'/show/pageHardware'+ ${allHardware.id}}" class = "view">
                 <img class = "img-all-item" src = "/images/CPUi3.png" alt = "">
 
                 <div class = "item-details">
-                    <p th:text="${vendorHardware.name}"></p>
-                    <span th:text="${vendorHardware.category}"></span>
-                    <p th:text="${vendorHardware.price}"></p>
+                    <p th:text="${allHardware.name}"></p>
+                    <span th:text="${allHardware.category}"></span>
+                    <p th:text="${allHardware.price}"></p>
                 </div>
             </a>
         </div>
-        <div th:each="vendorAccessory: ${vendorAccessoryList}">
-            <a th:href="@{'/show/pageAccessory'+ ${vendorAccessory.id}}" class = "view">
+    </div>
+    <div th:if="allAccessoryList!=null" class="container">
+        <div th:each="allAccessory: ${allAccessoryList}">
+            <a th:href="@{'/show/pageAccessory'+ ${allAccessory.id}}" class = "view">
                 <img class = "img-all-item" src = "/images/CPUi3.png" alt = "">
 
                 <div class = "item-details">
-                    <p th:text="${vendorAccessory.name}"></p>
-                    <span th:text="${vendorAccessory.category}"></span>
-                    <p th:text="${vendorAccessory.price}"></p>
+                    <p th:text="${allAccessory.name}"></p>
+                    <span th:text="${allAccessory.category}"></span>
+                    <p th:text="${allAccessory.price}"></p>
                 </div>
             </a>
         </div>
-        <div th:each="vendorComputerCase: ${vendorComputerCaseList}">
-            <a th:href="@{'/show/pageComputerCase'+ ${vendorComputerCase.id}}" class = "view">
+    </div>
+    <div th:if="allComputerCaseList!=null" class="container">
+        <div th:each="allComputerCase: ${allComputerCaseList}">
+            <a th:href="@{'/show/pageComputerCase'+ ${allComputerCase.id}}" class = "view">
                 <img src = "/images/CPUi3.png"  class = "img-all-item" alt = "">
 
                 <div class = "item-details">
-                    <p th:text="${vendorComputerCase.name}"></p>
-                    <p th:text="${vendorComputerCase.price}"></p>
+                    <p th:text="${allComputerCase.name}"></p>
+                    <p th:text="${allComputerCase.price}"></p>
                 </div>
             </a>
         </div>

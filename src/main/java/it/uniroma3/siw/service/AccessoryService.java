@@ -1,6 +1,7 @@
 package it.uniroma3.siw.service;
 
 import it.uniroma3.siw.model.Accessory;
+import it.uniroma3.siw.model.Vendor;
 import it.uniroma3.siw.repository.AccessoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,6 +31,10 @@ public class AccessoryService {
             accessoryList.add(accessory);
         }
         return accessoryList;
+    }
+
+    public List<Accessory> findByVendor(Vendor vendor){
+        return this.accessoryRepository.findAccessoriesByVendor(vendor);
     }
 
     public boolean alreadyExists (Accessory accessory){
