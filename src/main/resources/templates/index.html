@@ -9,86 +9,87 @@
 </head>
 
 <body>
-    <!-- Header Menu -->
-    <div th:insert="fragments/header.html :: header"> </div>
+<!-- Header Menu -->
+<div th:insert="fragments/header.html :: header"> </div>
 
-    <!-- Index Content-->
-    <div class="rei_scorrimento-flex-container">
-        <div class="rei_scorrimento_div"></div>
-    </div>
+<!-- Index Content-->
+<div class="rei_scorrimento-flex-container">
+    <div class="rei_scorrimento_div"></div>
+</div>
 
-    <div class="rei_centra_testo">
-        <h1>
-            OUR FAVORITES
-        </h1>
-    </div>
+<div class="rei_centra_testo">
+    <h1>
+        OUR FAVORITES
+    </h1>
+</div>
 
-    <div class="rei_flex-container">
-        <div class="rei_divisorio">
-            <a href="https://www.google.it" class="link white">
-                <div class="rei_picture_box">
-                    <img src="/images/cuffie.png" class="rei_custom_img" />
-                </div>
-                <b>KRAKEN PRO V2</b>
-            </a>
-        </div>
-        <div class="rei_divisorio">
+<div class="rei_flex-container">
+    <div class="rei_divisorio">
+        <a href="https://www.google.it" class="link white">
             <div class="rei_picture_box">
-                <img src="/images/desktop.png" class="rei_custom_img" />
+                <img src="/images/cuffie.png" class="rei_custom_img" />
             </div>
-            <b>COOLER MASTER BOX MB511</b>
-        </div>
-        <div class="rei_divisorio">
-            <div class="rei_picture_box">
-                <img src="/images/keyboard.png" class="rei_custom_img" />
-            </div>
-            <b>ROSEWILL RGB MECHANICAL KEYBOARD</b>
-        </div>
-        <div class="rei_divisorio">
-            <div class="rei_picture_box">
-                <img src="/images/mouse.png" class="rei_custom_img" />
-            </div>
-            <b>RGB PRO SE WIRELESS GAMING MOUSE</b>
-        </div>
+            <b>KRAKEN PRO V2</b>
+        </a>
     </div>
+    <div class="rei_divisorio">
+        <div class="rei_picture_box">
+            <img src="/images/desktop.png" class="rei_custom_img" />
+        </div>
+        <b>COOLER MASTER BOX MB511</b>
+    </div>
+    <div class="rei_divisorio">
+        <div class="rei_picture_box">
+            <img src="/images/keyboard.png" class="rei_custom_img" />
+        </div>
+        <b>ROSEWILL RGB MECHANICAL KEYBOARD</b>
+    </div>
+    <div class="rei_divisorio">
+        <div class="rei_picture_box">
+            <img src="/images/mouse.png" class="rei_custom_img" />
+        </div>
+        <b>RGB PRO SE WIRELESS GAMING MOUSE</b>
+    </div>
+</div>
 
-    <div class="rei_flex_container_category">
-        <div class="rei_category">
-            <b>BUILDS</b>
-            <div class="rei_picture_box">
-                <img src="/images/desktop.png" class="rei_custom_img">
-            </div>
+<div class="rei_flex_container_category">
+    <a th:href="${'/show/pageAllComputerBuild'}" class="rei_category">
+        <b>BUILDS</b>
+        <div class="rei_picture_box">
+            <img src="/images/desktop.png" class="rei_custom_img">
         </div>
-        <div class="rei_category">
-            <b>NOTEBOOKS</b>
-            <div class="rei_picture_box">
-                <img src="/images/notebook.png" class="rei_custom_img">
-            </div>
+    </a>
+    <a th:href="${'/show/pageAllNotebook'}" class="rei_category">
+        <b>NOTEBOOKS</b>
+        <div class="rei_picture_box">
+            <img src="/images/notebook.png" class="rei_custom_img">
         </div>
-    </div>
+    </a>
+</div>
 
-    <div class="rei_flex_container_category">
-        <div class="rei_category">
-            <b>HARDWARE</b>
-            <div class="rei_picture_box">
-                <img src="/images/ramimg.png" class="rei_custom_img">
-            </div>
+<div class="rei_flex_container_category">
+    <a th:href="${'/show/pageAllHardware'}" class="rei_category">
+        <b>HARDWARE</b>
+        <div class="rei_picture_box">
+            <img src="/images/ramimg.png" class="rei_custom_img">
         </div>
-        <div class="rei_category">
-            <b>ACCESSORIES</b>
-            <div class="rei_picture_box">
-                <img src="/images/accessories.png" class="rei_custom_img">
-            </div>
+    </a>
+
+    <a th:href="${'/show/pageAllAccessory'}" class="rei_category link">
+        <b>ACCESSORIES</b>
+        <div class="rei_picture_box">
+            <img src="/images/accessories.png" class="rei_custom_img">
         </div>
-    </div>
-    
-    <div class="rei_centra_testo">
-    	<a th:href="@{/allproducts}" >
-    		<button class="allproducts-button">
-    		ALL PRODUCTS
-    		</button>
-    	</a>
-    </div>
+    </a>
+</div>
+
+<div class="rei_centra_testo">
+    <a th:href="@{/allproducts}" >
+        <button class="allproducts-button">
+            ALL PRODUCTS
+        </button>
+    </a>
+</div>
 </body>
 
 </html>

@@ -318,4 +318,12 @@ public class ComputerBuildController {
         }
         return new ArrayList<>();
     }
+
+    @GetMapping("/show/pageAllComputerBuild")
+    public String getPageAllComputerBuild(Model model){
+
+        model.addAttribute("computerBuildList",this.computerBuildService.findAll());
+
+        return "pageAllProducts";
+    }
 }

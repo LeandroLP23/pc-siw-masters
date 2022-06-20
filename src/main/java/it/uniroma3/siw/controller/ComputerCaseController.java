@@ -72,7 +72,6 @@ public class ComputerCaseController {
         }
     }
 
-    @Transactional
     @PostMapping("/admin/updateComputerCase/{id}")
     public String editComputerCase(@PathVariable Long id, @ModelAttribute("computerCase") ComputerCase computerCase,
                                 @RequestParam(value = "idVendor",required = false) Long idVendor,
@@ -113,5 +112,13 @@ public class ComputerCaseController {
         model.addAttribute("vendorSelected", computerCase.getVendor());
 
         return "admin/editComputerCase";
+    }
+
+    @GetMapping("/show/pageAllComputerCase")
+    public String getPageAllComputerBuild(Model model){
+
+        model.addAttribute("computerCaseList",this.computerCaseService.findAll());
+
+        return "pageAllProducts";
     }
 }

@@ -23,7 +23,7 @@ public class AccessoryController {
     @Autowired
     private VendorService vendorService;
 
-    @GetMapping("/accessory/{id}")
+    @GetMapping("/show/pageAccessory/{id}")
     public String getPageAccessory(Model model, @PathVariable("id") Long id) {
 
         model.addAttribute("accessory", this.accessoryService.findById(id));
@@ -90,9 +90,8 @@ public class AccessoryController {
         }
     }
 
-    @Transactional
     @PostMapping("/admin/updateAccessory/{id}")
-    public String editAccessory(@PathVariable Long id, @ModelAttribute("accessory") Accessory accessory,
+    public String updateAccessory(@PathVariable Long id, @ModelAttribute("accessory") Accessory accessory,
                                 @RequestParam(value = "category",required = false) AccessoryCategory category,
                                 @RequestParam(value = "idVendor",required = false) Long idVendor,
                                 Model model, BindingResult bindingResult) {
@@ -144,5 +143,13 @@ public class AccessoryController {
         model.addAttribute("vendorSelected", accessory.getVendor());
 
         return "admin/editAccessory";
+    }
+
+    @GetMapping("/show/pageAllAccessory")
+    public String getPageAllAccessory(Model model){
+
+        model.addAttribute("accessoryList",this.accessoryService.findAll());
+
+        return "pageAllProducts";
     }
 }

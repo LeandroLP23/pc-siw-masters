@@ -10,7 +10,7 @@ public class SiteController {
 	
 	@GetMapping("/allproducts")
 	public String getAllProducts(Model model) {
-		return "allproducts";
+		return "pageAllProducts";
 	}
 	
 	@GetMapping("/productpage")
