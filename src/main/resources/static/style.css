@@ -29,11 +29,13 @@
     filter: invert(100%);
 }
 
-#section-header{
+.vertical-header{
     top: 0;
     right: 0;
     left: 0;
     z-index: 10;
+    display: flex;
+    flex-direction: column;
     position: absolute;
 }
 
@@ -42,6 +44,15 @@
     display: flex;
     background-color: #1c1b1b	;
     justify-content: space-between;
+}
+
+.headerwrapper-admin{
+    margin-right: 1.2em;
+    display: flex;
+    background-color: #1c1b1b	;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .flexitem-center{
@@ -117,7 +128,7 @@
     right: 0;
     width: 0;
     height: 100vh;
-    padding-top: 4em;
+    padding-top: 1em;
     transition: all 0.4s ease-in-out;
     background-color: #373737;
 
@@ -139,6 +150,20 @@
     align-items: center;
     width: 100%;
     cursor: pointer;
+}
+
+.header-bar-item{
+    padding: 1.2em .6em .6em 1em;
+    display: block;
+    text-align: left;
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
+}
+
+.header-bar-item:hover{
+    background-color: rgb(212,212,212);
+    color: black;
 }
 
 /*each div under 'sidebar-item'*/

@@ -8,18 +8,19 @@
 </head>
 
 <body>
+<div class="vertical-header">
 <!-- Header Menu -->
 <div th:fragment="header" id="section-header">
     <div id="overlay"></div>
     <div id="sidebar">
         <div id="sidebar-content" >
+            <a th:href="@{/index}" class="heading link  ">
             <div class="sidebar-item">
-                <a th:href="@{/index}" class="heading link  ">
                     <div>
                         home
                     </div>
-                </a>
             </div>
+            </a>
             <a th:href="${'/show/pageAllItems'}" class="heading link">
                 <div class="sidebar-item">
                     <div>
@@ -69,48 +70,6 @@
                     </div>
                 </div>
             </a>
-            <a th:href="@{/admin/addHardware}" class="heading link">
-                <div class="sidebar-item">
-                    <div>
-                        add hardware
-                    </div>
-                </div>
-            </a>
-            <a th:href="@{/admin/addNotebook}" class="heading link">
-                <div class="sidebar-item">
-                    <div>
-                        add notebook
-                    </div>
-                </div>
-            </a>
-            <a th:href="@{/admin/addVendor}" class="heading link">
-                <div class="sidebar-item">
-                    <div>
-                        add produttore
-                    </div>
-                </div>
-            </a>
-            <a th:href="@{/admin/addAccessory}" class="heading link">
-                <div class="sidebar-item">
-                    <div>
-                        add accessorio
-                    </div>
-                </div>
-            </a>
-            <a th:href="@{/admin/addComputerCase}" class="heading link">
-                <div class="sidebar-item">
-                    <div>
-                        add computer case
-                    </div>
-                </div>
-            </a>
-            <a th:href="@{/admin/addComputerBuild}" class="heading link">
-                <div class="sidebar-item">
-                    <div>
-                        add computer build
-                    </div>
-                </div>
-            </a>
         </div>
         <div class="sidebar-names">
             <p class="white">@LeandroPlacidi</p>
@@ -131,6 +90,58 @@
         </div>
     </div>
     <script src="/script/script.js"></script>
+</div>
+
+<!-- Header Admin Menu -->
+<div th:fragment="headerAdmin" id="section-headerAdmin">
+    <div class="headerwrapper-admin">
+        <div class="flexitem-center">
+            <a th:href="@{/admin/addHardware}" class="heading link">
+                <div class="header-bar-item">
+                    <div>
+                        add hardware
+                    </div>
+                </div>
+            </a>
+            <a th:href="@{/admin/addNotebook}" class="heading link">
+                <div class="header-bar-item">
+                    <div>
+                        add notebook
+                    </div>
+                </div>
+            </a>
+            <a th:href="@{/admin/addVendor}" class="heading link">
+                <div class="header-bar-item">
+                    <div>
+                        add produttore
+                    </div>
+                </div>
+            </a>
+            <a th:href="@{/admin/addAccessory}" class="heading link">
+                <div class="header-bar-item">
+                    <div>
+                        add accessorio
+                    </div>
+                </div>
+            </a>
+            <a th:href="@{/admin/addComputerCase}" class="heading link">
+                <div class="header-bar-item">
+                    <div>
+                        add computer case
+                    </div>
+                </div>
+            </a>
+            <a th:href="@{/admin/addComputerBuild}" class="heading link">
+                <div class="header-bar-item">
+                    <div>
+                        add computer build
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <script src="/script/script.js"></script>
+</div>
 </div>
 
 <!-- Footer -->
@@ -157,7 +168,6 @@
     </div>
     <div class="copyright-footer"><i>©PC SIW Masters</i></div>
 </div>
-
 
 </body>
 </html>
