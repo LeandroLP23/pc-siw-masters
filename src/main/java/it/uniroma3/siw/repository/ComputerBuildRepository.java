@@ -9,5 +9,5 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface ComputerBuildRepository extends CrudRepository<ComputerBuild, Long> {
-    boolean existsByName(String name);
+    boolean existsByNameAndPrice(String name,Float price);
 }

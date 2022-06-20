@@ -35,7 +35,7 @@ public class ComputerBuildService {
     }
 
     public boolean alreadyExists (ComputerBuild computerBuild){
-        return this.computerBuildRepository.existsByName(computerBuild.getName());
+        return this.computerBuildRepository.existsByNameAndPrice(computerBuild.getName(),computerBuild.getPrice());
     }
 
     @Transactional

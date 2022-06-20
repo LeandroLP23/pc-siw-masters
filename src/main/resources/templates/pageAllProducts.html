@@ -106,7 +106,7 @@
     <!-- Computer Build -->
     <div th:if="computerBuildList!=null" class="container">
         <div th:each="computerBuild: ${computerBuildList}">
-            <a th:href="@{'/show/pageComputerBuild'+ ${computerBuild.id}}" class = "view">
+            <a th:href="@{'/show/pageComputerBuild/'+ ${computerBuild.id}}" class = "view">
                 <img class = "img-all-item" src = "/images/CPUi3.png" alt = "">
 
                 <div class = "item-details">
@@ -120,7 +120,7 @@
     <!-- Vendor Item -->
     <div th:if="vendorHardwareList!=null" class="container">
         <div th:each="vendorHardware: ${vendorHardwareList}">
-            <a th:href="@{'/show/pageHardware'+ ${vendorHardware.id}}" class = "view">
+            <a th:href="@{'/show/pageHardware/'+ ${vendorHardware.id}}" class = "view">
                 <img class = "img-all-item" src = "/images/CPUi3.png" alt = "">
 
                 <div class = "item-details">
@@ -133,7 +133,7 @@
     </div>
     <div th:if="vendorAccessoryList!=null" class="container">
         <div th:each="vendorAccessory: ${vendorAccessoryList}">
-            <a th:href="@{'/show/pageAccessory'+ ${vendorAccessory.id}}" class = "view">
+            <a th:href="@{'/show/pageAccessory/'+ ${vendorAccessory.id}}" class = "view">
                 <img class = "img-all-item" src = "/images/CPUi3.png" alt = "">
 
                 <div class = "item-details">
@@ -146,7 +146,7 @@
     </div>
     <div th:if="vendorComputerCaseList!=null" class="container">
         <div th:each="vendorComputerCase: ${vendorComputerCaseList}">
-            <a th:href="@{'/show/pageComputerCase'+ ${vendorComputerCase.id}}" class = "view">
+            <a th:href="@{'/show/pageComputerCase/'+ ${vendorComputerCase.id}}" class = "view">
                 <img src = "/images/CPUi3.png"  class = "img-all-item" alt = "">
 
                 <div class = "item-details">
@@ -160,7 +160,7 @@
     <!-- All Items -->
     <div th:if="allHardwareList!=null" class="container">
         <div th:each="allHardware: ${allHardwareList}">
-            <a th:href="@{'/show/pageHardware'+ ${allHardware.id}}" class = "view">
+            <a th:href="@{'/show/pageHardware/'+ ${allHardware.id}}" class = "view">
                 <img class = "img-all-item" src = "/images/CPUi3.png" alt = "">
 
                 <div class = "item-details">
@@ -173,7 +173,7 @@
     </div>
     <div th:if="allAccessoryList!=null" class="container">
         <div th:each="allAccessory: ${allAccessoryList}">
-            <a th:href="@{'/show/pageAccessory'+ ${allAccessory.id}}" class = "view">
+            <a th:href="@{'/show/pageAccessory/'+ ${allAccessory.id}}" class = "view">
                 <img class = "img-all-item" src = "/images/CPUi3.png" alt = "">
 
                 <div class = "item-details">
@@ -186,7 +186,7 @@
     </div>
     <div th:if="allComputerCaseList!=null" class="container">
         <div th:each="allComputerCase: ${allComputerCaseList}">
-            <a th:href="@{'/show/pageComputerCase'+ ${allComputerCase.id}}" class = "view">
+            <a th:href="@{'/show/pageComputerCase/'+ ${allComputerCase.id}}" class = "view">
                 <img src = "/images/CPUi3.png"  class = "img-all-item" alt = "">
 
                 <div class = "item-details">
