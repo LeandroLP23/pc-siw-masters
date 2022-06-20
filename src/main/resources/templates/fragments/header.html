@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" 
+<html xmlns:th="http://www.thymeleaf.org"
       lang="">
 <head>
     <meta charset="UTF-8" />
@@ -8,18 +8,23 @@
 </head>
 
 <body>
-<div class="vertical-header">
+
 <!-- Header Menu -->
-<div th:fragment="header" id="section-header">
+<div class="vertical-header" th:fragment="header">
+
     <div id="overlay"></div>
+
+    <!-- First Header-->
+
+    <!-- SideBar -->
     <div id="sidebar">
         <div id="sidebar-content" >
             <a th:href="@{/index}" class="heading link  ">
-            <div class="sidebar-item">
+                <div class="sidebar-item">
                     <div>
                         home
                     </div>
-            </div>
+                </div>
             </a>
             <a th:href="${'/show/pageAllItems'}" class="heading link">
                 <div class="sidebar-item">
@@ -77,6 +82,9 @@
             <p class="white">@RiccardoScudieri</p>
         </div>
     </div>
+
+
+    <!-- Header -->
     <div class="headerwrapper">
         <div class="flexitem-center start">
             <a th:href="@{/}">
@@ -89,84 +97,53 @@
             <img id="side-bar-menu" class="mini-img" src="/images/menu.png" alt="Menu pic">
         </div>
     </div>
-    <script src="/script/script.js"></script>
-</div>
 
-<!-- Header Admin Menu -->
-<div th:fragment="headerAdmin" id="section-headerAdmin">
+    <!-- Second Header Admin -->
     <div class="headerwrapper-admin">
-        <div class="flexitem-center">
-            <a th:href="@{/admin/addHardware}" class="heading link">
-                <div class="header-bar-item">
-                    <div>
-                        add hardware
-                    </div>
+        <a th:href="@{/admin/addHardware}" class="heading link">
+            <div class="header-bar-item">
+                <div>
+                    add hardware
                 </div>
-            </a>
-            <a th:href="@{/admin/addNotebook}" class="heading link">
-                <div class="header-bar-item">
-                    <div>
-                        add notebook
-                    </div>
+            </div>
+        </a>
+        <a th:href="@{/admin/addNotebook}" class="heading link">
+            <div class="header-bar-item">
+                <div>
+                    add notebook
                 </div>
-            </a>
-            <a th:href="@{/admin/addVendor}" class="heading link">
-                <div class="header-bar-item">
-                    <div>
-                        add produttore
-                    </div>
+            </div>
+        </a>
+        <a th:href="@{/admin/addVendor}" class="heading link">
+            <div class="header-bar-item">
+                <div>
+                    add produttore
                 </div>
-            </a>
-            <a th:href="@{/admin/addAccessory}" class="heading link">
-                <div class="header-bar-item">
-                    <div>
-                        add accessorio
-                    </div>
+            </div>
+        </a>
+        <a th:href="@{/admin/addAccessory}" class="heading link">
+            <div class="header-bar-item">
+                <div>
+                    add accessorio
                 </div>
-            </a>
-            <a th:href="@{/admin/addComputerCase}" class="heading link">
-                <div class="header-bar-item">
-                    <div>
-                        add computer case
-                    </div>
+            </div>
+        </a>
+        <a th:href="@{/admin/addComputerCase}" class="heading link">
+            <div class="header-bar-item">
+                <div>
+                    add computer case
                 </div>
-            </a>
-            <a th:href="@{/admin/addComputerBuild}" class="heading link">
-                <div class="header-bar-item">
-                    <div>
-                        add computer build
-                    </div>
+            </div>
+        </a>
+        <a th:href="@{/admin/addComputerBuild}" class="heading link">
+            <div class="header-bar-item">
+                <div>
+                    add computer build
                 </div>
-            </a>
-        </div>
+            </div>
+        </a>
     </div>
     <script src="/script/script.js"></script>
-</div>
-</div>
-
-<!-- Footer -->
-<div th:fragment="footer" class="main-footer">
-    <div class="footerwrapper">
-        <div>
-            <img class="logo" src="/images/logowhiteorange.png" alt="Logo PC SIW Masters">
-        </div>
-        <div>
-            <h2>SIW PROJECT</h2>
-            <p>Year 2021/22</p>
-        </div>
-        <div>
-            <h2>STUDENTS</h2>
-            <p>Leandro Placidi</p>
-            <p>Reiner Romeo</p>
-            <p>Riccardo Scudieri</p>
-        </div>
-
-        <div>
-            <h2>INFO</h2>
-            <!-- Credits -->
-        </div>
-    </div>
-    <div class="copyright-footer"><i>©PC SIW Masters</i></div>
 </div>
 
 </body>

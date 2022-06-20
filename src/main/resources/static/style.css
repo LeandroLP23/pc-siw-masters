@@ -40,19 +40,18 @@
 }
 
 .headerwrapper{
-    margin-right: 1.2em;
     display: flex;
     background-color: #1c1b1b	;
     justify-content: space-between;
 }
 
 .headerwrapper-admin{
-    margin-right: 1.2em;
+    padding-inline: 2em;
     display: flex;
     background-color: #1c1b1b	;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .flexitem-center{
@@ -139,12 +138,8 @@
     overflow: hidden;
 }
 
-.sidebar-item:hover{
-    background-color: rgb(212,212,212);
-}
-
 .sidebar-item{
-    padding: 1.2em .6em .6em 1em;
+    padding: 1.2em .6em 1.2em 1em;
     display: block;
     text-align: left;
     align-items: center;
@@ -152,8 +147,13 @@
     cursor: pointer;
 }
 
+.sidebar-item:hover{
+    background-color: rgb(212,212,212);
+    color: black;
+}
+
 .header-bar-item{
-    padding: 1.2em .6em .6em 1em;
+    padding: 1em 0em 0.6em 0.6em;
     display: block;
     text-align: left;
     align-items: center;
@@ -484,40 +484,8 @@
     background-color: #1c1b1b;
 }
 
-.quantitybutton{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    background: #c3c3c3;
-    border-color: transparent;
-    border-radius: 8px;
-    width: 30px;
-    height: 30px;
-    margin: 20px;
-}
-
-.main-footer{
-    background-color: #373737;
-    align-items: center;
-    padding-inline: 4.5em;
-}
-
-.footerwrapper{
-    margin-inline:1.2em ;
-    display: flex;
-    justify-content: space-between;
-}
-
-.copyright-footer{
-    text-align: center;
-    margin-top: -.7em;
-    padding-block: 1em;
-    font-size: 14px;
-}
-
 .all-items-container{
-    margin-top: 9em;
+    margin-top: 17em;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -537,7 +505,6 @@ html, body {
     padding:0;
     color:white;
     background-color: black;
-    overflow-x: hidden;
 }
 
 .rei_centra_testo
