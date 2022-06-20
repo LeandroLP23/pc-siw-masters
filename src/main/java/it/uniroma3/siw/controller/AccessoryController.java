@@ -40,12 +40,6 @@ public class AccessoryController {
         return "admin/addAccessory";
     }
 
-    /*@GetMapping("/accessory")
-    public String getAccessory(Model model) {
-        model.addAttribute("accessory", this.accessoryService.findAll());
-        return "accessoryList";
-    }*/
-
     @PostMapping("/admin/pageAccessory")
     public String addAccessory(@ModelAttribute("accessory") Accessory accessory,
                                @RequestParam(value = "category",required = false) AccessoryCategory category,
@@ -58,6 +52,10 @@ public class AccessoryController {
 
         if(idVendor == 0){
             bindingResult.reject("accessory.vendor");
+        }
+
+        if(accessory.getPrice() == null){
+            bindingResult.reject("accessory.price");
         }
 
         this.accessoryValidator.validate(accessory, bindingResult);
@@ -104,6 +102,10 @@ public class AccessoryController {
             bindingResult.reject("accessory.vendor");
         }
 
+        if(accessory.getPrice() == null){
+            bindingResult.reject("accessory.price");
+        }
+
         this.accessoryValidator.validate(accessory, bindingResult);
 
         if (!bindingResult.hasErrors()) {
@@ -148,7 +150,7 @@ public class AccessoryController {
     @GetMapping("/admin/deleteAccessory/{id}")
     public String deleteAccessory(@PathVariable("id") Long id, Model model) {
         this.accessoryService.deleteById(id);
-        return "redirect:/";
+        return "redirect:/index";
     }
 
     @GetMapping("/show/pageAllAccessory")

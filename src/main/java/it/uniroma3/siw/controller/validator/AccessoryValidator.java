@@ -22,7 +22,6 @@ public class AccessoryValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "required");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "price", "required");
 
         if(this.accessoryService.alreadyExists((Accessory) target)) {
             errors.reject("accessory.duplicate");

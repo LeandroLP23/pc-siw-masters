@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <link href="/css/style.css" rel="stylesheet" />
+    <link href="/style.css" rel="stylesheet" />
     <title>Pc SIW Masters - Aggiungi Accessorio</title>
 </head>
 
@@ -43,7 +43,7 @@
 
             <!-- Price -->
             <p>Inserisci prezzo:</p>
-            <input placeholder="Prezzo" th:field="${accessory.price}">
+            <input placeholder="Prezzo" type="number" min="1" th:field="${accessory.price}" >
             <span class="error-message" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span>
 
             <!-- Vendor -->

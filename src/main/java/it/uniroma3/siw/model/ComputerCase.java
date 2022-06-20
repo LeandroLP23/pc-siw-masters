@@ -13,7 +13,7 @@ public class ComputerCase {
     private String name;
 
     @Column(nullable = false)
-    private float price;
+    private Float price;
 
     @ManyToOne
     private Vendor vendor;
@@ -48,11 +48,11 @@ public class ComputerCase {
         this.name = name;
     }
 
-    public float getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 

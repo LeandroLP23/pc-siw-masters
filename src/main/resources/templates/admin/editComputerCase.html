@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <link href="/css/style.css" rel="stylesheet" />
+    <link href="/style.css" rel="stylesheet" />
     <title>Pc SIW Masters - Modifica Computer Case</title>
 </head>
 
@@ -52,12 +52,12 @@
 
         </div>
 
-        <!-- Bottone -->
+        <!-- Bottoni -->
         <div class="item-button-container">
-            <button type="submit" class="item-button">Modifica</button>
             <a th:href="'/admin/deleteComputerCase/'+ ${computerCase.id}">
-                <div class="item-button delete-button">Elimina</div>
+                <div class="item-button delete-button">Elimina Computer Case</div>
             </a>
+            <button type="submit" class="item-button">Salva modifiche</button>
         </div>
 
     </div>

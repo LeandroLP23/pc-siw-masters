@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <link href="/css/style.css" rel="stylesheet" />
+    <link href="/style.css" rel="stylesheet" />
     <title>Pc SIW Masters - Modifica Notebook</title>
 </head>
 
@@ -52,12 +52,12 @@
 
         </div>
 
-        <!-- Bottone -->
+        <!-- Bottoni -->
         <div class="item-button-container">
-            <button type="submit" class="item-button">Modifica</button>
             <a th:href="'/admin/deleteNotebook/'+ ${notebook.id}">
-                <div class="item-button delete-button">Elimina</div>
+                <div class="item-button delete-button">Elimina Notebook</div>
             </a>
+            <button type="submit" class="item-button">Salva modifiche</button>
         </div>
     </div>
 

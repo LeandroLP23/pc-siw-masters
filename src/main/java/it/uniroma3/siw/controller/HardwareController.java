@@ -55,6 +55,9 @@ public class HardwareController {
             bindingResult.reject("hardware.vendor");
         }
 
+        if(hardware.getPrice() == null){
+            bindingResult.reject("hardware.price");
+        }
         this.hardwareValidator.validate(hardware, bindingResult);
 
         if (!bindingResult.hasErrors()) {
@@ -96,7 +99,6 @@ public class HardwareController {
         return "admin/editHardware";
     }
 
-    @Transactional
     @PostMapping("/admin/updateHardware/{id}")
     public String editHardware(@PathVariable Long id, @ModelAttribute("hardware") Hardware hardware,
                                @RequestParam(value = "category",required = false) HardwareCategory category,
@@ -110,6 +112,9 @@ public class HardwareController {
             bindingResult.reject("hardware.vendor");
         }
 
+        if(hardware.getPrice() == null){
+            bindingResult.reject("hardware.price");
+        }
         this.hardwareValidator.validate(hardware, bindingResult);
 
         if (!bindingResult.hasErrors()) {

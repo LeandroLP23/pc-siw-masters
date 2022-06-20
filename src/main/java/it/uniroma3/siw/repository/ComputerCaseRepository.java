@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface ComputerCaseRepository extends CrudRepository<ComputerCase, Long> {
     List<ComputerCase> findComputerCasesByVendor(Vendor vendor);
-    boolean existsByNameAndPrice(String name, float price);
+    boolean existsByNameAndPrice(String name, Float price);
 }

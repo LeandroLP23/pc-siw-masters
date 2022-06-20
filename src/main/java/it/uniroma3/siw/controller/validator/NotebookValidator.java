@@ -22,7 +22,6 @@ public class NotebookValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "required");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "price", "required");
 
         if(this.notebookService.alreadyExists((Notebook) target)) {
             errors.reject("notebook.duplicate");

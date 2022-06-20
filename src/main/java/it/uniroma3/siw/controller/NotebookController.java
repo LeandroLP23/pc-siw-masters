@@ -48,6 +48,10 @@ public class NotebookController {
         if (idVendor == 0)
             bindingResult.reject("notebook.vendor");
 
+        if(notebook.getPrice() == null){
+            bindingResult.reject("notebook.price");
+        }
+
         this.notebookValidator.validate(notebook, bindingResult);
 
         if (!bindingResult.hasErrors()) {
@@ -90,6 +94,9 @@ public class NotebookController {
         if (idVendor == 0)
             bindingResult.reject("notebook.vendor");
 
+        if(notebook.getPrice() == null){
+            bindingResult.reject("notebook.price");
+        }
         this.notebookValidator.validate(notebook, bindingResult);
 
         if (!bindingResult.hasErrors()) {

@@ -48,6 +48,10 @@ public class ComputerCaseController {
         if (idVendor == 0)
             bindingResult.reject("computerCase.vendor");
 
+        if(computerCase.getPrice() == null){
+            bindingResult.reject("computerCase.price");
+        }
+
         this.computerCaseValidator.validate(computerCase, bindingResult);
 
         if (!bindingResult.hasErrors()) {
@@ -79,6 +83,10 @@ public class ComputerCaseController {
 
         if (idVendor == 0)
             bindingResult.reject("computerCase.vendor");
+
+        if(computerCase.getPrice() == null){
+            bindingResult.reject("computerCase.price");
+        }
 
         this.computerCaseValidator.validate(computerCase, bindingResult);
 
@@ -117,7 +125,7 @@ public class ComputerCaseController {
     @GetMapping("/admin/deleteComputerCase/{id}")
     public String deleteComputerCase(@PathVariable("id") Long id, Model model) {
         this.computerCaseService.deleteById(id);
-        return "redirect:/";
+        return "redirect:/index";
     }
 
     @GetMapping("/show/pageAllComputerCase")

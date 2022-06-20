@@ -12,5 +12,6 @@ import java.util.List;
 public interface AccessoryRepository extends CrudRepository<Accessory, Long> {
 
     List<Accessory> findAccessoriesByVendor(Vendor vendor);
-    boolean existsByNameAndCategoryAndPrice(String name, AccessoryCategory category, float price);
+    boolean existsByNameAndCategoryAndPrice(String name, AccessoryCategory category, Float price);
+
 }

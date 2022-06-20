@@ -19,13 +19,25 @@ public class Accessory {
     private AccessoryCategory category;
 
     @Column(nullable = false)
-    private float price;
+    private Float price;
 
     @ManyToOne
     private Vendor vendor;
 
     @ManyToMany (cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE})
     private List<ComputerBuild> computerBuildList;
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj != null && obj.getClass().equals(this.getClass())) {
+            Accessory that = (Accessory) obj;
+            return this.name.equals(that.getName())
+                    && this.category.equals(that.getCategory())
+                    && this.price.equals(that.getPrice())
+                    && this.vendor.equals(that.getVendor());
+        }
+        return false;
+    }
 
     public Long getId() {
         return id;
@@ -59,13 +71,14 @@ public class Accessory {
         this.vendor = vendor;
     }
 
-    public float getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
+
     public List<ComputerBuild> getComputerBuildList() {
         return computerBuildList;
     }

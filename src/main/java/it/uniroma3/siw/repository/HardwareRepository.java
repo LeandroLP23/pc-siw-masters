@@ -8,6 +8,6 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface HardwareRepository extends CrudRepository<Hardware, Long> {
-    boolean existsByNameAndCategoryAndPrice(String name, HardwareCategory category, float price);
+    boolean existsByNameAndCategoryAndPrice(String name, HardwareCategory category, Float price);
     List<Hardware> findHardwareByVendor(Vendor vendor);
 }

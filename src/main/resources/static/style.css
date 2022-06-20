@@ -626,24 +626,24 @@ html, body {
     {
         margin-right: -50%;
         opacity: 0;
-        background-image: url(/static/images/1.png);
+        background-image: url("/images/1.png");
     }
     12%
     {
-        background-image: url(/static/images/1.png);
-        margin-right: 0;
+        background-image: url("/images/1.png");
+        margin-right: 0%;
         opacity: 1;
     }
 
     20%
     {
-        background-image: url(/static/images/1.png);
-        margin-right: 0;
+        background-image: url("/images/1.png");
+        margin-right: 0%;
         opacity: 1;
     }
     29%
     {
-        background-image: url(/static/images/1.png);
+        background-image: url("/images/1.png");
         margin-right: 50%;
         opacity: 0;
     }
@@ -651,22 +651,22 @@ html, body {
     {
         margin-right: -50%;
         opacity: 0;
-        background-image: url(/static/images/1.png);
+        background-image: url("/images/2.png");
     }
     40%
-    {   margin-right: 0;
+    {   margin-right: 0%;
         opacity: 1;
-        background-image: url(/static/images/2.png);
+        background-image: url("/images/2.png");
     }
     53%
     {
-        margin-right: 0;
-        background-image: url(/static/images/2.png);
+        margin-right: 0%;
+        background-image: url("/images/2.png");
         opacity:1;
     }
     65%
     {
-        background-image: url(/static/images/2.png);
+        background-image: url("/images/2.png");
         margin-right: 50%;
         opacity: 0;
     }
@@ -674,21 +674,21 @@ html, body {
     {
         margin-right: -50%;
         opacity: 0;
-        background-image: url(/static/images/3.png);
+        background-image: url("/images/3.png");
     }
     78%
     {
         opacity:1;
-        margin-right:0;
+        margin-right:0%;
     }
     85%
     {
         opacity:1;
-        margin-right:0;
+        margin-right:0%;
     }
     100%
     {
-        background-image: url(/static/images/3.png);
+        background-image: url("/images/3.png");
         margin-right: 50%;
         opacity:0;
     }

@@ -22,7 +22,6 @@ public class ComputerCaseValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "required");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "price", "required");
 
         if(this.computerCaseService.alreadyExists((ComputerCase) target)) {
             errors.reject("computerCase.duplicate");

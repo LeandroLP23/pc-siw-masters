@@ -3,6 +3,7 @@ package it.uniroma3.siw.controller;
 import it.uniroma3.siw.controller.validator.ComputerBuildValidator;
 import it.uniroma3.siw.model.Accessory;
 import it.uniroma3.siw.model.ComputerBuild;
+import it.uniroma3.siw.model.ComputerCase;
 import it.uniroma3.siw.model.Hardware;
 import it.uniroma3.siw.model.category.HardwareCategory;
 import it.uniroma3.siw.service.*;
@@ -52,7 +53,7 @@ public class ComputerBuildController {
         return "admin/addComputerBuild";
     }
 
-    @PostMapping("/admin/updateComputerBuild")
+    @PostMapping("/admin/pageComputerBuild")
     public String addComputerBuild(@ModelAttribute("computerBuild") ComputerBuild computerBuild,
                                    @RequestParam(value = "idAccessory",required = false) List<Long> idAccessory,
                                    @RequestParam(value = "idComputerCase",required = false) Long idComputerCase,
@@ -102,7 +103,9 @@ public class ComputerBuildController {
 
             computerBuild.setAccessoryList(accessoryList);
 
-            computerBuild.setComputerCase(this.computerCaseService.findById(idComputerCase));
+            ComputerCase computerCase =this.computerCaseService.findById(idComputerCase);
+
+            computerBuild.setComputerCase(computerCase);
 
             List<Hardware> hardwareList = new ArrayList<>();
 
@@ -114,6 +117,17 @@ public class ComputerBuildController {
             hardwareList.add(this.hardwareService.findById(idPowerSupply));
 
             computerBuild.setHardwareList(hardwareList);
+
+            Float priceComputerBuild = new Float(0);
+            for(Accessory accessory: accessoryList){
+                priceComputerBuild+=accessory.getPrice();
+            }
+            for(Hardware hardware: hardwareList){
+                priceComputerBuild+=hardware.getPrice();
+            }
+            priceComputerBuild+=computerCase.getPrice();
+
+            computerBuild.setPrice(priceComputerBuild);
 
             this.computerBuildService.save(computerBuild);
 
@@ -160,7 +174,7 @@ public class ComputerBuildController {
                 model.addAttribute("powerSupplySelected", this.hardwareService.findById(idPowerSupply));
             }
 
-            return "admin/editComputerBuild";
+            return "admin/addComputerBuild";
         }
     }
 
@@ -233,7 +247,9 @@ public class ComputerBuildController {
 
             computerBuild.setAccessoryList(accessoryList);
 
-            computerBuild.setComputerCase(this.computerCaseService.findById(idComputerCase));
+            ComputerCase computerCase =this.computerCaseService.findById(idComputerCase);
+
+            computerBuild.setComputerCase(computerCase);
 
             List<Hardware> hardwareList = new ArrayList<>();
 
@@ -245,6 +261,17 @@ public class ComputerBuildController {
             hardwareList.add(this.hardwareService.findById(idPowerSupply));
 
             computerBuild.setHardwareList(hardwareList);
+
+            Float priceComputerBuild = new Float(0);
+            for(Accessory accessory: accessoryList){
+                priceComputerBuild+=accessory.getPrice();
+            }
+            for(Hardware hardware: hardwareList){
+                priceComputerBuild+=hardware.getPrice();
+            }
+            priceComputerBuild+=computerCase.getPrice();
+
+            computerBuild.setPrice(priceComputerBuild);
 
             this.computerBuildService.save(computerBuild);
 
@@ -291,14 +318,14 @@ public class ComputerBuildController {
                 model.addAttribute("powerSupplySelected", this.hardwareService.findById(idPowerSupply));
             }
 
-            return "admin/addComputerBuild";
+            return "admin/editComputerBuild";
         }
     }
 
     @GetMapping("/admin/deleteComputerBuild/{id}")
     public String deleteComputerBuild(@PathVariable("id") Long id, Model model) {
         this.computerBuildService.deleteById(id);
-        return "redirect:/";
+        return "redirect:/index";
     }
 
     private void getAccessoryAndComputerCaseAndHardwareLists(Model model) {

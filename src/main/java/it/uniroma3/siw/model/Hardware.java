@@ -20,7 +20,7 @@ public class Hardware {
     private HardwareCategory category;
 
     @Column(nullable = false)
-    private float price;
+    private Float price;
 
     @ManyToOne
     private Vendor vendor;
@@ -64,11 +64,11 @@ public class Hardware {
         this.category = category;
     }
 
-    public float getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 

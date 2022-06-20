@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <link href="/css/style.css" rel="stylesheet" />
+    <link href="/style.css" rel="stylesheet" />
     <title>Pc SIW Masters - Aggiungi Hardware</title>
 </head>
 
@@ -62,12 +62,12 @@
 
         </div>
 
-        <!-- Bottone -->
+        <!-- Bottoni -->
         <div class="item-button-container">
-            <button type="submit" class="item-button">Modifica</button>
             <a th:href="'/admin/deleteHardware/'+ ${hardware.id}">
-                <div class="item-button delete-button">Elimina</div>
+                <div class="item-button delete-button">Elimina componente Hardware</div>
             </a>
+            <button type="submit" class="item-button">Salva modifiche</button>
         </div>
     </div>
 </form>
