@@ -24,7 +24,7 @@
 </div>
 
 <div class="rei_flex-container">
-    <div class="rei_divisorio">
+    <div th:if="${randomHardware!=null}" class="rei_divisorio">
         <a th:href="@{'/show/pageHardware/' +  ${randomHardware.id}}" class="link white">
             <div class="rei_picture_box">
                 <img src="/images/cuffie.png" class="rei_custom_img" />
@@ -32,7 +32,7 @@
             <h2 th:text="${randomHardware.name}"></h2>
         </a>
     </div>
-    <div class="rei_divisorio">
+    <div th:if="${randomNotebook!=null}" class="rei_divisorio">
         <a th:href="@{'/show/pageNotebook/' +  ${randomNotebook.id}}" class="link white">
             <div class="rei_picture_box">
                 <img src="/images/desktop.png" class="rei_custom_img" />
@@ -40,7 +40,7 @@
             <h2 th:text="${randomNotebook.name}"></h2>
         </a>
     </div>
-    <div class="rei_divisorio">
+    <div th:if="${randomComputerBuild!=null}" class="rei_divisorio">
         <a th:href="@{'/show/pageComputerBuild/' +  ${randomComputerBuild.id}}" class="link white">
             <div class="rei_picture_box">
                 <img src="/images/keyboard.png" class="rei_custom_img" />
@@ -48,7 +48,7 @@
             <h2 th:text="${randomComputerBuild.name}"></h2>
         </a>
     </div>
-    <div class="rei_divisorio">
+    <div th:if="${randomAccessory!=null}" class="rei_divisorio">
         <a th:href="@{'/show/pageAccessory/' +  ${randomAccessory.id}}" class="link white">
             <div class="rei_picture_box">
                 <img src="/images/mouse.png" class="rei_custom_img" />
