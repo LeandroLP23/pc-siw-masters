@@ -1,9 +1,11 @@
 package it.uniroma3.siw.controller;
 
 import it.uniroma3.siw.controller.validator.VendorValidator;
-import it.uniroma3.siw.model.Accessory;
+import it.uniroma3.siw.model.ComputerCase;
+import it.uniroma3.siw.model.Hardware;
 import it.uniroma3.siw.model.Vendor;
-import it.uniroma3.siw.model.category.AccessoryCategory;
+import it.uniroma3.siw.service.ComputerCaseService;
+import it.uniroma3.siw.service.HardwareService;
 import it.uniroma3.siw.service.VendorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -66,5 +68,11 @@ public class VendorController {
         } else {
             return "admin/editVendor";
         }
+    }
+
+    @GetMapping("/admin/deleteVendor/{id}")
+    public String deleteVendor(@PathVariable("id") Long id, Model model) {
+        this.vendorService.deleteById(id);
+        return "redirect:/";
     }
 }

@@ -1,6 +1,7 @@
 package it.uniroma3.siw.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class ComputerCase {
@@ -16,6 +17,9 @@ public class ComputerCase {
 
     @ManyToOne
     private Vendor vendor;
+
+    @ManyToMany (cascade = CascadeType.ALL)
+    private List<ComputerBuild> computerBuildList;
 
     @Override
     public boolean equals(Object obj) {
@@ -58,5 +62,13 @@ public class ComputerCase {
 
     public void setVendor(Vendor vendor) {
         this.vendor = vendor;
+    }
+
+    public List<ComputerBuild> getComputerBuildList() {
+        return computerBuildList;
+    }
+
+    public void setComputerBuildList(List<ComputerBuild> computerBuildList) {
+        this.computerBuildList = computerBuildList;
     }
 }

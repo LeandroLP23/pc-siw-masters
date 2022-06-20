@@ -1,9 +1,7 @@
 package it.uniroma3.siw.controller;
 
 import it.uniroma3.siw.controller.validator.NotebookValidator;
-import it.uniroma3.siw.model.Accessory;
 import it.uniroma3.siw.model.Notebook;
-import it.uniroma3.siw.model.category.AccessoryCategory;
 import it.uniroma3.siw.service.NotebookService;
 import it.uniroma3.siw.service.VendorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -114,5 +112,10 @@ public class NotebookController {
 
             return "admin/editNotebook";
         }
+    }
+    @GetMapping("/admin/deleteNotebook/{id}")
+    public String deleteNotebook(@PathVariable("id") Long id, Model model) {
+        this.notebookService.deleteById(id);
+        return "redirect:/";
     }
 }

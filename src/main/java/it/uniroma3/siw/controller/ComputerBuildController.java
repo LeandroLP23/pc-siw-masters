@@ -1,11 +1,9 @@
 package it.uniroma3.siw.controller;
 
-import it.uniroma3.siw.controller.validator.AccessoryValidator;
 import it.uniroma3.siw.controller.validator.ComputerBuildValidator;
 import it.uniroma3.siw.model.Accessory;
 import it.uniroma3.siw.model.ComputerBuild;
 import it.uniroma3.siw.model.Hardware;
-import it.uniroma3.siw.model.category.AccessoryCategory;
 import it.uniroma3.siw.model.category.HardwareCategory;
 import it.uniroma3.siw.service.*;
 import org.springframework.beans.factory.annotation.Autowired;

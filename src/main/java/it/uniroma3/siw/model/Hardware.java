@@ -3,6 +3,7 @@ package it.uniroma3.siw.model;
 import it.uniroma3.siw.model.category.HardwareCategory;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -23,6 +24,9 @@ public class Hardware {
 
     @ManyToOne
     private Vendor vendor;
+
+    @ManyToMany (cascade = CascadeType.ALL)
+    private List<ComputerBuild> computerBuildList;
 
     @Override
     public boolean equals(Object obj) {
@@ -74,5 +78,13 @@ public class Hardware {
 
     public void setVendor(Vendor vendor) {
         this.vendor = vendor;
+    }
+
+    public List<ComputerBuild> getComputerBuildList() {
+        return computerBuildList;
+    }
+
+    public void setComputerBuildList(List<ComputerBuild> computerBuildList) {
+        this.computerBuildList = computerBuildList;
     }
 }

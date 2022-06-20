@@ -1,9 +1,7 @@
 package it.uniroma3.siw.controller;
 
 import it.uniroma3.siw.controller.validator.HardwareValidator;
-import it.uniroma3.siw.model.Accessory;
 import it.uniroma3.siw.model.Hardware;
-import it.uniroma3.siw.model.category.AccessoryCategory;
 import it.uniroma3.siw.model.category.HardwareCategory;
 import it.uniroma3.siw.service.HardwareService;
 import it.uniroma3.siw.service.VendorService;
@@ -140,5 +138,10 @@ public class HardwareController {
 
             return "admin/editHardware";
         }
+    }
+    @GetMapping("/admin/deleteHardware/{id}")
+    public String deleteNotebook(@PathVariable("id") Long id, Model model) {
+        this.hardwareService.deleteById(id);
+        return "redirect:/";
     }
     }

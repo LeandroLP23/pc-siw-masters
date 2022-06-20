@@ -1,9 +1,7 @@
 package it.uniroma3.siw.controller;
 
 import it.uniroma3.siw.controller.validator.ComputerCaseValidator;
-import it.uniroma3.siw.model.Accessory;
 import it.uniroma3.siw.model.ComputerCase;
-import it.uniroma3.siw.model.category.AccessoryCategory;
 import it.uniroma3.siw.service.ComputerCaseService;
 import it.uniroma3.siw.service.VendorService;
 import org.springframework.beans.factory.annotation.Autowired;

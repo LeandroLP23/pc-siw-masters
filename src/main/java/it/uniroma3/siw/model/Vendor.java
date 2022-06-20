@@ -13,14 +13,17 @@ public class Vendor {
     @Column(nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "vendor")
+    @OneToMany(mappedBy = "vendor", cascade = CascadeType.ALL)
     private List<ComputerCase> computerCaseList;
 
-    @OneToMany(mappedBy = "vendor")
+    @OneToMany(mappedBy = "vendor", cascade = CascadeType.ALL)
     private List<Accessory> accessoryList;
 
-    @OneToMany(mappedBy = "vendor")
+    @OneToMany(mappedBy = "vendor", cascade = CascadeType.ALL)
     private List<Hardware> hardwareList;
+
+    @OneToMany(mappedBy = "vendor", cascade = CascadeType.ALL)
+    private List<Notebook> notebookList;
 
     @Override
     public boolean equals(Object obj) {
@@ -69,5 +72,13 @@ public class Vendor {
 
     public void setHardwareList(List<Hardware> hardwareList) {
         this.hardwareList = hardwareList;
+    }
+
+    public List<Notebook> getNotebookList() {
+        return notebookList;
+    }
+
+    public void setNotebookList(List<Notebook> notebookList) {
+        this.notebookList = notebookList;
     }
 }

@@ -3,6 +3,7 @@ package it.uniroma3.siw.model;
 import it.uniroma3.siw.model.category.AccessoryCategory;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Accessory {
@@ -22,6 +23,9 @@ public class Accessory {
 
     @ManyToOne
     private Vendor vendor;
+
+    @ManyToMany (cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE})
+    private List<ComputerBuild> computerBuildList;
 
     public Long getId() {
         return id;
@@ -61,6 +65,13 @@ public class Accessory {
 
     public void setPrice(float price) {
         this.price = price;
+    }
+    public List<ComputerBuild> getComputerBuildList() {
+        return computerBuildList;
+    }
+
+    public void setComputerBuildList(List<ComputerBuild> computerBuildList) {
+        this.computerBuildList = computerBuildList;
     }
 
 }
