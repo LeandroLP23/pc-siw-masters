@@ -63,8 +63,12 @@
         </div>
 
         <!-- Bottone -->
-        <button type="submit" class="item-button">Modifica</button>
-        <!-- <button type="submit" class="item-button">Elimina</button> -->
+        <div class="item-button-container">
+            <button type="submit" class="item-button">Modifica</button>
+            <a th:href="'/admin/deleteAccessory/'+ ${accessory.id}">
+                <div class="item-button delete-button">Elimina</div>
+            </a>
+        </div>
     </div>
 </form>
 

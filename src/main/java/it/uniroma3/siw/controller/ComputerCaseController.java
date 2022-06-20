@@ -114,8 +114,14 @@ public class ComputerCaseController {
         return "admin/editComputerCase";
     }
 
+    @GetMapping("/admin/deleteComputerCase/{id}")
+    public String deleteComputerCase(@PathVariable("id") Long id, Model model) {
+        this.computerCaseService.deleteById(id);
+        return "redirect:/";
+    }
+
     @GetMapping("/show/pageAllComputerCase")
-    public String getPageAllComputerBuild(Model model){
+    public String getPageAllComputerCase(Model model){
 
         model.addAttribute("computerCaseList",this.computerCaseService.findAll());
 

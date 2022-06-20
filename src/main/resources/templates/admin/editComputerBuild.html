@@ -127,11 +127,10 @@
 
         <!-- Bottoni -->
         <div class="item-button-container">
-            <!--<a th:href="'/admin/deleteComputerBuild/'+ ${computerBuild.id}" class="link">-->
-            <a>
-                <div class="item-button elimina-button">Elimina Computer Build</div>
-            </a>
             <button type="submit" class="item-button">Salva modifiche</button>
+            <a th:href="'/admin/deleteComputerBuild/'+ ${computerBuild.id}" class="link">
+                <div class="item-button delete-button">Elimina Computer Build</div>
+            </a>
         </div>
     </div>
 </form>

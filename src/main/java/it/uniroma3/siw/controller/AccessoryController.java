@@ -145,6 +145,12 @@ public class AccessoryController {
         return "admin/editAccessory";
     }
 
+    @GetMapping("/admin/deleteAccessory/{id}")
+    public String deleteAccessory(@PathVariable("id") Long id, Model model) {
+        this.accessoryService.deleteById(id);
+        return "redirect:/";
+    }
+
     @GetMapping("/show/pageAllAccessory")
     public String getPageAllAccessory(Model model){
 

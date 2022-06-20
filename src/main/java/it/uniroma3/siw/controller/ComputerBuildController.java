@@ -295,6 +295,12 @@ public class ComputerBuildController {
         }
     }
 
+    @GetMapping("/admin/deleteComputerBuild/{id}")
+    public String deleteComputerBuild(@PathVariable("id") Long id, Model model) {
+        this.computerBuildService.deleteById(id);
+        return "redirect:/";
+    }
+
     private void getAccessoryAndComputerCaseAndHardwareLists(Model model) {
         model.addAttribute("accessoryList", this.accessoryService.findAll());
         model.addAttribute("computerCaseList", this.computerCaseService.findAll());
