@@ -13,85 +13,85 @@
 <div th:insert="fragments/header.html :: header"> </div>
 
 <!-- Index Content-->
-<div class="rei_scorrimento-flex-container">
-    <div class="rei_scorrimento_div"></div>
+<div class="scrolling-container">
+    <div class="scrolling-element"></div>
 </div>
 
-<div class="rei_centra_testo">
+<div class="flex-item-center">
     <h1>
         OUR FAVORITES
     </h1>
 </div>
 
 <div class="rei_flex-container">
-    <div th:if="${randomHardware!=null}" class="rei_divisorio">
+    <div th:if="${randomHardware!=null}" class="card-item-index">
         <a th:href="@{'/show/pageHardware/' +  ${randomHardware.id}}" class="link white">
-            <div class="rei_picture_box">
-                <img src="/images/cuffie.png" class="rei_custom_img" />
+            <div class="card-item-image">
+                <img src="/images/cuffie.png" class="card-category-image" />
             </div>
             <h2 th:text="${randomHardware.name}"></h2>
         </a>
     </div>
-    <div th:if="${randomNotebook!=null}" class="rei_divisorio">
+    <div th:if="${randomNotebook!=null}" class="card-item-index">
         <a th:href="@{'/show/pageNotebook/' +  ${randomNotebook.id}}" class="link white">
-            <div class="rei_picture_box">
-                <img src="/images/desktop.png" class="rei_custom_img" />
+            <div class="card-item-image">
+                <img src="/images/desktop.png" class="card-category-image" />
             </div>
             <h2 th:text="${randomNotebook.name}"></h2>
         </a>
     </div>
-    <div th:if="${randomComputerBuild!=null}" class="rei_divisorio">
+    <div th:if="${randomComputerBuild!=null}" class="card-item-index">
         <a th:href="@{'/show/pageComputerBuild/' +  ${randomComputerBuild.id}}" class="link white">
-            <div class="rei_picture_box">
-                <img src="/images/keyboard.png" class="rei_custom_img" />
+            <div class="card-item-image">
+                <img src="/images/keyboard.png" class="card-category-image" />
             </div>
             <h2 th:text="${randomComputerBuild.name}"></h2>
         </a>
     </div>
-    <div th:if="${randomAccessory!=null}" class="rei_divisorio">
+    <div th:if="${randomAccessory!=null}" class="card-item-index">
         <a th:href="@{'/show/pageAccessory/' +  ${randomAccessory.id}}" class="link white">
-            <div class="rei_picture_box">
-                <img src="/images/mouse.png" class="rei_custom_img" />
+            <div class="card-item-image">
+                <img src="/images/mouse.png" class="card-category-image" />
             </div>
             <h2 th:text="${randomAccessory.name}"></h2>
         </a>
     </div>
 </div>
 
-<div class="rei_flex_container_category">
-    <a th:href="@{'/show/pageAllComputerBuild'}" class="rei_category link white">
-        <b>BUILDS</b>
-        <div class="rei_picture_box">
-            <img src="/images/desktop.png" class="rei_custom_img">
+<div class="category-container-index">
+    <a th:href="@{'/show/pageAllComputerBuild'}" class="card-category-index link white">
+        <h2>BUILDS</h2>
+        <div class="card-item-image">
+            <img src="/images/desktop.png" class="card-category-image">
         </div>
     </a>
-    <a th:href="@{'/show/pageAllNotebook'}" class="rei_category link white">
-        <b>NOTEBOOKS</b>
-        <div class="rei_picture_box">
-            <img src="/images/notebook.png" class="rei_custom_img">
-        </div>
-    </a>
-</div>
-
-<div class="rei_flex_container_category">
-    <a th:href="@{'/show/pageAllHardware'}" class="rei_category link white">
-        <b>HARDWARE</b>
-        <div class="rei_picture_box">
-            <img src="/images/ramimg.png" class="rei_custom_img">
-        </div>
-    </a>
-
-    <a th:href="@{'/show/pageAllAccessory'}" class="rei_category link white">
-        <b>ACCESSORIES</b>
-        <div class="rei_picture_box">
-            <img src="/images/accessories.png" class="rei_custom_img">
+    <a th:href="@{'/show/pageAllNotebook'}" class="card-category-index link white">
+        <h2>NOTEBOOKS</h2>
+        <div class="card-item-image">
+            <img src="/images/notebook.png" class="card-category-image">
         </div>
     </a>
 </div>
 
-<div class="rei_centra_testo">
+<div class="category-container-index">
+    <a th:href="@{'/show/pageAllHardware'}" class="card-category-index link white">
+        <h2>HARDWARE</h2>
+        <div class="card-item-image">
+            <img src="/images/ramimg.png" class="card-category-image">
+        </div>
+    </a>
+
+    <a th:href="@{'/show/pageAllAccessory'}" class="card-category-index link white">
+        <h2>ACCESSORIES</h2>
+        <div class="card-item-image">
+            <img src="/images/accessories.png" class="card-category-image">
+        </div>
+    </a>
+</div>
+
+<div class="flex-item-center">
     <a th:href="@{'/show/pageAllItems'}" >
-        <button class="allproducts-button link white">
+        <button class="all-products-button link white">
             ALL PRODUCTS
         </button>
     </a>

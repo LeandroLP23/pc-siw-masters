@@ -1,21 +1,6 @@
-/*Leandro*/
-#main{
-    margin-top: 10em;
-    padding-top: 30px;
-    height: 80%;
-    display: flex;
-    justify-items: center;
-    flex-direction: column;
-}
-
-.pagecontent{
-    max-width: 1000px;
-    margin: 3em 15em;
-    flex-direction: column;
-}
-
 .logo{
-    margin: .5em;
+    margin-left: 2em;
+    margin-top: 1em;
     width: 100px;
     max-width: 100%;
     vertical-align: top;
@@ -23,6 +8,14 @@
 
 .mini-img{
     width: 30px;
+    margin: .5em;
+    padding: .2em;
+    cursor: pointer;
+    filter: invert(100%);
+}
+
+.mini-img-login{
+    height: 50px;
     margin: .5em;
     padding: .2em;
     cursor: pointer;
@@ -39,40 +32,32 @@
     position: absolute;
 }
 
-.headerwrapper{
+.header-wrapper{
     display: flex;
     background-color: #1c1b1b	;
     justify-content: space-between;
 }
 
-.headerwrapper-admin{
+.header-wrapper-admin{
     padding-inline: 2em;
     display: flex;
     background-color: #1c1b1b	;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
-.flexitem-center{
+.header-icons{
+    display: flex;
+    align-self: center;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.flex-item-center{
     display: flex;
     align-self: center;
     justify-content: center;
-}
-
-.flexitem-horiz{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1.2em;
-    margin: 10px;
-}
-
-.flexitem-column{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    margin: 10px;
 }
 
 .start{
@@ -98,27 +83,9 @@
     color: white;
 }
 
-.title{
-    color: white;
-    font-weight: bold;
-}
-
-.gray{
-    color: gray;
-}
 
 .white{
     color: white;
-}
-
-.smalltext{
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.xsmalltext{
-    font-size: 14px;
-    font-weight: bold;
 }
 
 #sidebar{
@@ -130,11 +97,9 @@
     padding-top: 1em;
     transition: all 0.4s ease-in-out;
     background-color: #373737;
-
     /*element priority*/
     z-index: 2;
-
-    /*hinding element inside sidebarmenu*/
+    /* hiding element inside side-bar-menu*/
     overflow: hidden;
 }
 
@@ -152,8 +117,12 @@
     color: black;
 }
 
+.sidebar-item div{
+    padding: 0 .5em;
+}
+
 .header-bar-item{
-    padding: 1em 0em 0.6em 0.6em;
+    padding: 1em 0 0.6em 0.6em;
     display: block;
     text-align: left;
     align-items: center;
@@ -166,16 +135,16 @@
     color: black;
 }
 
-/*each div under 'sidebar-item'*/
-.sidebar-item > div{
-    padding: 0 1em;
-}
-
 .sidebar-names{
+    display: flex;
+    flex-wrap: wrap;
     padding: .3em 2em;
     justify-items: center;
     position: fixed;
     bottom: 0;
+}
+.sidebar-names p{
+    margin-right: 1em;
 }
 
 #overlay{
@@ -184,13 +153,10 @@
     position: fixed;
     top: 0;
     left: 0;
-
     /*invisible*/
     display: none;
-
     /*element priority*/
     z-index: 1;
-
     /*Shadows*/
     background-color: rgba(0,0,0,0.4);
 }
@@ -253,6 +219,7 @@
     color: #86939E;
     line-height: 24px;
 }
+
 .item-button-container{
     display: flex;
 }
@@ -321,7 +288,7 @@
     margin-top: -0.5em;
 }
 
-.checkbox-grid{
+.checkbox-container{
     width: 100%;
     padding-block:1em;
     padding-inline:2em;
@@ -397,6 +364,7 @@
 }
 
 /*RadioButton*/
+
 /* Customize the label (the container) */
 .radiobutton-elem {
     display: block;
@@ -465,7 +433,7 @@
 
 /* Fine add Item*/
 
-.allproducts-button{
+.all-products-button{
     margin-top: 16px;
     align-self: center;
     padding: 14px 28px;
@@ -498,22 +466,12 @@
 }
 
 /* --------------------------------------- */
-/*Rei*/
 html, body {
     height: 100%;
     margin:0;
     padding:0;
     color:white;
     background-color: black;
-}
-
-.rei_centra_testo
-{
-    font-family: Arial, Helvetica, sans-serif;
-    align-items: center;
-    text-align: center;
-    margin:5%;
-    padding: 1%;
 }
 
 .rei_flex-container
@@ -523,7 +481,8 @@ html, body {
     align-items: flex-end;
     justify-content: space-evenly;
 }
-.rei_divisorio
+
+.card-item-index
 {
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
@@ -535,15 +494,15 @@ html, body {
     align-self: stretch;
 }
 
-.rei_divisorio:hover{
+.card-item-index:hover{
     -webkit-filter: brightness(70%);
 }
 
-.rei_picture_box{
+.card-item-image{
     overflow: hidden;
 }
 
-.rei_flex_container_category
+.category-container-index
 {
     margin:5% ;
     display: grid;
@@ -551,10 +510,9 @@ html, body {
     grid-auto-rows: 1fr;
     align-items: center;
     justify-content: center;
-
 }
 
-.rei_category
+.card-category-index
 {
     display: flex;
     flex-direction: row;
@@ -576,30 +534,29 @@ html, body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.rei_category:hover
+.card-category-index:hover
 {
     -webkit-filter: brightness(70%);
 }
 
-.rei_category b{
+.card-category-index h2{
     font-size: 2em;
     margin-left: 1em;
 }
 
-.rei_custom_img
-{
+.card-category-image{
     width: 50%;
     height: 50%;
 }
 
-.rei_scorrimento-flex-container {
+.scrolling-container {
     margin-top: 10em;
     display: flex;
     align-items: stretch;
     height: 70%;
 }
 
-.rei_scorrimento_div
+.scrolling-element
 {
     background-repeat: no-repeat;
     background-size: contain;
@@ -623,14 +580,14 @@ html, body {
     12%
     {
         background-image: url("/images/1.png");
-        margin-right: 0%;
+        margin-right: 0;
         opacity: 1;
     }
 
     20%
     {
         background-image: url("/images/1.png");
-        margin-right: 0%;
+        margin-right: 0;
         opacity: 1;
     }
     29%
@@ -646,13 +603,13 @@ html, body {
         background-image: url("/images/2.png");
     }
     40%
-    {   margin-right: 0%;
+    {   margin-right: 0;
         opacity: 1;
         background-image: url("/images/2.png");
     }
     53%
     {
-        margin-right: 0%;
+        margin-right: 0;
         background-image: url("/images/2.png");
         opacity:1;
     }
@@ -671,12 +628,12 @@ html, body {
     78%
     {
         opacity:1;
-        margin-right:0%;
+        margin-right:0;
     }
     85%
     {
         opacity:1;
-        margin-right:0%;
+        margin-right:0;
     }
     100%
     {
@@ -686,16 +643,9 @@ html, body {
     }
 }
 
-/*Check*/
-.button-allproducts{
-    color: white;
-    font-size: 2em;
-    background-color: rgb(50,50,50);
-}
-
 /* --------------------------------------- */
-/* All Products*/
 
+/* All Products Page*/
 .container{
     display: flex;
     align-items: center;

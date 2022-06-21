@@ -85,21 +85,26 @@
 
 
     <!-- Header -->
-    <div class="headerwrapper">
-        <div class="flexitem-center start">
+    <div class="header-wrapper">
+        <!-- Logo -->
+        <div class="flex-item-center start">
             <a th:href="@{/}">
                 <img class="logo" src="/images/logowhiteorange.png" alt="Logo PC SIW Masters">
             </a>
         </div>
-        <div class="flexitem-center end">
-            <img class="mini-img" src="/images/account.png" alt="Login pic">
+        <!-- Icons -->
+        <div class="header-icons">
+
+            <img class="mini-img-login" src="/images/account.png" alt="Login pic">
+
             <!--<img class="mini-img" src="/images/search.png">-->
+
             <img id="side-bar-menu" class="mini-img" src="/images/menu.png" alt="Menu pic">
         </div>
     </div>
 
     <!-- Second Header Admin -->
-    <div class="headerwrapper-admin">
+    <div class="header-wrapper-admin">
         <a th:href="@{/admin/addHardware}" class="heading link">
             <div class="header-bar-item">
                 <div>

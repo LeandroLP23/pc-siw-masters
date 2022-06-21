@@ -32,7 +32,7 @@
 
             <!-- ComputerCase -->
             <p>Seleziona il case per la tua configurazione:</p>
-            <div class="checkbox-grid">
+            <div class="checkbox-container">
                 <label th:each="computerCase : ${computerCaseList}" class="radiobutton-elem">
                     <input type="checkbox" th:value="${computerCase.id}"
                            th:checked="${computerCase.equals(computerCaseSelected)}"
@@ -43,7 +43,7 @@
 
             <!-- Accessory Selector -->
             <p>Seleziona gli accessori: </p>
-            <div class="checkbox-grid">
+            <div class="checkbox-container">
                 <label th:each="accessory : ${accessoryList}" class="checkbox-elem">
                     <input type="checkbox" th:value="${accessory.id}" th:text="${accessory.name}"
                            th:checked="${accessorySelected.contains(accessory)}"
@@ -55,7 +55,7 @@
             <!-- Hardware Selector -->
             <!-- CPU -->
             <p>Seleziona la CPU: </p>
-            <div class="checkbox-grid">
+            <div class="checkbox-container">
                 <label th:each="hardware : ${cpuList}" class="radiobutton-elem">
                     <input type="checkbox" th:value="${hardware.id}"
                            th:checked="${hardware.equals(cpuSelected)}"
@@ -66,7 +66,7 @@
 
             <!-- GPU -->
             <p>Seleziona la GPU: </p>
-            <div class="checkbox-grid">
+            <div class="checkbox-container">
                 <label th:each="hardware : ${gpuList}" class="radiobutton-elem">
                     <input type="checkbox" th:value="${hardware.id}"
                            th:checked="${hardware.equals(gpuSelected)}"
@@ -77,7 +77,7 @@
 
             <!-- MOTHERBOARD -->
             <p>Seleziona la scheda madre: </p>
-            <div class="checkbox-grid">
+            <div class="checkbox-container">
                 <label th:each="hardware : ${motherboardList}" class="radiobutton-elem">
                     <input type="checkbox" th:value="${hardware.id}"
                            th:checked="${hardware.equals(motherboardSelected)}"
@@ -88,7 +88,7 @@
 
             <!-- RAM -->
             <p>Seleziona la RAM: </p>
-            <div class="checkbox-grid">
+            <div class="checkbox-container">
                 <label th:each="hardware : ${ramList}" class="radiobutton-elem">
                     <input type="checkbox" th:value="${hardware.id}"
                            th:checked="${hardware.equals(ramSelected)}"
@@ -99,7 +99,7 @@
 
             <!-- STORAGE -->
             <p>Seleziona la memoria secondaria: </p>
-            <div class="checkbox-grid">
+            <div class="checkbox-container">
                 <label th:each="hardware : ${storageList}" class="radiobutton-elem">
                     <input type="checkbox" th:value="${hardware.id}"
                            th:checked="${hardware.equals(storageSelected)}"
@@ -110,7 +110,7 @@
 
             <!-- POWER SUPPLY -->
             <p>Seleziona l'alimentatore: </p>
-            <div class="checkbox-grid">
+            <div class="checkbox-container">
                 <label th:each="hardware : ${powerSupplyList}" class="radiobutton-elem">
                     <input type="checkbox" th:value="${hardware.id}"
                            th:checked="${hardware.equals(powerSupplySelected)}"
