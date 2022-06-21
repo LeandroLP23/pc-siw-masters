@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title> --- </title>
+</head>
+<body>
+
+<!-- Category -->
+<div th:fragment = "category-accessory">
+    <p>Seleziona una categoria:</p>
+    <select name="category">
+        <option value="">Seleziona una categoria:</option>
+        <option th:each="category : ${T(it.uniroma3.siw.model.category.AccessoryCategory).values()}"
+                th:value="${category}" th:text="${category.displayValue}"
+                th:selected="${category.equals(categorySelected)}">
+        </option>
+    </select>
+</div>
+
+<!-- Category Hardware-->
+<div th:fragment = "category-hardware">
+<p>Seleziona una categoria:</p>
+<select name="category">
+    <option value="">Seleziona una categoria:</option>
+    <option th:each="category : ${T(it.uniroma3.siw.model.category.HardwareCategory).values()}"
+            th:value="${category}" th:text="${category.displayValue}"
+            th:selected="${category.equals(categorySelected)}">
+    </option>
+</select>
+</div>
+
+<!-- Name -->
+<div th:fragment = "name-input(objType)">
+    <p>Inserisci nome:</p>
+    <label th:for="${objType + '.name'}"></label>
+    <input placeholder="Nome" type="text" th:field="*{__${objType}__.name}">
+</div>
+
+
+<!-- Price -->
+<div th:fragment = "price-input(objType)">
+    <p>Inserisci prezzo:</p>
+    <input placeholder="Prezzo" type="number" min="1" th:field="*{__${objType}__.price}" >
+</div>
+
+
+<!-- Vendor -->
+<div th:fragment = "vendor-select">
+    <p>Seleziona un produttore:</p>
+    <select name="idVendor">
+        <option value="0">Seleziona un produttore:</option>
+        <option th:each="vendor : ${vendorList}" th:value="${vendor.id}"
+                th:text="${vendor.name} "
+                th:selected="${vendor.equals(vendorSelected)}">
+        </option>
+    </select>
+</div>
+
+</body>
+</html>

@@ -18,6 +18,10 @@ public class Notebook {
     @ManyToOne
     private Vendor vendor;
 
+    public Notebook getNotebook(){
+        return this;
+    }
+
     public Long getId() {
         return id;
     }

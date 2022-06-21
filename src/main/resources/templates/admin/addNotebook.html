@@ -27,24 +27,14 @@
         <div class="add-item-infos">
 
             <!-- Name -->
-            <p>Inserisci nome:</p>
-            <input placeholder="Nome" th:field="${notebook.name}">
+            <div th:insert="fragments/addItem.html :: name-input('notebook')"> </div>
             <span class="error-message" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
 
             <!-- Price -->
-            <p>Inserisci prezzo:</p>
-            <input placeholder="Prezzo" th:field="${notebook.price}">
-            <span class="error-message" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span>
+            <div th:insert="fragments/addItem.html :: price-input('notebook')"> </div>
 
             <!-- Vendor -->
-            <p>Seleziona un produttore:</p>
-            <select name="idVendor">
-                <option value="0">Seleziona un produttore:</option>
-                <option th:each="vendor : ${vendorList}" th:value="${vendor.id}"
-                        th:text="${vendor.name} "
-                        th:selected="${vendor.equals(vendorSelected)}">
-                </option>
-            </select>
+            <div th:insert="fragments/addItem.html :: vendor-select"> </div>
 
             <!-- Immagine
             <p>Seleziona un'immagine:</p>

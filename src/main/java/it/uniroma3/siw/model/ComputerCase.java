@@ -26,10 +26,14 @@ public class ComputerCase {
         if (obj != null && obj.getClass().equals(this.getClass())) {
             ComputerCase that = (ComputerCase) obj;
             return this.name.equals(that.getName())
-                    && this.price == (that.getPrice())
+                    && this.price.equals(that.getPrice())
                     && this.vendor == (that.getVendor());
         }
         return false;
+    }
+
+    public ComputerCase getComputerCase(){
+        return this;
     }
 
     public Long getId() {

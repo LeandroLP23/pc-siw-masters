@@ -34,6 +34,10 @@ public class Vendor {
         return false;
     }
 
+    public Vendor getVendor(){
+        return this;
+    }
+
     public Long getId() {
         return id;
     }

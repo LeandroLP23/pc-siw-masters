@@ -39,6 +39,10 @@ public class Accessory {
         return false;
     }
 
+    public Accessory getAccessory(){
+        return this;
+    }
+
     public Long getId() {
         return id;
     }

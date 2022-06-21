@@ -34,10 +34,14 @@ public class Hardware {
             Hardware that = (Hardware) obj;
             return this.name.equals(that.getName())
                     && this.category.getDisplayValue().equals(that.getCategory().getDisplayValue())
-                    && this.price == (that.getPrice())
+                    && this.price.equals(that.getPrice())
                     && this.vendor == (that.getVendor());
         }
         return false;
+    }
+
+    public Hardware getHardware(){
+        return this;
     }
 
     public Long getId() {
