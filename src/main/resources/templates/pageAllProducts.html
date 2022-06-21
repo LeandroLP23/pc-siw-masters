@@ -16,7 +16,17 @@
 <div class = "all-items-container">
 
     <div class = "all-items-title">
-        <h1 th:if="${accessoryList!=null}">Tutti i nostri gli accessori</h1>
+        <h1 th:if="(${allAccessoryList!=null}) and
+                   (${allComputerCaseList!=null}) and
+                   (${allHardwareList!=null})">Tutti i nostri prodotti</h1>
+
+        <!--<h1 th:if="(${vendorAccessoryList!=null}) and
+                   (${vendorComputerCaseList!=null}) and
+                   (${vendorHardwareList!=null})">
+                 <span th:text="'Tutti i prodotti di' + ${vendorHardwareList.name}"></span>
+        </h1>-->
+
+        <h1 th:if="${accessoryList!=null}">Tutti i nostri accessori</h1>
         <h1 th:if="${computerCaseList!=null}">Tutti i nostri computer case</h1>
         <h1 th:if="${computerBuildList!=null}">Tutte le nostre computer build</h1>
         <h1 th:if="${hardwareList!=null}">Tutte le nostre componenti hardware</h1>

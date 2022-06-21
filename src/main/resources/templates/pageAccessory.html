@@ -28,16 +28,17 @@
         <div class="item-product-description">
 
             <!-- Name -->
-            <h1 th:text="${accessory.name}"></h1>
+           <h1 th:text="${accessory.name}"></h1>
 
             <!-- Category -->
-            <p th:text="${accessory.category.displayValue}"></p>
+            <div><span>Categoria: </span><p th:text="${accessory.category.displayValue}"></p></div>
 
             <!-- Vendor -->
-            <p th:text="${accessory.vendor.name}"></p>
+        <div><span>Venditore: </span><p th:text="${accessory.vendor.name}"></p></div>
 
             <!-- Price -->
-            <p th:text="${accessory.price}"></p>
+        <div><span>Prezzo: </span><p th:text="${accessory.price}+' €'"></p></div>
+
         </div>
 
         <a th:href="@{'/admin/editAccessory' +'/'+ ${accessory.id}}">
