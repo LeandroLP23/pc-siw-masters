@@ -27,7 +27,7 @@
         <div class="add-item-infos">
 
             <!-- Category -->
-            <div th:insert="fragments/addItem.html :: category-hardware"> </div>
+            <div th:insert="fragments/addItem.html :: category('T(it.uniroma3.siw.model.category.HardwareCategory)')"> </div>
 
             <!-- Name -->
             <div th:insert="fragments/addItem.html :: name-input('hardware')"> </div>

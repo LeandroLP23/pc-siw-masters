@@ -7,29 +7,19 @@
 </head>
 <body>
 
+
 <!-- Category -->
-<div th:fragment = "category-accessory">
+<div th:fragment = "category(path)">
     <p>Seleziona una categoria:</p>
     <select name="category">
         <option value="">Seleziona una categoria:</option>
-        <option th:each="category : ${T(it.uniroma3.siw.model.category.AccessoryCategory).values()}"
+        <option th:each="category : ${__${path}__.values()}"
                 th:value="${category}" th:text="${category.displayValue}"
                 th:selected="${category.equals(categorySelected)}">
         </option>
     </select>
 </div>
 
-<!-- Category Hardware-->
-<div th:fragment = "category-hardware">
-<p>Seleziona una categoria:</p>
-<select name="category">
-    <option value="">Seleziona una categoria:</option>
-    <option th:each="category : ${T(it.uniroma3.siw.model.category.HardwareCategory).values()}"
-            th:value="${category}" th:text="${category.displayValue}"
-            th:selected="${category.equals(categorySelected)}">
-    </option>
-</select>
-</div>
 
 <!-- Name -->
 <div th:fragment = "name-input(objType)">
@@ -56,6 +46,31 @@
                 th:selected="${vendor.equals(vendorSelected)}">
         </option>
     </select>
+</div>
+
+
+<!-- Hardware Selector -->
+<div th:fragment = "hardware-radio-button(hardwareList, id, hardwareSelected)">
+    <div class="checkbox-container">
+        <label th:each="hardware : ${hardwareList}" class="radiobutton-elem">
+            <input type="radio" th:value="${hardware.id}"
+                   th:checked="${hardware.equals(hardwareSelected)}"
+                   th:text="${hardware.name}" th:name="${id}" />
+            <span class="radio-mark"></span>
+        </label>
+    </div>
+</div>
+
+<!-- Accessory Selector -->
+<div th:fragment = "accessory-checkbox">
+    <div class="checkbox-container">
+        <label th:each="accessory : ${accessoryList}" class="checkbox-elem">
+            <input type="checkbox" th:value="${accessory.id}" th:text="${accessory.name}"
+                   th:checked="${accessorySelected.contains(accessory)}"
+                   th:name="idAccessory"/>
+            <span class="checkmark"></span>
+        </label>
+    </div>
 </div>
 
 </body>

@@ -26,99 +26,41 @@
         <div class="add-item-infos">
 
             <!-- Name -->
-            <p>Inserisci nome:</p>
-            <input placeholder="Nome" th:field="${computerBuild.name}">
+            <div th:insert="fragments/addItem.html :: name-input(computerBuild)"> </div>
             <span class="error-message" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
 
             <!-- ComputerCase -->
             <p>Seleziona il case per la tua configurazione:</p>
-            <div class="checkbox-container">
-                <label th:each="computerCase : ${computerCaseList}" class="radiobutton-elem">
-                    <input type="checkbox" th:value="${computerCase.id}"
-                           th:checked="${computerCase.equals(computerCaseSelected)}"
-                           th:text="${computerCase.name}" th:name="idComputerCase" />
-                    <span class="radio-mark"></span>
-                </label>
-            </div>
+            <div th:insert="fragments/addItem.html :: hardware-radio-button(${computerCaseList},'idComputerCase',${computerCaseSelected})"> </div>
 
             <!-- Accessory Selector -->
             <p>Seleziona gli accessori: </p>
-            <div class="checkbox-container">
-                <label th:each="accessory : ${accessoryList}" class="checkbox-elem">
-                    <input type="checkbox" th:value="${accessory.id}" th:text="${accessory.name}"
-                           th:checked="${accessorySelected.contains(accessory)}"
-                           th:name="idAccessory"/>
-                    <span class="checkmark"></span>
-                </label>
-            </div>
+            <div th:insert="fragments/addItem.html :: accessory-checkbox"> </div>
 
             <!-- Hardware Selector -->
-            <!-- CPU -->
+            <!-- CPU-->
             <p>Seleziona la CPU: </p>
-
-            <div class="checkbox-container">
-                <label th:each="hardware : ${cpuList}" class="radiobutton-elem">
-                    <input type="checkbox" th:value="${hardware.id}"
-                           th:checked="${hardware.equals(cpuSelected)}"
-                           th:text="${hardware.name}" th:name="idCpu" />
-                    <span class="radio-mark"></span>
-                </label>
-            </div>
+            <div th:insert="fragments/addItem.html :: hardware-radio-button(${cpuList},'idCpu',${cpuSelected})"> </div>
 
             <!-- GPU -->
             <p>Seleziona la GPU: </p>
-            <div class="checkbox-container">
-                <label th:each="hardware : ${gpuList}" class="radiobutton-elem">
-                    <input type="checkbox" th:value="${hardware.id}"
-                           th:checked="${hardware.equals(gpuSelected)}"
-                           th:text="${hardware.name}" th:name="idGpu" />
-                    <span class="radio-mark"></span>
-                </label>
-            </div>
+            <div th:insert="fragments/addItem.html :: hardware-radio-button(${gpuList},'idGpu',${gpuSelected})"> </div>
 
             <!-- MOTHERBOARD -->
             <p>Seleziona le componenti hardware: </p>
-            <div class="checkbox-container">
-                <label th:each="hardware : ${motherboardList}" class="radiobutton-elem">
-                    <input type="checkbox" th:value="${hardware.id}"
-                           th:checked="${hardware.equals(motherboardSelected)}"
-                           th:text="${hardware.name}" th:name="idMotherboard" />
-                    <span class="radio-mark"></span>
-                </label>
-            </div>
+            <div th:insert="fragments/addItem.html :: hardware-radio-button(${motherboardList},'idMotherboard',${motherboardSelected})"> </div>
 
             <!-- RAM -->
             <p>Seleziona la RAM: </p>
-            <div class="checkbox-container">
-                <label th:each="hardware : ${ramList}" class="radiobutton-elem">
-                    <input type="checkbox" th:value="${hardware.id}"
-                           th:checked="${hardware.equals(ramSelected)}"
-                           th:text="${hardware.name}" th:name="idRam" />
-                    <span class="radio-mark"></span>
-                </label>
-            </div>
+            <div th:insert="fragments/addItem.html :: hardware-radio-button(${ramList},'idRam',${ramSelected})"> </div>
 
             <!-- STORAGE -->
             <p>Seleziona la memoria secondaria: </p>
-            <div class="checkbox-container">
-                <label th:each="hardware : ${storageList}" class="radiobutton-elem">
-                    <input type="checkbox" th:value="${hardware.id}"
-                           th:checked="${hardware.equals(storageSelected)}"
-                           th:text="${hardware.name}" th:name="idStorage" />
-                    <span class="radio-mark"></span>
-                </label>
-            </div>
+            <div th:insert="fragments/addItem.html :: hardware-radio-button(${storageList},'idStorage',${storageSelected})"> </div>
 
             <!-- POWER SUPPLY -->
             <p>Seleziona l'alimentatore: </p>
-            <div class="checkbox-container">
-                <label th:each="hardware : ${powerSupplyList}" class="radiobutton-elem">
-                    <input type="checkbox" th:value="${hardware.id}"
-                           th:checked="${hardware.equals(powerSupplySelected)}"
-                           th:text="${hardware.name}" th:name="idPowerSupply" />
-                    <span class="radio-mark"></span>
-                </label>
-            </div>
+            <div th:insert="fragments/addItem.html :: hardware-radio-button(${powerSupplyList},'idPowerSupply',${powerSupplySelected})"> </div>
 
             <!-- Immagine
             <p>Seleziona un'immagine:</p>

@@ -36,6 +36,10 @@ public class ComputerBuild {
         return hardwareMap;
     }
 
+    public ComputerBuild getComputerBuild(){
+        return this;
+    }
+
     public Long getId() {
         return id;
     }
