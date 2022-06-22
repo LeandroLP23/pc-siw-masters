@@ -13,5 +13,22 @@
     <p th:text="${value}"></p>
 </div>
 
+<!-- page All Product-->
+<div th:fragment="allItemList(list, pathName,catFlag,vendFlag)" class="container">
+        <div th:each="item: ${list}" class="item-card">
+            <a th:href="@{'/show/page'+ ${pathName} +'/'+ ${item.id}}" class = "link-products">
+                <img class = "img-all-item" src = "/images/CPUi3.png" alt = "">
+
+                <div class = "item-details">
+                    <p th:text="${item.name}"></p>
+                    <h4 th:if="${catFlag == 'category'}" th:text="'Categoria: '+ ${item.category}"></h4>
+                    <span th:if="${vendFlag == 'vendor'}" th:text="${item.vendor.name}"></span>
+                    <h3 th:text="${item.price} + ' €'"></h3>
+                </div>
+            </a>
+    </div>
+</div>
+
+<
 </body>
 </html>

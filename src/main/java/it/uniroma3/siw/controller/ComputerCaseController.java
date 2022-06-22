@@ -85,7 +85,7 @@ public class ComputerCaseController {
         model.addAttribute("vendorList", vendorService.findAll());
         model.addAttribute("vendorSelected", computerCase.getVendor());
 
-        return "admin/addComputerCase";
+        return "admin/editComputerCase";
     }
 
     @PostMapping("/admin/updateComputerCase/{id}")

@@ -63,7 +63,7 @@ public class VendorController {
 
         model.addAttribute("vendor", vendor);
 
-        return "admin/addVendor";
+        return "admin/editVendor";
     }
 
     @PostMapping("/admin/updateVendor/{id}")

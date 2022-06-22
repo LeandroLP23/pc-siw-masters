@@ -87,7 +87,7 @@ public class NotebookController {
         model.addAttribute("vendorList", vendorService.findAll());
         model.addAttribute("vendorSelected", notebook.getVendor());
 
-        return "admin/addNotebook";
+        return "admin/editNotebook";
     }
 
     @PostMapping("/admin/updateNotebook/{id}")
