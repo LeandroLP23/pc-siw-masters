@@ -32,7 +32,7 @@
             <h1 th:text="${computerBuild.name}"></h1>
 
             <!-- Price -->
-            <div th:insert="fragments/pageItem.html :: property(Prezzo, ${computerBuild.price} )"> </div>
+            <div th:insert="fragments/pageItem.html :: property(Prezzo, ${computerBuild.price} + ' €')"> </div>
 
             <!-- Computer Case -->
             <div th:insert="fragments/pageItem.html :: property(Case, ${computerBuild.computerCase.name} )"> </div>

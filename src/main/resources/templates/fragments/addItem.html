@@ -11,7 +11,7 @@
 <!-- Category -->
 <div th:fragment = "category(path)">
     <p>Seleziona una categoria:</p>
-    <select name="category">
+    <select name="category" style="width:430px">
         <option value="">Seleziona una categoria:</option>
         <option th:each="category : ${__${path}__.values()}"
                 th:value="${category}" th:text="${category.displayValue}"
@@ -25,21 +25,21 @@
 <div th:fragment = "name-input(objType)">
     <p>Inserisci nome:</p>
     <label th:for="${objType + '.name'}"></label>
-    <input placeholder="Nome" type="text" th:field="*{__${objType}__.name}">
+    <input placeholder="Nome" type="text" size="50" th:field="*{__${objType}__.name}">
 </div>
 
 
 <!-- Price -->
 <div th:fragment = "price-input(objType)">
     <p>Inserisci prezzo:</p>
-    <input placeholder="Prezzo" type="number" min="1" th:field="*{__${objType}__.price}" >
+    <input placeholder="Prezzo" size="50" th:field="*{__${objType}__.price}" >
 </div>
 
 
 <!-- Vendor -->
 <div th:fragment = "vendor-select">
     <p>Seleziona un produttore:</p>
-    <select name="idVendor">
+    <select name="idVendor" style="width:430px">
         <option value="0">Seleziona un produttore:</option>
         <option th:each="vendor : ${vendorList}" th:value="${vendor.id}"
                 th:text="${vendor.name} "

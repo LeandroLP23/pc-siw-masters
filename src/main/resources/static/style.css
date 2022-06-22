@@ -59,6 +59,10 @@
     justify-content: center;
 }
 
+.margin-bot {
+    margin-bottom: 5em;
+}
+
 .start{
     justify-content: flex-start;
 }
@@ -70,7 +74,6 @@
 .link{
     text-decoration: none;
     color: #1c1b1b;
-    font-size: xx-large;
 }
 
 .heading{
@@ -234,7 +237,7 @@
 
 .item-button{
     width: fit-content;
-    margin-block: 1em;
+    margin-block: 4em;
     padding: 2rem 5rem;
     font-weight: 700;
     cursor: pointer;
@@ -279,6 +282,8 @@
     font-size: x-large;
 }
 
+add-item-infos {}
+
 .add-item-infos input{
     display: block;
     padding: 0.594rem ;
@@ -301,12 +306,12 @@
 .checkbox-container{
     width: 100%;
     padding-block:1em;
-    padding-inline:2em;
+    /* padding-inline:2em; */
     display: grid;
     margin-inline: auto;
-    grid-template-columns: repeat(4, 40%);
+    grid-template-columns: repeat(2, 55%);
     grid-auto-rows: 1fr;
-    justify-content: center;
+    /* justify-content: center; */
 }
 
 /* Customize the label (the container) */
@@ -449,7 +454,6 @@
     padding: 14px 28px;
     line-height: normal;
     cursor: pointer;
-
     border: 1px solid transparent;
     border-radius: 5px;
     text-transform: uppercase;
@@ -491,7 +495,6 @@ body {
     margin: 0px;
     padding: 0px;
     font-family: Arial, Helvetica, sans-serif;
-
 }
 
 .rei_flex-container
@@ -508,7 +511,7 @@ body {
     text-align: center;
     padding: 10px;
     margin: 10px;
-    background: #006bb3;
+    background: #580cda;
     align-items: flex-end;
     border-radius: 10px;
     align-self: stretch;
@@ -538,7 +541,7 @@ body {
     flex-direction: row;
     text-align: center;
     margin: 10px;
-    background: #006bb3;
+    background: #580cda;
     border-radius: 10px;
     flex: auto;
     align-self: stretch;
@@ -678,27 +681,8 @@ body {
 
 
 .link-products {
-    color: inherit;
+    color: white;
     text-decoration: none;
-}
-
-.link-products {
-    background:
-            linear-gradient(
-                    to right,
-                    rgba(100, 200, 200, 1),
-                    rgba(100, 200, 200, 1)
-            ),
-            linear-gradient(
-                    to right,
-                    rgba(255, 0, 0, 1),
-                    rgba(255, 0, 180, 1),
-                    rgba(0, 100, 200, 1)
-            );
-    background-size: 100% 3px, 0 3px;
-    background-position: 100% 100%, 0 100%;
-    background-repeat: no-repeat;
-    transition: background-size 400ms;
 }
 
 .link-products:hover {
