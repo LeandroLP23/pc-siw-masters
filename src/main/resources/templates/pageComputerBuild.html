@@ -19,7 +19,7 @@
 
     <!-- Left Column -->
     <div class="item-left-column">
-        <img class="item-img" src="/images/cuffie.png" />
+        <img class="item-img" src="/images/cuffie.png" alt="Immagine della build " />
     </div>
 
     <!-- Right Column -->
@@ -32,28 +32,45 @@
             <h1 th:text="${computerBuild.name}"></h1>
 
             <!-- Price -->
-            <p th:text="${computerBuild.price}"></p>
+            <div th:insert="fragments/pageItem.html :: property(Prezzo, ${computerBuild.price} )"> </div>
 
             <!-- Computer Case -->
-            <p th:text="${computerBuild.computerCase.name}"></p>
+            <div th:insert="fragments/pageItem.html :: property(Case, ${computerBuild.computerCase.name} )"> </div>
 
             <!-- Accessory List -->
-            <h4>Controlla i nostri accessori:</h4>
-            <ul>
-                <li th:each="accessory : ${computerBuild.accessoryList}">
-                    <a th:href="@{'/show/pageAccessory/' + ${accessory.id}}"
-                       th:text="${accessory.name}" class="link"></a>
-                </li>
-            </ul>
+            <div th:if="${computerBuild.accessoryList!= null}">
+                <h4>I suoi accessori:</h4>
+                <div class="container">
+                    <div th:each="accessory : ${computerBuild.accessoryList}">
+                        <a th:href="@{'/show/pageAccessory/' + ${accessory.id}}">
+
+                            <img class = "img-all-item" src = "/images/CPUi3.png" alt = "Immagine accessorio">
+
+                            <div class = "item-details">
+                                <p th:text="${accessory.name}"></p>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
 
             <!-- Hardware List -->
             <h4>Controlla l'hardware che lo compone:</h4>
-            <ul>
-                <li th:each="hardware : ${computerBuild.hardwareList}">
-                    <a th:href="@{'/show/pageHardware/' + ${hardware.id}}"
-                       th:text="${hardware.name}" class="link"></a>
-                </li>
-            </ul>
+            <div class="container">
+                <div th:each="hardware : ${computerBuild.hardwareList}">
+                    <a th:href="@{'/show/pageHardware/' + ${hardware.id}}">
+
+                        <img class = "img-all-item" src = "/images/CPUi3.png" alt = "Immagine accessorio">
+
+                        <div class = "item-details">
+                            <p th:text="${hardware.name}"></p>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
 
         </div>
 

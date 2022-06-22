@@ -32,13 +32,13 @@
             <h1 th:text="${hardware.name}"></h1>
 
             <!-- Category -->
-            <p th:text="${hardware.category.displayValue}"></p>
-
-            <!-- Price -->
-            <p th:text="${hardware.price}"></p>
+            <div th:insert="fragments/pageItem.html :: property(Categoria, ${hardware.category.displayValue} )"> </div>
 
             <!-- Vendor -->
-            <p th:text="${hardware.vendor.name}"></p>
+            <div th:insert="fragments/pageItem.html :: property(Venditore, ${hardware.vendor.name} )"> </div>
+
+            <!-- Price -->
+            <div th:insert="fragments/pageItem.html :: property(Prezzo, ${hardware.price}+' €' )"> </div>
 
         </div>
 

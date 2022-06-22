@@ -31,14 +31,13 @@
             <!-- Name -->
             <h1 th:text="${notebook.name}"></h1>
 
-            <!-- Price -->
-            <p th:text="${notebook.price}"></p>
-
             <!-- Vendor -->
-            <p th:text="${notebook.vendor.name}"></p>
+            <div th:insert="fragments/pageItem.html :: property(Venditore, ${notebook.vendor.name} )"> </div>
+
+            <!-- Price -->
+            <div th:insert="fragments/pageItem.html :: property(Prezzo, ${notebook.price}+' €' )"> </div>
 
         </div>
-
 
         <a th:href="@{'/admin/editNotebook' +'/'+ ${notebook.id}}">
             <button class="item-button">Modifica Notebook</button>

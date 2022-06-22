@@ -32,13 +32,12 @@
             <h1 th:text="${computerCase.name}"></h1>
 
             <!-- Vendor -->
-            <p th:text="${computerCase.vendor.name}"></p>
+            <div th:insert="fragments/pageItem.html :: property(Venditore, ${computerCase.vendor.name} )"> </div>
 
             <!-- Price -->
-            <p th:text="${computerCase.price}"></p>
+            <div th:insert="fragments/pageItem.html :: property(Prezzo, ${computerCase.price}+' €' )"> </div>
 
         </div>
-
 
         <a th:href="@{'/admin/editComputerCase' +'/'+ ${computerCase.id}}">
             <button class="item-button">Modifica Computer Case</button>

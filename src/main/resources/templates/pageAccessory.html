@@ -28,16 +28,16 @@
         <div class="item-product-description">
 
             <!-- Name -->
-           <h1 th:text="${accessory.name}"></h1>
+            <h1 th:text="${accessory.name}"></h1>
 
             <!-- Category -->
-            <div><span>Categoria: </span><p th:text="${accessory.category.displayValue}"></p></div>
+            <div th:insert="fragments/pageItem.html :: property(Categoria, ${accessory.category.displayValue} )"> </div>
 
             <!-- Vendor -->
-        <div><span>Venditore: </span><p th:text="${accessory.vendor.name}"></p></div>
+            <div th:insert="fragments/pageItem.html :: property(Venditore, ${accessory.vendor.name} )"> </div>
 
             <!-- Price -->
-        <div><span>Prezzo: </span><p th:text="${accessory.price}+' €'"></p></div>
+            <div th:insert="fragments/pageItem.html :: property(Prezzo, ${accessory.price}+' €' )"> </div>
 
         </div>
 
