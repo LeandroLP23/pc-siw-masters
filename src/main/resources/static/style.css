@@ -70,12 +70,13 @@
 .link{
     text-decoration: none;
     color: #1c1b1b;
+    font-size: xx-large;
 }
 
 .heading{
     font-size: 24px;
     letter-spacing: .2em;
-    font-family: Montserrat,sans-serif;
+    /*font-family: Montserrat,sans-serif;*/
     font-weight: 500;
     font-style: normal;
     text-transform: uppercase;
@@ -164,7 +165,7 @@
 /* Item generico */
 
 .item-container{
-    margin-top: 1em;
+    margin-top: 6em;
     height: 90%;
     width: 100%;
     display: flex;
@@ -227,6 +228,8 @@
 
 .item-button-container{
     display: flex;
+    line-height: 3000%;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .item-button{
@@ -269,6 +272,7 @@
     align-items: center;
     justify-items: center;
     font-size: xx-large;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .add-item-container p{
@@ -486,6 +490,7 @@ body {
     flex-direction: column;
     margin: 0px;
     padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
 
 }
 
@@ -671,6 +676,35 @@ body {
     margin-left: inherit;
 }
 
+
+.link-products {
+    color: inherit;
+    text-decoration: none;
+}
+
+.link-products {
+    background:
+            linear-gradient(
+                    to right,
+                    rgba(100, 200, 200, 1),
+                    rgba(100, 200, 200, 1)
+            ),
+            linear-gradient(
+                    to right,
+                    rgba(255, 0, 0, 1),
+                    rgba(255, 0, 180, 1),
+                    rgba(0, 100, 200, 1)
+            );
+    background-size: 100% 3px, 0 3px;
+    background-position: 100% 100%, 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 400ms;
+}
+
+.link-products:hover {
+    background-size: 0 3px, 100% 3px;
+}
+
 .item-img img{
     width: 100%;
     display: block;
@@ -680,4 +714,11 @@ body {
     padding: 20px 16px;
     text-align: center;
     text-transform: capitalize;
+    font-size: large;
+    line-height: 175%;
+}
+
+.item-details p {
+    font-size: x-large;
+    color: darkorange;
 }
