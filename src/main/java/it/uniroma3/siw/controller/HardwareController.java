@@ -47,33 +47,21 @@ public class HardwareController {
                               @RequestParam(value = "idVendor",required = false) Long idVendor,
                               Model model, BindingResult bindingResult) {
 
-        if(category ==  null){
-            bindingResult.reject("hardware.category");
-        }
-
-        if(idVendor == 0){
-            bindingResult.reject("hardware.vendor");
-        }
-
-        if(hardware.getPrice() == null){
-            bindingResult.reject("hardware.price");
-        }
-        this.hardwareValidator.validate(hardware, bindingResult);
+        paramValidator(hardware, category, idVendor, bindingResult);
 
         if (!bindingResult.hasErrors()) {
 
+            //Setting Requested Parameters
             hardware.setCategory(category);
-
             hardware.setVendor(this.vendorService.findById(idVendor));
 
+            //Save
             this.hardwareService.save(hardware);
 
             model.addAttribute("hardware", this.hardwareService.findById(hardware.getId()));
-
             return "pageHardware";
         }else{
-
-            model.addAttribute("hardware", hardware);
+            //Fill editPage with pre-filled parameters
             model.addAttribute("vendorList", this.vendorService.findAll());
 
             if(idVendor != 0) {
@@ -89,8 +77,10 @@ public class HardwareController {
     }
 
     @GetMapping("/admin/editHardware/{id}")
-    public String editHardware(@PathVariable("id") Long id, Model model) {
+    public String getEditHardware(@PathVariable("id") Long id, Model model) {
+
         Hardware hardware = hardwareService.findById(id);
+
         model.addAttribute("hardware", hardware);
         model.addAttribute("vendorList", vendorService.findAll());
         model.addAttribute("categorySelected", hardware.getCategory());
@@ -100,37 +90,28 @@ public class HardwareController {
     }
 
     @PostMapping("/admin/updateHardware/{id}")
-    public String editHardware(@PathVariable Long id, @ModelAttribute("hardware") Hardware hardware,
+    public String updateHardware(@PathVariable Long id, @ModelAttribute("hardware") Hardware hardware,
                                @RequestParam(value = "category",required = false) HardwareCategory category,
                                @RequestParam(value = "idVendor",required = false) Long idVendor,
                                Model model, BindingResult bindingResult) {
-        if(category ==  null){
-            bindingResult.reject("hardware.category");
-        }
 
-        if(idVendor == 0){
-            bindingResult.reject("hardware.vendor");
-        }
-
-        if(hardware.getPrice() == null){
-            bindingResult.reject("hardware.price");
-        }
-        this.hardwareValidator.validate(hardware, bindingResult);
+        paramValidator(hardware, category, idVendor, bindingResult);
 
         if (!bindingResult.hasErrors()) {
 
+            //Setting Requested Parameters
             hardware.setCategory(category);
-
             hardware.setVendor(this.vendorService.findById(idVendor));
 
+            //Save
+            hardware.setId(id);
             this.hardwareService.save(hardware);
 
             model.addAttribute("hardware", this.hardwareService.findById(hardware.getId()));
-
             return "pageHardware";
         }else{
 
-            model.addAttribute("hardware", hardware);
+            //Fill editPage with pre-filled parameters
             model.addAttribute("vendorList", this.vendorService.findAll());
 
             if(idVendor != 0) {
@@ -144,6 +125,7 @@ public class HardwareController {
             return "admin/editHardware";
         }
     }
+
     @GetMapping("/admin/deleteHardware/{id}")
     public String deleteHardware(@PathVariable("id") Long id, Model model) {
         this.hardwareService.deleteById(id);
@@ -156,5 +138,24 @@ public class HardwareController {
         model.addAttribute("hardwareList",this.hardwareService.findAll());
 
         return "pageAllProducts";
+    }
+
+    private void paramValidator(@ModelAttribute("hardware") Hardware hardware,
+                                @RequestParam(value = "category", required = false) HardwareCategory category,
+                                @RequestParam(value = "idVendor", required = false) Long idVendor,
+                                BindingResult bindingResult) {
+        if(category ==  null){
+            bindingResult.reject("hardware.category");
+        }
+
+        if(idVendor == 0){
+            bindingResult.reject("hardware.vendor");
+        }
+
+        if(hardware.getPrice() == null){
+            bindingResult.reject("hardware.price");
+        }
+
+        this.hardwareValidator.validate(hardware, bindingResult);
     }
 }

@@ -42,8 +42,8 @@ public class ComputerCaseController {
 
     @PostMapping("/admin/pageComputerCase")
     public String addComputerCase (@ModelAttribute("computerCase") ComputerCase computerCase,
-                               @RequestParam(value = "idVendor",required = false) Long idVendor,
-                               Model model, BindingResult bindingResult ) {
+                                   @RequestParam(value = "idVendor",required = false) Long idVendor,
+                                   Model model, BindingResult bindingResult ) {
 
         if (idVendor == 0)
             bindingResult.reject("computerCase.vendor");
@@ -65,35 +65,49 @@ public class ComputerCaseController {
             return "pageComputerCase";
         } else {
 
-            model.addAttribute("computerCase", computerCase);
             model.addAttribute("vendorList", this.vendorService.findAll());
 
             if(idVendor != 0) {
                 model.addAttribute("vendorSelected", this.vendorService.findById(idVendor));
             }
+
+            model.addAttribute("mode","edit");
 
             return "admin/addComputerCase";
         }
     }
+    @GetMapping("/admin/editComputerCase/{id}")
+    public String getEditComputerCase(@PathVariable("id") Long id, Model model) {
+
+        ComputerCase computerCase = computerCaseService.findById(id);
+
+        model.addAttribute("computerCase", computerCase);
+        model.addAttribute("vendorList", vendorService.findAll());
+        model.addAttribute("vendorSelected", computerCase.getVendor());
+
+        return "admin/addComputerCase";
+    }
 
     @PostMapping("/admin/updateComputerCase/{id}")
-    public String editComputerCase(@PathVariable Long id, @ModelAttribute("computerCase") ComputerCase computerCase,
-                                @RequestParam(value = "idVendor",required = false) Long idVendor,
-                                Model model, BindingResult bindingResult ) {
+    public String updateComputerCase(@PathVariable Long id, @ModelAttribute("computerCase") ComputerCase computerCase,
+                                     @RequestParam(value = "idVendor",required = false) Long idVendor,
+                                     Model model, BindingResult bindingResult ) {
 
         if (idVendor == 0)
             bindingResult.reject("computerCase.vendor");
 
-        if(computerCase.getPrice() == null){
+        if(computerCase.getPrice() == null)
             bindingResult.reject("computerCase.price");
-        }
 
         this.computerCaseValidator.validate(computerCase, bindingResult);
 
         if (!bindingResult.hasErrors()) {
 
+            //Setting Requested Parameters
             computerCase.setVendor(this.vendorService.findById(idVendor));
 
+            //Save
+            computerCase.setId(id);
             this.computerCaseService.save(computerCase);
 
             model.addAttribute("computerCase", this.computerCaseService.findById(computerCase.getId()));
@@ -101,30 +115,20 @@ public class ComputerCaseController {
             return "pageComputerCase";
         } else {
 
-            model.addAttribute("computerCase", computerCase);
             model.addAttribute("vendorList", this.vendorService.findAll());
 
-            if(idVendor != 0) {
+            if(idVendor != 0)
                 model.addAttribute("vendorSelected", this.vendorService.findById(idVendor));
-            }
 
             return "admin/editComputerCase";
         }
     }
 
-    @GetMapping("/admin/editComputerCase/{id}")
-    public String editComputerCase(@PathVariable("id") Long id, Model model) {
-        ComputerCase computerCase = computerCaseService.findById(id);
-        model.addAttribute("computerCase", computerCase);
-        model.addAttribute("vendorList", vendorService.findAll());
-        model.addAttribute("vendorSelected", computerCase.getVendor());
-
-        return "admin/editComputerCase";
-    }
-
     @GetMapping("/admin/deleteComputerCase/{id}")
     public String deleteComputerCase(@PathVariable("id") Long id, Model model) {
+
         this.computerCaseService.deleteById(id);
+
         return "redirect:/index";
     }
 

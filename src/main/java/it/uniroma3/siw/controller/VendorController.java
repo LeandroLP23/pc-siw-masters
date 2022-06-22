@@ -41,7 +41,6 @@ public class VendorController {
         return "admin/addVendor";
     }
 
-    //TODO POST-MAPPING su pagina con tutti i venditori
     @PostMapping("/admin/pageAllVendor")
     public String addVendor(@ModelAttribute("vendor") Vendor vendor, BindingResult bindingResult, Model model) {
 
@@ -51,7 +50,6 @@ public class VendorController {
 
             this.vendorService.save(vendor);
 
-            //Torna sulla index
             return "redirect:/index";
         } else {
             return "admin/addVendor";
@@ -59,21 +57,24 @@ public class VendorController {
     }
 
     @GetMapping("/admin/editVendor/{id}")
-    public String editAccessory(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("vendor", vendorService.findById(id));
-        return "admin/editVendor";
+    public String getEditAccessory(@PathVariable("id") Long id, Model model) {
+
+        Vendor vendor = vendorService.findById(id);
+
+        model.addAttribute("vendor", vendor);
+
+        return "admin/addVendor";
     }
 
-    @Transactional
     @PostMapping("/admin/updateVendor/{id}")
     public String editVendor(@PathVariable Long id, @ModelAttribute("vendor") Vendor vendor, BindingResult bindingResult, Model model) {
         this.vendorValidator.validate(vendor, bindingResult);
 
         if (!bindingResult.hasErrors()) {
-
+            //Save
+            vendor.setId(id);
             this.vendorService.save(vendor);
 
-            //Torna sulla index
             return "redirect:/index";
         } else {
             return "admin/editVendor";

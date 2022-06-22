@@ -40,6 +40,7 @@ public class NotebookController {
         return "admin/addNotebook";
     }
 
+
     @PostMapping("/admin/pageNotebook")
     public String addNotebook(@ModelAttribute("notebook") Notebook notebook,
                               @RequestParam(value = "idVendor", required = false) Long idVendor,
@@ -56,8 +57,10 @@ public class NotebookController {
 
         if (!bindingResult.hasErrors()) {
 
+            //Setting Requested Parameters
             notebook.setVendor(this.vendorService.findById(idVendor));
 
+            //Save
             this.notebookService.save(notebook);
 
             model.addAttribute("notebook", this.notebookService.findById(notebook.getId()));
@@ -65,7 +68,7 @@ public class NotebookController {
             return "pageNotebook";
         } else {
 
-            model.addAttribute("notebook", notebook);
+            //Fill editPage with pre-filled parameters
             model.addAttribute("vendorList", this.vendorService.findAll());
 
             if (idVendor != 0) {
@@ -77,16 +80,16 @@ public class NotebookController {
     }
 
     @GetMapping("/admin/editNotebook/{id}")
-    public String editNotebook(@PathVariable("id") Long id, Model model) {
+    public String getEditNotebook(@PathVariable("id") Long id, Model model) {
         Notebook notebook = notebookService.findById(id);
+
         model.addAttribute("notebook", notebook);
         model.addAttribute("vendorList", vendorService.findAll());
         model.addAttribute("vendorSelected", notebook.getVendor());
 
-        return "admin/editNotebook";
+        return "admin/addNotebook";
     }
 
-    @Transactional
     @PostMapping("/admin/updateNotebook/{id}")
     public String editNotebook(@PathVariable Long id, @ModelAttribute("notebook") Notebook notebook,
                                @RequestParam(value = "idVendor", required = false) Long idVendor,
@@ -101,8 +104,11 @@ public class NotebookController {
 
         if (!bindingResult.hasErrors()) {
 
+            //Setting Requested Parameters
             notebook.setVendor(this.vendorService.findById(idVendor));
 
+            //Save
+            notebook.setId(id);
             this.notebookService.save(notebook);
 
             model.addAttribute("notebook", this.notebookService.findById(notebook.getId()));
@@ -110,6 +116,7 @@ public class NotebookController {
             return "pageNotebook";
         } else {
 
+            //Fill editPage with pre-filled parameters
             model.addAttribute("notebook", notebook);
             model.addAttribute("vendorList", this.vendorService.findAll());
 
@@ -120,9 +127,12 @@ public class NotebookController {
             return "admin/editNotebook";
         }
     }
+
     @GetMapping("/admin/deleteNotebook/{id}")
     public String deleteNotebook(@PathVariable("id") Long id, Model model) {
+
         this.notebookService.deleteById(id);
+
         return "redirect:/index";
     }
 

@@ -46,34 +46,22 @@ public class AccessoryController {
                                @RequestParam(value = "idVendor",required = false) Long idVendor,
                                Model model, BindingResult bindingResult) {
 
-        if(category ==  null){
-            bindingResult.reject("accessory.category");
-        }
-
-        if(idVendor == 0){
-            bindingResult.reject("accessory.vendor");
-        }
-
-        if(accessory.getPrice() == null){
-            bindingResult.reject("accessory.price");
-        }
-
-        this.accessoryValidator.validate(accessory, bindingResult);
+        paramValidator(accessory, category, idVendor, bindingResult);
 
         if (!bindingResult.hasErrors()) {
 
+            //Setting Requested Parameters
             accessory.setCategory(category);
-
             accessory.setVendor(this.vendorService.findById(idVendor));
 
+            //Save
             this.accessoryService.save(accessory);
 
             model.addAttribute("accessory", this.accessoryService.findById(accessory.getId()));
-
             return "pageAccessory";
         }else{
 
-            model.addAttribute("accessory", accessory);
+            //Fill editPage with pre-filled parameters
             model.addAttribute("vendorList", this.vendorService.findAll());
 
             if(idVendor != 0) {
@@ -88,32 +76,36 @@ public class AccessoryController {
         }
     }
 
+
+    @GetMapping("/admin/editAccessory/{id}")
+    public String getEditAccessory(@PathVariable("id") Long id, Model model) {
+
+        Accessory accessory = accessoryService.findById(id);
+
+        model.addAttribute("accessory", accessory);
+        model.addAttribute("vendorList", vendorService.findAll());
+        model.addAttribute("categorySelected", accessory.getCategory());
+        model.addAttribute("vendorSelected", accessory.getVendor());
+
+        return "admin/editAccessory";
+    }
+
     @PostMapping("/admin/updateAccessory/{id}")
     public String updateAccessory(@PathVariable Long id, @ModelAttribute("accessory") Accessory accessory,
                                 @RequestParam(value = "category",required = false) AccessoryCategory category,
                                 @RequestParam(value = "idVendor",required = false) Long idVendor,
                                 Model model, BindingResult bindingResult) {
 
-        if (category == null) {
-            bindingResult.reject("accessory.category");
-        }
-
-        if (idVendor == 0) {
-            bindingResult.reject("accessory.vendor");
-        }
-
-        if(accessory.getPrice() == null){
-            bindingResult.reject("accessory.price");
-        }
-
-        this.accessoryValidator.validate(accessory, bindingResult);
+        paramValidator(accessory, category, idVendor, bindingResult);
 
         if (!bindingResult.hasErrors()) {
 
+            //Setting Requested Parameters
             accessory.setCategory(category);
-
             accessory.setVendor(this.vendorService.findById(idVendor));
 
+            //Save
+            accessory.setId(id);
             this.accessoryService.save(accessory);
 
             model.addAttribute("accessory", this.accessoryService.findById(accessory.getId()));
@@ -121,7 +113,7 @@ public class AccessoryController {
             return "pageAccessory";
         } else {
 
-            model.addAttribute("accessory", accessory);
+            //Fill editPage with pre-filled parameters
             model.addAttribute("vendorList", this.vendorService.findAll());
 
             if (idVendor != 0) {
@@ -136,20 +128,12 @@ public class AccessoryController {
         }
     }
 
-    @GetMapping("/admin/editAccessory/{id}")
-    public String editAccessory(@PathVariable("id") Long id, Model model) {
-        Accessory accessory = accessoryService.findById(id);
-        model.addAttribute("accessory", accessory);
-        model.addAttribute("vendorList", vendorService.findAll());
-        model.addAttribute("categorySelected", accessory.getCategory());
-        model.addAttribute("vendorSelected", accessory.getVendor());
-
-        return "admin/editAccessory";
-    }
 
     @GetMapping("/admin/deleteAccessory/{id}")
     public String deleteAccessory(@PathVariable("id") Long id, Model model) {
+
         this.accessoryService.deleteById(id);
+
         return "redirect:/index";
     }
 
@@ -159,5 +143,21 @@ public class AccessoryController {
         model.addAttribute("accessoryList",this.accessoryService.findAll());
 
         return "pageAllProducts";
+    }
+
+    private void paramValidator(@ModelAttribute("accessory") Accessory accessory, @RequestParam(value = "category", required = false) AccessoryCategory category, @RequestParam(value = "idVendor", required = false) Long idVendor, BindingResult bindingResult) {
+        if(category ==  null){
+            bindingResult.reject("accessory.category");
+        }
+
+        if(idVendor == 0){
+            bindingResult.reject("accessory.vendor");
+        }
+
+        if(accessory.getPrice() == null){
+            bindingResult.reject("accessory.price");
+        }
+
+        this.accessoryValidator.validate(accessory, bindingResult);
     }
 }
