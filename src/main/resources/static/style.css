@@ -230,7 +230,6 @@
 
 .item-button-container{
     display: flex;
-    line-height: 3000%;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -524,7 +523,8 @@ body {
 
 .category-container-index
 {
-    margin:5% ;
+    margin-inline: 2em;
+    margin-bottom: 1em;
     display: grid;
     grid-template-columns: repeat(2,minmax(30%,50%));
     grid-auto-rows: 1fr;
@@ -712,4 +712,12 @@ body {
 
 .item-card:hover p {
     color: #580cda;
+}
+
+.input-container {
+    min-width: 430px;
+}
+
+.select-dimension {
+    width: 100%;
 }
