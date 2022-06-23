@@ -31,9 +31,7 @@
             <span class="error-message" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
 
             <!--Immagine-->
-            <p>Seleziona un'immagine:</p>
-            <input type="file" accept="image/*" id="customFile" name="file">
-
+            <div th:insert="fragments/addItem.html :: picture-picker"> </div>
         </div>
 
         <!-- Bottoni -->

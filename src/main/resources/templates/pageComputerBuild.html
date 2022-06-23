@@ -20,7 +20,7 @@
     <!-- First Row -->
     <div class="build-row build-name">
 
-        <img class="item-img" src="/images/cuffie.png" alt="Immagine della build " />
+        <img class="item-img" th:src="${computerBuild.picture}" alt="Immagine della build " />
 
         <div class="item-product-description">
 
@@ -52,7 +52,7 @@
                     <div class = "build-details item-card" th:each="hardware : ${computerBuild.hardwareList}">
                         <a th:href="@{'/show/pageHardware/' + ${hardware.id}}">
 
-                            <img class = "img-all-item" th:src = "${accessory.picture}" alt = "Immagine accessorio">
+                            <img class = "img-all-item" th:src = "${hardware.picture}" alt = "Immagine accessorio">
 
                             <div class = "build-details">
                                 <p th:text="${hardware.name}"></p>
@@ -71,12 +71,8 @@
                     <div class = "build-details item-card" th:each="accessory : ${computerBuild.accessoryList}">
                         <a th:href="@{'/show/pageAccessory/' + ${accessory.id}}">
 
-                        <img class = "img-all-item" th:src = "${hardware.picture}" alt = "Immagine accessorio">
+                            <img class = "img-all-item" th:src = "${accessory.picture}" alt = "Immagine accessorio">
 
-                        <div class = "item-details">
-                            <p th:text="${hardware.name}"></p>
-                        </div>
-                    </a>
                             <div class = "build-details">
                                 <p th:text="${accessory.name}"></p>
                             </div>
