@@ -15,39 +15,47 @@
 <div th:insert="fragments/header.html :: header"> </div>
 
 <!-- Content -->
-<div class="item-container">
+<div class="build-container">
 
-    <!-- Left Column -->
-    <div class="item-left-column">
+    <!-- First Row -->
+    <div class="build-row build-name">
+
         <img class="item-img" src="/images/cuffie.png" alt="Immagine della build " />
-    </div>
 
-    <!-- Right Column -->
-    <div class="item-right-column">
-
-        <!-- ComputerBuild Description -->
         <div class="item-product-description">
 
             <!-- Name -->
             <h1 th:text="${computerBuild.name}"></h1>
 
-            <!-- Price -->
-            <div th:insert="fragments/pageItem.html :: property(Prezzo, ${computerBuild.price} + ' €')"> </div>
+            <div>
+                <!-- Price -->
+                <div th:insert="fragments/pageItem.html :: property(Prezzo, ${computerBuild.price} + ' €')"> </div>
 
-            <!-- Computer Case -->
-            <div th:insert="fragments/pageItem.html :: property(Case, ${computerBuild.computerCase.name} )"> </div>
+                <!-- Computer Case -->
+                <div th:insert="fragments/pageItem.html :: property(Case, ${computerBuild.computerCase.name} )"> </div>
+            </div>
 
-            <!-- Accessory List -->
-            <div th:if="${computerBuild.accessoryList!= null}">
-                <h4>I suoi accessori:</h4>
+        </div>
+
+    </div>
+
+    <!-- Second Row -->
+    <div class="build-row">
+
+        <!-- ComputerBuild Description -->
+        <div class="build-product-description">
+
+            <!-- Hardware List -->
+            <h2>L'hardware che lo compone:</h2>
+            <div class="build-row">
                 <div class="container">
-                    <div th:each="accessory : ${computerBuild.accessoryList}">
-                        <a th:href="@{'/show/pageAccessory/' + ${accessory.id}}">
+                    <div class = "build-details item-card" th:each="hardware : ${computerBuild.hardwareList}">
+                        <a th:href="@{'/show/pageHardware/' + ${hardware.id}}">
 
                             <img class = "img-all-item" src = "/images/CPUi3.png" alt = "Immagine accessorio">
 
-                            <div class = "item-details">
-                                <p th:text="${accessory.name}"></p>
+                            <div class = "build-details">
+                                <p th:text="${hardware.name}"></p>
                             </div>
                         </a>
 
@@ -56,27 +64,29 @@
 
             </div>
 
-            <!-- Hardware List -->
-            <h4>Controlla l'hardware che lo compone:</h4>
-            <div class="container">
-                <div th:each="hardware : ${computerBuild.hardwareList}">
-                    <a th:href="@{'/show/pageHardware/' + ${hardware.id}}">
+            <!-- Accessory List -->
+            <h2>I suoi accessori:</h2>
+            <div th:if="${computerBuild.accessoryList!= null}">
+                <div class="container">
+                    <div class = "build-details item-card" th:each="accessory : ${computerBuild.accessoryList}">
+                        <a th:href="@{'/show/pageAccessory/' + ${accessory.id}}">
 
-                        <img class = "img-all-item" src = "/images/CPUi3.png" alt = "Immagine accessorio">
+                            <img class = "img-all-item" src = "/images/CPUi3.png" alt = "Immagine accessorio">
 
-                        <div class = "item-details">
-                            <p th:text="${hardware.name}"></p>
-                        </div>
-                    </a>
-
+                            <div class = "build-details">
+                                <p th:text="${accessory.name}"></p>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
 
+            <!-- Bottone Modifica -->
+            <a th:href="@{'/admin/editComputerBuild/'+ ${computerBuild.id}}">
+                <button class="item-button">Modifica Computer Build</button>
+            </a>
+
         </div>
 
-        <!-- Bottone Modifica -->
-        <a th:href="@{'/admin/editComputerBuild/'+ ${computerBuild.id}}">
-            <button class="item-button">Modifica Computer Build</button>
-        </a>
     </div>
 </div>
