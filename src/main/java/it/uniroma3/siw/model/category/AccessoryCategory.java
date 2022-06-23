@@ -1,9 +1,9 @@
 package it.uniroma3.siw.model.category;
 
 public enum AccessoryCategory {
-    MOUSE("Mouse"),
-    TASTIERA("Tastiera"),
-    ALTRO("Altro");
+    mouse("Mouse"),
+    tastiera("Tastiera"),
+    altro("Altro");
 
     private final String displayValue;
 

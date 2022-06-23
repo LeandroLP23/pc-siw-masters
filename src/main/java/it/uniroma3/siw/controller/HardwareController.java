@@ -57,7 +57,7 @@ public class HardwareController {
             //Setting Requested Parameters
             hardware.setCategory(category);
             hardware.setVendor(this.vendorService.findById(idVendor));
-            hardware.setPicture(MainController.SavePicture(pictureFolder,image));
+            hardware.setPicture(MainController.SavePicture(pictureFolder+category.name()+"/",image));
 
             //Save
             this.hardwareService.save(hardware);
@@ -112,8 +112,8 @@ public class HardwareController {
             if(!image.isEmpty())
             {
                 Hardware previousHardware = this.hardwareService.findById(id);
-                String fileName = previousHardware.getPicture().replace(pictureFolder, "");
-                hardware.setPicture(MainController.SavePicture(fileName, pictureFolder, image));
+                String fileName = previousHardware.getPicture().replace(pictureFolder+category.name()+"/", "");
+                hardware.setPicture(MainController.SavePicture(fileName, pictureFolder+category.name()+"/", image));
             }
             else
             {

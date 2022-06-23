@@ -56,7 +56,7 @@ public class AccessoryController {
             //Setting Requested Parameters
             accessory.setCategory(category);
             accessory.setVendor(this.vendorService.findById(idVendor));
-            accessory.setPicture(MainController.SavePicture(pictureFolder, image));
+            accessory.setPicture(MainController.SavePicture(pictureFolder+category.name()+"/", image));
             //Save
             this.accessoryService.save(accessory);
 
@@ -112,8 +112,8 @@ public class AccessoryController {
             if(!image.isEmpty())
             {
                 Accessory previousAccessory = this.accessoryService.findById(id);
-                String fileName = previousAccessory.getPicture().replace(pictureFolder, "");
-                accessory.setPicture(MainController.SavePicture(fileName, pictureFolder, image));
+                String fileName = previousAccessory.getPicture().replace(pictureFolder+category.name()+"/", "");
+                accessory.setPicture(MainController.SavePicture(fileName, pictureFolder+category.name()+"/", image));
             }
             else
             {

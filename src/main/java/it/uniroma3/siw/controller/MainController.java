@@ -16,16 +16,17 @@ public class MainController {
     {
         String pictureFolder = "";
         try {
+
+            //Cerco la cartella
+            File dir = new File(AbsPath +path);
+            if (!dir.exists())
+                dir.mkdirs();
+
             //Verifico la presenza di un'immagine
             if (!image.isEmpty()) {
 
                 //Ottengo i bytes dell'immagine
                 byte[] bytes = image.getBytes();
-                File dir = new File(AbsPath +path);
-
-                //Cerco la cartella
-                if (!dir.exists())
-                    dir.mkdirs();
 
                 //Carico l'immagine
                 File uploadFile = new File(dir.getAbsolutePath() + File.separator + name);
