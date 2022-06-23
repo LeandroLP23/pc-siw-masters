@@ -25,44 +25,44 @@
 
 <div class="rei_flex-container">
     <div th:if="${randomHardware!=null}" >
-    <a th:href="@{'/show/pageHardware/' +  ${randomHardware.id}}" class="link white">
-        <div class="card-item-index">
-            <div class="card-item-image">
-                <img th:src="${randomHardware.picture}" class="card-category-image" />
+        <a th:href="@{'/show/pageHardware/' +  ${randomHardware.id}}" class="link white">
+            <div class="card-item-index">
+                <div class="card-item-image">
+                    <img th:src="${randomHardware.picture}" class="card-category-image" />
+                </div>
+                <h2 th:text="${randomHardware.name}"></h2>
             </div>
-            <h2 th:text="${randomHardware.name}"></h2>
-        </div>
-    </a>
+        </a>
     </div>
     <div th:if="${randomNotebook!=null}">
-    <a th:href="@{'/show/pageNotebook/' +  ${randomNotebook.id}}" class="link white">
-        <div  class="card-item-index">
-            <div class="card-item-image">
-                <img th:src="${randomNotebook.picture}" class="card-category-image" />
+        <a th:href="@{'/show/pageNotebook/' +  ${randomNotebook.id}}" class="link white">
+            <div  class="card-item-index">
+                <div class="card-item-image">
+                    <img th:src="${randomNotebook.picture}" class="card-category-image" />
+                </div>
+                <h2 th:text="${randomNotebook.name}"></h2>
             </div>
-            <h2 th:text="${randomNotebook.name}"></h2>
-        </div>
-    </a>
+        </a>
     </div>
     <div th:if="${randomComputerBuild!=null}">
-    <a th:href="@{'/show/pageComputerBuild/' +  ${randomComputerBuild.id}}" class="link white">
-        <div  class="card-item-index">
-            <div class="card-item-image">
-                <img th:src="${randomComputerBuild.picture}" class="card-category-image" />
+        <a th:href="@{'/show/pageComputerBuild/' +  ${randomComputerBuild.id}}" class="link white">
+            <div  class="card-item-index">
+                <div class="card-item-image">
+                    <img th:src="${randomComputerBuild.picture}" class="card-category-image" />
+                </div>
+                <h2 th:text="${randomComputerBuild.name}"></h2>
             </div>
-            <h2 th:text="${randomComputerBuild.name}"></h2>
-        </div>
-    </a>
+        </a>
     </div>
     <div th:if="${randomAccessory!=null}">
-    <a th:href="@{'/show/pageAccessory/' +  ${randomAccessory.id}}" class="link white">
-        <div  class="card-item-index">
-            <div class="card-item-image">
-                <img th:src="${randomAccessory.picture}" class="card-category-image" />
+        <a th:href="@{'/show/pageAccessory/' +  ${randomAccessory.id}}" class="link white">
+            <div  class="card-item-index">
+                <div class="card-item-image">
+                    <img th:src="${randomAccessory.picture}" class="card-category-image" />
+                </div>
+                <h2 th:text="${randomAccessory.name}"></h2>
             </div>
-            <h2 th:text="${randomAccessory.name}"></h2>
-        </div>
-    </a>
+        </a>
     </div>
 </div>
 
