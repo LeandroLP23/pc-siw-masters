@@ -48,11 +48,12 @@
 
         <!-- Bottoni -->
         <div class="item-button-container">
-            <a th:href="'/admin/deleteHardware/'+ ${hardware.id}">
-                <div class="item-button delete-button">Elimina componente Hardware</div>
+            <a th:href="'/admin/deleteComputerBuild/'+ ${hardware.id}" class="link">
+                <div class="item-button delete-button">Elimina Computer Build</div>
             </a>
             <button type="submit" class="item-button">Salva modifiche</button>
         </div>
+
     </div>
 </form>
 
