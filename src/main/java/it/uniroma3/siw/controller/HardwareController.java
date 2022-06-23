@@ -7,10 +7,10 @@ import it.uniroma3.siw.service.HardwareService;
 import it.uniroma3.siw.service.VendorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class HardwareController {
@@ -23,6 +23,8 @@ public class HardwareController {
 
     @Autowired
     private VendorService vendorService;
+
+    private static final String pictureFolder = "/images/hardware/";
 
     @GetMapping("/show/pageHardware/{id}")
     public String getPageHardware(Model model, @PathVariable("id") Long id){
@@ -45,6 +47,7 @@ public class HardwareController {
     public String addHardware(@ModelAttribute("hardware") Hardware hardware,
                               @RequestParam(value = "category",required = false) HardwareCategory category,
                               @RequestParam(value = "idVendor",required = false) Long idVendor,
+                              @RequestParam("file") MultipartFile image,
                               Model model, BindingResult bindingResult) {
 
         paramValidator(hardware, category, idVendor, bindingResult);
@@ -54,6 +57,7 @@ public class HardwareController {
             //Setting Requested Parameters
             hardware.setCategory(category);
             hardware.setVendor(this.vendorService.findById(idVendor));
+            hardware.setPicture(MainController.SavePicture(pictureFolder,image));
 
             //Save
             this.hardwareService.save(hardware);
@@ -91,9 +95,10 @@ public class HardwareController {
 
     @PostMapping("/admin/updateHardware/{id}")
     public String updateHardware(@PathVariable Long id, @ModelAttribute("hardware") Hardware hardware,
-                               @RequestParam(value = "category",required = false) HardwareCategory category,
-                               @RequestParam(value = "idVendor",required = false) Long idVendor,
-                               Model model, BindingResult bindingResult) {
+                                 @RequestParam(value = "category",required = false) HardwareCategory category,
+                                 @RequestParam(value = "idVendor",required = false) Long idVendor,
+                                 @RequestParam("file") MultipartFile image,
+                                 Model model, BindingResult bindingResult) {
 
         paramValidator(hardware, category, idVendor, bindingResult);
 
@@ -102,6 +107,18 @@ public class HardwareController {
             //Setting Requested Parameters
             hardware.setCategory(category);
             hardware.setVendor(this.vendorService.findById(idVendor));
+
+            //Update and Set picture
+            if(!image.isEmpty())
+            {
+                Hardware previousHardware = this.hardwareService.findById(id);
+                String fileName = previousHardware.getPicture().replace(pictureFolder, "");
+                hardware.setPicture(MainController.SavePicture(fileName, pictureFolder, image));
+            }
+            else
+            {
+                hardware.setPicture(this.hardwareService.findById(id).getPicture());
+            }
 
             //Save
             hardware.setId(id);

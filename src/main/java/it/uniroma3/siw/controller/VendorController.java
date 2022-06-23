@@ -1,8 +1,6 @@
 package it.uniroma3.siw.controller;
 
 import it.uniroma3.siw.controller.validator.VendorValidator;
-import it.uniroma3.siw.model.ComputerCase;
-import it.uniroma3.siw.model.Hardware;
 import it.uniroma3.siw.model.Vendor;
 import it.uniroma3.siw.service.AccessoryService;
 import it.uniroma3.siw.service.ComputerCaseService;
@@ -10,10 +8,10 @@ import it.uniroma3.siw.service.HardwareService;
 import it.uniroma3.siw.service.VendorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class VendorController {
@@ -33,6 +31,8 @@ public class VendorController {
     @Autowired
     private AccessoryService accessoryService;
 
+    private static final String pictureFolder = "/images/vendor/";
+
     @GetMapping("/admin/addVendor")
     public String getAddVendor(Model model) {
 
@@ -42,12 +42,14 @@ public class VendorController {
     }
 
     @PostMapping("/admin/pageAllVendor")
-    public String addVendor(@ModelAttribute("vendor") Vendor vendor, BindingResult bindingResult, Model model) {
+    public String addVendor(@ModelAttribute("vendor") Vendor vendor,
+                            @RequestParam("file") MultipartFile image,
+                            BindingResult bindingResult, Model model) {
 
         this.vendorValidator.validate(vendor, bindingResult);
 
         if (!bindingResult.hasErrors()) {
-
+            vendor.setPicture(MainController.SavePicture(pictureFolder,image));
             this.vendorService.save(vendor);
 
             return "redirect:/index";
@@ -67,10 +69,26 @@ public class VendorController {
     }
 
     @PostMapping("/admin/updateVendor/{id}")
-    public String editVendor(@PathVariable Long id, @ModelAttribute("vendor") Vendor vendor, BindingResult bindingResult, Model model) {
+    public String editVendor(@PathVariable Long id,
+                             @ModelAttribute("vendor") Vendor vendor,
+                             @RequestParam("file") MultipartFile image,
+                             BindingResult bindingResult, Model model) {
         this.vendorValidator.validate(vendor, bindingResult);
 
         if (!bindingResult.hasErrors()) {
+
+            //Update and Set picture
+            if(!image.isEmpty())
+            {
+                Vendor previousVendor = this.vendorService.findById(id);
+                String fileName = previousVendor.getPicture().replace(pictureFolder, "");
+                vendor.setPicture(MainController.SavePicture(fileName, pictureFolder, image));
+            }
+            else
+            {
+                vendor.setPicture(this.vendorService.findById(id).getPicture());
+            }
+
             //Save
             vendor.setId(id);
             this.vendorService.save(vendor);

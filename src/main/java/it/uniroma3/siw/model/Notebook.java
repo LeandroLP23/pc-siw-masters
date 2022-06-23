@@ -18,6 +18,9 @@ public class Notebook {
     @ManyToOne
     private Vendor vendor;
 
+    @Column(nullable = false)
+    private String picture;
+
     public Notebook getNotebook(){
         return this;
     }
@@ -54,4 +57,11 @@ public class Notebook {
         this.vendor = vendor;
     }
 
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
 }

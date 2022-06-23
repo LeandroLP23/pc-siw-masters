@@ -27,6 +27,9 @@ public class Accessory {
     @ManyToMany (cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE})
     private List<ComputerBuild> computerBuildList;
 
+    @Column(nullable = false)
+    private String picture;
+
     @Override
     public boolean equals(Object obj) {
         if (obj != null && obj.getClass().equals(this.getClass())) {
@@ -91,4 +94,11 @@ public class Accessory {
         this.computerBuildList = computerBuildList;
     }
 
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
 }

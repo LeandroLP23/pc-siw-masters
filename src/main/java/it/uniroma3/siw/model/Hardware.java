@@ -28,6 +28,9 @@ public class Hardware {
     @ManyToMany (cascade = CascadeType.ALL)
     private List<ComputerBuild> computerBuildList;
 
+    @Column(nullable = false)
+    private String picture;
+
     @Override
     public boolean equals(Object obj) {
         if (obj != null && obj.getClass().equals(this.getClass())) {
@@ -90,5 +93,13 @@ public class Hardware {
 
     public void setComputerBuildList(List<ComputerBuild> computerBuildList) {
         this.computerBuildList = computerBuildList;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 }

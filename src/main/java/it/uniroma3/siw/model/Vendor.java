@@ -25,6 +25,9 @@ public class Vendor {
     @OneToMany(mappedBy = "vendor", cascade = CascadeType.ALL)
     private List<Notebook> notebookList;
 
+    @Column(nullable = false)
+    private String picture;
+
     @Override
     public boolean equals(Object obj) {
         if (obj != null && obj.getClass().equals(this.getClass())) {
@@ -84,5 +87,13 @@ public class Vendor {
 
     public void setNotebookList(List<Notebook> notebookList) {
         this.notebookList = notebookList;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 }

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +34,8 @@ public class ComputerBuildController {
 
     @Autowired
     private AccessoryService accessoryService;
+
+    private static final String pictureFolder = "/images/computerBuild/";
 
     @GetMapping("/show/pageComputerBuild/{id}")
     public String getPageComputerBuild(Model model, @PathVariable("id") Long id) {
@@ -63,6 +66,7 @@ public class ComputerBuildController {
                                    @RequestParam(value = "idRam",required = false) Long idRam,
                                    @RequestParam(value = "idStorage",required = false) Long idStorage,
                                    @RequestParam(value = "idPowerSupply",required = false) Long idPowerSupply,
+                                   @RequestParam("file") MultipartFile image,
                                    Model model, BindingResult bindingResult) {
 
         //Gli accessory non sono necessari, non controllo la loro presenza per chiamare un errore
@@ -72,6 +76,9 @@ public class ComputerBuildController {
         if (!bindingResult.hasErrors()) {
 
             settingRequestedParam(computerBuild, idAccessory, idComputerCase, idCpu, idGpu, idMotherboard, idRam, idStorage, idPowerSupply);
+
+            //Set picture
+            computerBuild.setPicture(MainController.SavePicture(pictureFolder,image));
 
             this.computerBuildService.save(computerBuild);
 
@@ -111,16 +118,17 @@ public class ComputerBuildController {
 
     @PostMapping("/admin/updateComputerBuild/{id}")
     public String updateComputerBuild(@ModelAttribute("computerBuild") ComputerBuild computerBuild,
-                                   @RequestParam(value = "idAccessory",required = false) List<Long> idAccessory,
-                                   @RequestParam(value = "idComputerCase",required = false) Long idComputerCase,
-                                   @RequestParam(value = "idCpu",required = false) Long idCpu,
-                                   @RequestParam(value = "idGpu",required = false) Long idGpu,
-                                   @RequestParam(value = "idMotherboard",required = false) Long idMotherboard,
-                                   @RequestParam(value = "idRam",required = false) Long idRam,
-                                   @RequestParam(value = "idStorage",required = false) Long idStorage,
-                                   @RequestParam(value = "idPowerSupply",required = false) Long idPowerSupply,
-                                   @PathVariable("id") Long id,
-                                   Model model, BindingResult bindingResult) {
+                                      @RequestParam(value = "idAccessory",required = false) List<Long> idAccessory,
+                                      @RequestParam(value = "idComputerCase",required = false) Long idComputerCase,
+                                      @RequestParam(value = "idCpu",required = false) Long idCpu,
+                                      @RequestParam(value = "idGpu",required = false) Long idGpu,
+                                      @RequestParam(value = "idMotherboard",required = false) Long idMotherboard,
+                                      @RequestParam(value = "idRam",required = false) Long idRam,
+                                      @RequestParam(value = "idStorage",required = false) Long idStorage,
+                                      @RequestParam(value = "idPowerSupply",required = false) Long idPowerSupply,
+                                      @RequestParam("file") MultipartFile image,
+                                      @PathVariable("id") Long id,
+                                      Model model, BindingResult bindingResult) {
 
         //Gli accessory non sono necessari, non controllo la loro presenza per chiamare un errore
 
@@ -130,6 +138,18 @@ public class ComputerBuildController {
 
             //Setting accessoryList
             settingRequestedParam(computerBuild, idAccessory, idComputerCase, idCpu, idGpu, idMotherboard, idRam, idStorage, idPowerSupply);
+
+            //Update and Set picture
+            if(!image.isEmpty())
+            {
+                ComputerBuild previousBuild = this.computerBuildService.findById(id);
+                String fileName = previousBuild.getPicture().replace(pictureFolder, "");
+                computerBuild.setPicture(MainController.SavePicture(fileName, pictureFolder, image));
+            }
+            else
+            {
+                computerBuild.setPicture(this.computerBuildService.findById(id).getPicture());
+            }
 
             //Save
             computerBuild.setId(id);
@@ -246,6 +266,7 @@ public class ComputerBuildController {
         }
         priceComputerBuild+=computerCase.getPrice();
         computerBuild.setPrice(priceComputerBuild);
+
     }
 
     private void fillEditPageParam(@RequestParam(value = "idAccessory", required = false) List<Long> idAccessory, @RequestParam(value = "idComputerCase", required = false) Long idComputerCase, @RequestParam(value = "idCpu", required = false) Long idCpu, @RequestParam(value = "idGpu", required = false) Long idGpu, @RequestParam(value = "idMotherboard", required = false) Long idMotherboard, @RequestParam(value = "idRam", required = false) Long idRam, @RequestParam(value = "idStorage", required = false) Long idStorage, @RequestParam(value = "idPowerSupply", required = false) Long idPowerSupply, Model model) {

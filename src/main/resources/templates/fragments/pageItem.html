@@ -17,7 +17,7 @@
 <div th:fragment="allItemList(list, pathName,catFlag,vendFlag)" class="container">
         <div th:each="item: ${list}" class="item-card">
             <a th:href="@{'/show/page'+ ${pathName} +'/'+ ${item.id}}" class = "link-products">
-                <img class = "img-all-item" src = "/images/CPUi3.png" alt = "">
+                <img class = "img-all-item" th:src="${item.picture}" alt = "">
 
                 <div class = "item-details">
                     <p th:text="${item.name}"></p>

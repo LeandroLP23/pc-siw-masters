@@ -1,16 +1,16 @@
 package it.uniroma3.siw.controller;
 
+import it.uniroma3.siw.controller.validator.AccessoryValidator;
 import it.uniroma3.siw.model.Accessory;
 import it.uniroma3.siw.model.category.AccessoryCategory;
+import it.uniroma3.siw.service.AccessoryService;
 import it.uniroma3.siw.service.VendorService;
 import org.springframework.beans.factory.annotation.Autowired;
-import it.uniroma3.siw.controller.validator.AccessoryValidator;
-import it.uniroma3.siw.service.AccessoryService;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class AccessoryController {
@@ -22,6 +22,8 @@ public class AccessoryController {
 
     @Autowired
     private VendorService vendorService;
+
+    private static final String pictureFolder = "/images/accessory/";
 
     @GetMapping("/show/pageAccessory/{id}")
     public String getPageAccessory(Model model, @PathVariable("id") Long id) {
@@ -44,6 +46,7 @@ public class AccessoryController {
     public String addAccessory(@ModelAttribute("accessory") Accessory accessory,
                                @RequestParam(value = "category",required = false) AccessoryCategory category,
                                @RequestParam(value = "idVendor",required = false) Long idVendor,
+                               @RequestParam("file") MultipartFile image,
                                Model model, BindingResult bindingResult) {
 
         paramValidator(accessory, category, idVendor, bindingResult);
@@ -53,7 +56,7 @@ public class AccessoryController {
             //Setting Requested Parameters
             accessory.setCategory(category);
             accessory.setVendor(this.vendorService.findById(idVendor));
-
+            accessory.setPicture(MainController.SavePicture(pictureFolder, image));
             //Save
             this.accessoryService.save(accessory);
 
@@ -92,9 +95,10 @@ public class AccessoryController {
 
     @PostMapping("/admin/updateAccessory/{id}")
     public String updateAccessory(@PathVariable Long id, @ModelAttribute("accessory") Accessory accessory,
-                                @RequestParam(value = "category",required = false) AccessoryCategory category,
-                                @RequestParam(value = "idVendor",required = false) Long idVendor,
-                                Model model, BindingResult bindingResult) {
+                                  @RequestParam(value = "category",required = false) AccessoryCategory category,
+                                  @RequestParam(value = "idVendor",required = false) Long idVendor,
+                                  @RequestParam("file") MultipartFile image,
+                                  Model model, BindingResult bindingResult) {
 
         paramValidator(accessory, category, idVendor, bindingResult);
 
@@ -103,6 +107,18 @@ public class AccessoryController {
             //Setting Requested Parameters
             accessory.setCategory(category);
             accessory.setVendor(this.vendorService.findById(idVendor));
+
+            //Update picture
+            if(!image.isEmpty())
+            {
+                Accessory previousAccessory = this.accessoryService.findById(id);
+                String fileName = previousAccessory.getPicture().replace(pictureFolder, "");
+                accessory.setPicture(MainController.SavePicture(fileName, pictureFolder, image));
+            }
+            else
+            {
+                accessory.setPicture(this.accessoryService.findById(id).getPicture());
+            }
 
             //Save
             accessory.setId(id);
@@ -145,7 +161,10 @@ public class AccessoryController {
         return "pageAllProducts";
     }
 
-    private void paramValidator(@ModelAttribute("accessory") Accessory accessory, @RequestParam(value = "category", required = false) AccessoryCategory category, @RequestParam(value = "idVendor", required = false) Long idVendor, BindingResult bindingResult) {
+    private void paramValidator(@ModelAttribute("accessory") Accessory accessory,
+                                @RequestParam(value = "category", required = false) AccessoryCategory category,
+                                @RequestParam(value = "idVendor", required = false) Long idVendor,
+                                BindingResult bindingResult) {
         if(category ==  null){
             bindingResult.reject("accessory.category");
         }

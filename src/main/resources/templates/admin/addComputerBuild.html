@@ -13,7 +13,7 @@
 <div th:insert="fragments/header.html :: header"> </div>
 
 <!-- Content -->
-<form th:action="@{/admin/pageComputerBuild}" method="POST" th:object="${computerBuild}" class="add-item-container">
+<form th:action="@{/admin/pageComputerBuild}" method="POST" th:object="${computerBuild}" class="add-item-container" enctype="multipart/form-data">
     <div class="add-item-container">
 
         <h2>Aggiungi Computer Build </h2>
@@ -62,9 +62,9 @@
             <p>Seleziona l'alimentatore: </p>
             <div th:insert="fragments/addItem.html :: hardware-radio-button(${powerSupplyList},'idPowerSupply',${powerSupplySelected})"> </div>
 
-            <!-- Immagine
+            <!--Immagine-->
             <p>Seleziona un'immagine:</p>
-            <input type="file" accept="image/*">-->
+            <input type="file" accept="image/*" id="customFile" name="file">
 
         </div>
 

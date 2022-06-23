@@ -6,10 +6,10 @@ import it.uniroma3.siw.service.NotebookService;
 import it.uniroma3.siw.service.VendorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class NotebookController {
@@ -22,6 +22,8 @@ public class NotebookController {
 
     @Autowired
     private VendorService vendorService;
+
+    private static final String pictureFolder = "/images/notebook/";
 
     @GetMapping("/show/pageNotebook/{id}")
     public String getPageHardware(Model model, @PathVariable("id") Long id) {
@@ -44,6 +46,7 @@ public class NotebookController {
     @PostMapping("/admin/pageNotebook")
     public String addNotebook(@ModelAttribute("notebook") Notebook notebook,
                               @RequestParam(value = "idVendor", required = false) Long idVendor,
+                              @RequestParam("file") MultipartFile image,
                               Model model, BindingResult bindingResult) {
 
         if (idVendor == 0)
@@ -59,6 +62,7 @@ public class NotebookController {
 
             //Setting Requested Parameters
             notebook.setVendor(this.vendorService.findById(idVendor));
+            notebook.setPicture(MainController.SavePicture(pictureFolder,image));
 
             //Save
             this.notebookService.save(notebook);
@@ -93,6 +97,7 @@ public class NotebookController {
     @PostMapping("/admin/updateNotebook/{id}")
     public String editNotebook(@PathVariable Long id, @ModelAttribute("notebook") Notebook notebook,
                                @RequestParam(value = "idVendor", required = false) Long idVendor,
+                               @RequestParam("file") MultipartFile image,
                                Model model, BindingResult bindingResult) {
         if (idVendor == 0)
             bindingResult.reject("notebook.vendor");
@@ -106,6 +111,18 @@ public class NotebookController {
 
             //Setting Requested Parameters
             notebook.setVendor(this.vendorService.findById(idVendor));
+
+            //Update and Set picture
+            if(!image.isEmpty())
+            {
+                Notebook previousNotebook = this.notebookService.findById(id);
+                String fileName = previousNotebook.getPicture().replace(pictureFolder, "");
+                notebook.setPicture(MainController.SavePicture(fileName, pictureFolder, image));
+            }
+            else
+            {
+                notebook.setPicture(this.notebookService.findById(id).getPicture());
+            }
 
             //Save
             notebook.setId(id);

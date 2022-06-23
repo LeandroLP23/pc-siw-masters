@@ -6,10 +6,10 @@ import it.uniroma3.siw.service.ComputerCaseService;
 import it.uniroma3.siw.service.VendorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class ComputerCaseController {
@@ -22,6 +22,8 @@ public class ComputerCaseController {
 
     @Autowired
     private VendorService vendorService;
+
+    private static final String pictureFolder = "/images/computerCase/";
 
     @GetMapping("/show/pageComputerCase/{id}")
     public String getPageComputerCase(Model model, @PathVariable("id") Long id){
@@ -43,6 +45,7 @@ public class ComputerCaseController {
     @PostMapping("/admin/pageComputerCase")
     public String addComputerCase (@ModelAttribute("computerCase") ComputerCase computerCase,
                                    @RequestParam(value = "idVendor",required = false) Long idVendor,
+                                   @RequestParam("file") MultipartFile image,
                                    Model model, BindingResult bindingResult ) {
 
         if (idVendor == 0)
@@ -57,6 +60,7 @@ public class ComputerCaseController {
         if (!bindingResult.hasErrors()) {
 
             computerCase.setVendor(this.vendorService.findById(idVendor));
+            computerCase.setPicture(MainController.SavePicture(pictureFolder,image));
 
             this.computerCaseService.save(computerCase);
 
@@ -91,6 +95,7 @@ public class ComputerCaseController {
     @PostMapping("/admin/updateComputerCase/{id}")
     public String updateComputerCase(@PathVariable Long id, @ModelAttribute("computerCase") ComputerCase computerCase,
                                      @RequestParam(value = "idVendor",required = false) Long idVendor,
+                                     @RequestParam("file") MultipartFile image,
                                      Model model, BindingResult bindingResult ) {
 
         if (idVendor == 0)
@@ -105,6 +110,18 @@ public class ComputerCaseController {
 
             //Setting Requested Parameters
             computerCase.setVendor(this.vendorService.findById(idVendor));
+
+            //Update and Set picture
+            if(!image.isEmpty())
+            {
+                ComputerCase previousCase = this.computerCaseService.findById(id);
+                String fileName = previousCase.getPicture().replace(pictureFolder, "");
+                computerCase.setPicture(MainController.SavePicture(fileName, pictureFolder, image));
+            }
+            else
+            {
+                computerCase.setPicture(this.computerCaseService.findById(id).getPicture());
+            }
 
             //Save
             computerCase.setId(id);

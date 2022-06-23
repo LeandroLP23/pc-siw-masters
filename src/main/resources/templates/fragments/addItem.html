@@ -34,7 +34,7 @@
 <!-- Price -->
 <div th:fragment = "price-input(objType)">
     <p>Inserisci prezzo:</p>
-    <input class="input-container" placeholder="Prezzo" th:field="*{__${objType}__.price}" >
+    <input class="input-container" type="number" step="0.01" placeholder="Prezzo" th:field="*{__${objType}__.price}" >
 </div>
 
 

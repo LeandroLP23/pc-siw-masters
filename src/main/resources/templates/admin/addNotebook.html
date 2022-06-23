@@ -14,7 +14,7 @@
 <div th:insert="fragments/header.html :: header"> </div>
 
 <!-- Content -->
-<form th:action="@{/admin/pageNotebook}" method="POST" th:object="${notebook}" class="add-item-container">
+<form th:action="@{/admin/pageNotebook}" method="POST" th:object="${notebook}" class="add-item-container" enctype="multipart/form-data">
     <div class="add-item-container">
 
         <h2>Aggiungi Notebook </h2>
@@ -36,9 +36,9 @@
             <!-- Vendor -->
             <div th:insert="fragments/addItem.html :: vendor-select"> </div>
 
-            <!-- Immagine
+            <!--Immagine-->
             <p>Seleziona un'immagine:</p>
-            <input type="file" accept="image/*">-->
+            <input type="file" accept="image/*" id="customFile" name="file">
 
         </div>
 

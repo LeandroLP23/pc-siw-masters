@@ -44,7 +44,7 @@
                     <div th:each="accessory : ${computerBuild.accessoryList}">
                         <a th:href="@{'/show/pageAccessory/' + ${accessory.id}}">
 
-                            <img class = "img-all-item" src = "/images/CPUi3.png" alt = "Immagine accessorio">
+                            <img class = "img-all-item" th:src = "${accessory.picture}" alt = "Immagine accessorio">
 
                             <div class = "item-details">
                                 <p th:text="${accessory.name}"></p>
@@ -62,7 +62,7 @@
                 <div th:each="hardware : ${computerBuild.hardwareList}">
                     <a th:href="@{'/show/pageHardware/' + ${hardware.id}}">
 
-                        <img class = "img-all-item" src = "/images/CPUi3.png" alt = "Immagine accessorio">
+                        <img class = "img-all-item" th:src = "${hardware.picture}" alt = "Immagine accessorio">
 
                         <div class = "item-details">
                             <p th:text="${hardware.name}"></p>

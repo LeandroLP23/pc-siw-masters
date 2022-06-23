@@ -28,6 +28,9 @@ public class ComputerBuild {
     @ManyToOne
     private ComputerCase computerCase;
 
+    @Column(nullable = false)
+    private String picture;
+
     public Map<HardwareCategory,Hardware> getMappedHardware(){
         Map<HardwareCategory,Hardware> hardwareMap = new TreeMap<>();
         for(Hardware hardware: this.hardwareList){
@@ -86,5 +89,13 @@ public class ComputerBuild {
 
     public void setComputerCase(ComputerCase computerCase) {
         this.computerCase = computerCase;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 }

@@ -27,7 +27,7 @@
     <div th:if="${randomHardware!=null}" class="card-item-index">
         <a th:href="@{'/show/pageHardware/' +  ${randomHardware.id}}" class="link white">
             <div class="card-item-image">
-                <img src="/images/cuffie.png" class="card-category-image" />
+                <img th:src="${randomHardware.picture}" class="card-category-image" />
             </div>
             <h2 th:text="${randomHardware.name}"></h2>
         </a>
@@ -35,7 +35,7 @@
     <div th:if="${randomNotebook!=null}" class="card-item-index">
         <a th:href="@{'/show/pageNotebook/' +  ${randomNotebook.id}}" class="link white">
             <div class="card-item-image">
-                <img src="/images/desktop.png" class="card-category-image" />
+                <img th:src="${randomNotebook.picture}" class="card-category-image" />
             </div>
             <h2 th:text="${randomNotebook.name}"></h2>
         </a>
@@ -43,7 +43,7 @@
     <div th:if="${randomComputerBuild!=null}" class="card-item-index">
         <a th:href="@{'/show/pageComputerBuild/' +  ${randomComputerBuild.id}}" class="link white">
             <div class="card-item-image">
-                <img src="/images/keyboard.png" class="card-category-image" />
+                <img th:src="${randomComputerBuild.picture}" class="card-category-image" />
             </div>
             <h2 th:text="${randomComputerBuild.name}"></h2>
         </a>
@@ -51,7 +51,7 @@
     <div th:if="${randomAccessory!=null}" class="card-item-index">
         <a th:href="@{'/show/pageAccessory/' +  ${randomAccessory.id}}" class="link white">
             <div class="card-item-image">
-                <img src="/images/mouse.png" class="card-category-image" />
+                <img th:src="${randomAccessory.picture}" class="card-category-image" />
             </div>
             <h2 th:text="${randomAccessory.name}"></h2>
         </a>
