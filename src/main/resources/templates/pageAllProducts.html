@@ -45,170 +45,40 @@
     <!-- Accessory -->
     <div th:if="accessoryList!=null" class="container">
         <div th:insert="fragments/pageItem.html :: allItemList(${accessoryList}, Accessory, category, vendor)"> </div>
-        <!--<div th:each="accessory: ${accessoryList}">
-            <a th:href="@{'/show/pageAccessory/'+ ${accessory.id}}" class = "link-products">
-
-                <img class = "img-all-item" src = "/images/CPUi3.png" alt = "">
-
-                <div class = "item-details">
-                    <p th:text="${accessory.name}"></p>
-                    <div th:text="'Categoria: ' + ${accessory.category}"></div>
-                    <div th:text="'Venditore: ' + ${accessory.vendor.name}"></div>
-                    <h3 th:text="${accessory.price} + ' €'"></h3>
-                </div>
-            </a>
-        </div>-->
     </div>
 
     <!-- Hardware -->
     <div th:if="hardwareList!=null" class="container">
         <div th:insert="fragments/pageItem.html :: allItemList(${hardwareList}, Hardware, category, vendor)"> </div>
-        <!--<div th:each="hardware: ${hardwareList}">
-            <a th:href="@{'/show/pageHardware/'+ ${hardware.id}}" class = "link-products">
-
-                <img class = "img-all-item" src = "/images/CPUi3.png" alt = "">
-
-                <div class = "item-details">
-                    <p th:text="${hardware.name}"></p>
-                    <div th:text="'Categoria: ' + ${hardware.category}"></div>
-                    <div th:text="'Venditore: ' + ${hardware.vendor.name}"></div>
-                    <h3 th:text="${hardware.price} + ' €'"></h3>
-                </div>
-            </a>
-        </div>-->
     </div>
 
     <!-- Computer Case -->
     <div th:if="computerCaseList!=null" class="container">
         <div th:insert="fragments/pageItem.html :: allItemList(${computerCaseList}, ComputerCase, ~{}, vendor)"> </div>
-            <!--<div th:each="computerCase: ${computerCaseList}">
-                    <a th:href="@{'/show/pageComputerCase/'+ ${computerCase.id}}" class = "link-products">
-
-                        <img class = "img-all-item" src = "/images/CPUi3.png" alt = "">
-
-                        <div class = "item-details">
-                            <p th:text="${computerCase.name}"></p>
-                            <div th:text="'Venditore: '+ ${computerCase.vendor.name}"></div>
-                            <h3 th:text="${computerCase.price} + ' €'"></h3>
-                        </div>
-                    </a>
-                </div>-->
     </div>
 
     <!-- Notebook -->
     <div th:if="notebookList!=null" class="container">
         <div th:insert="fragments/pageItem.html :: allItemList(${notebookList}, Notebook, ~{}, vendor)"> </div>
-        <!--<div th:each="notebook: ${notebookList}">
-            <a th:href="@{'/show/pageNotebook/'+ ${notebook.id}}" class = "link-products">
-                <img  class = "img-all-item" src = "/images/CPUi3.png" alt = "">
-
-                <div class = "item-details">
-                    <p th:text="${notebook.name}"></p>
-                    <div th:text="'Venditore: '+ ${notebook.vendor.name}"></div>
-                    <h3 th:text="${notebook.price} + ' €'"></h3>
-                </div>
-            </a>
-        </div>-->
     </div>
 
     <!-- Computer Build -->
     <div th:if="computerBuildList!=null" class="container">
         <div th:insert="fragments/pageItem.html :: allItemList(${computerBuildList}, ComputerBuild, ~{}, ~{})"> </div>
-        <!--<div th:each="computerBuild: ${computerBuildList}">
-                    <a th:href="@{'/show/pageComputerBuild/'+ ${computerBuild.id}}" class = "link-products">
-                        <img class = "img-all-item" src = "/images/CPUi3.png" alt = "">
-
-                        <div class = "item-details">
-                            <p th:text="${computerBuild.name}"></p>
-                            <h3 th:text="${computerBuild.price} + ' €'"></h3>
-                        </div>
-                    </a>
-                </div>
-        -->
     </div>
 
     <!-- Vendor Item -->
     <div th:if="vendorHardwareList!=null" class="container">
         <div th:insert="fragments/pageItem.html :: allItemList(${vendorHardwareList}, Hardware, category, ~{})"> </div>
-        <!--<div th:each="vendorHardware: ${vendorHardwareList}">
-            <a th:href="@{'/show/pageHardware/'+ ${vendorHardware.id}}" class = "link-products">
-                <img class = "img-all-item" src = "/images/CPUi3.png" alt = "">
-
-                <div class = "item-details">
-                    <p th:text="${vendorHardware.name}"></p>
-                    <div th:text="'Categoria: '+ ${vendorHardware.category}"></div>
-                    <h3 th:text="${vendorHardware.price} + ' €'"></h3>
-                </div>
-            </a>
-        </div>-->
     </div>
     <div th:if="vendorAccessoryList!=null" class="container">
         <div th:insert="fragments/pageItem.html :: allItemList(${vendorAccessoryList}, Accessory, category, ~{})"> </div>
-        <!--<div th:each="vendorAccessory: ${vendorAccessoryList}">
-            <a th:href="@{'/show/pageAccessory/'+ ${vendorAccessory.id}}" class = "link-products">
-                <img class = "img-all-item" src = "/images/CPUi3.png" alt = "">
-
-                <div class = "item-details">
-                    <p th:text="${vendorAccessory.name}"></p>
-                    <div th:text="'Categoria: '+ ${vendorAccessory.category}"></div>
-                    <div th:text="${vendorAccessory.price} + ' €'"></div>
-                </div>
-            </a>
-        </div>-->
     </div>
     <div th:if="vendorComputerCaseList!=null" class="container">
         <div th:insert="fragments/pageItem.html :: allItemList(${vendorComputerCaseList}, ComputerCase, ~{}, ~{})"> </div>
-        <!--<div th:each="vendorComputerCase: ${vendorComputerCaseList}">
-            <a th:href="@{'/show/pageComputerCase/'+ ${vendorComputerCase.id}}" class = "link-products">
-                <img src = "/images/CPUi3.png"  class = "img-all-item" alt = "">
-
-                <div class = "item-details">
-                    <p th:text="${vendorComputerCase.name}"></p>
-                    <h3 th:text="${vendorComputerCase.price} + ' €'"></h3>
-                </div>
-            </a>
-        </div>-->
     </div>
 
-    <!-- All Items
-    <div th:if="allHardwareList!=null" class="container">
-        <div th:each="allHardware: ${allHardwareList}">
-            <a th:href="@{'/show/pageHardware/'+ ${allHardware.id}}" class = "link-products">
-                <img class = "img-all-item" src = "/images/CPUi3.png" alt = "">
-
-                <div class = "item-details">
-                    <p th:text="${allHardware.name}"></p>
-                    <div th:text="'Categoria: '+ ${allHardware.category}"></div>
-                    <h3 th:text="${allHardware.price} + ' €'"></h3>
-                </div>
-            </a>
-        </div>
-    </div>
-    <div th:if="allAccessoryList!=null" class="container">
-        <div th:each="allAccessory: ${allAccessoryList}" class="item-card">
-            <a th:href="@{'/show/pageAccessory/'+ ${allAccessory.id}}" class = "link-products">
-                <img class = "img-all-item" src = "/images/CPUi3.png" alt = "">
-
-                <div class = "item-details">
-                    <p th:text="${allAccessory.name}"></p>
-                    <h4 th:text="'Categoria: '+ ${allAccessory.category}"></h4>
-                    <h3 th:text="${allAccessory.price} + ' €'"></h3>
-                </div>
-            </a>
-        </div>
-    </div>
-    <div th:if="allComputerCaseList!=null" class="container">
-        <div th:each="allComputerCase: ${allComputerCaseList}">
-            <a th:href="@{'/show/pageComputerCase/'+ ${allComputerCase.id}}" class = "link-products">
-                <img src = "/images/CPUi3.png"  class = "img-all-item" alt = "">
-
-                <div class = "item-details">
-                    <p th:text="${allComputerCase.name}"></p>
-                    <h3 th:text="${allComputerCase.price} + ' €'"></h3>
-                </div>
-            </a>
-        </div>
-    </div>-->
+    <!-- All Items-->
     <div th:if="allHardwareList!=null" class="container">
         <div th:insert="fragments/pageItem.html :: allItemList(${allHardwareList}, Hardware, category, vendor)"> </div>
     </div>
