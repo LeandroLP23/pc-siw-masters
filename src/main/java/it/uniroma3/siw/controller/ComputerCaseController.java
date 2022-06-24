@@ -48,14 +48,7 @@ public class ComputerCaseController {
                                    @RequestParam("file") MultipartFile image,
                                    Model model, BindingResult bindingResult ) {
 
-        if (idVendor == 0)
-            bindingResult.reject("computerCase.vendor");
-
-        if(computerCase.getPrice() == null){
-            bindingResult.reject("computerCase.price");
-        }
-
-        this.computerCaseValidator.validate(computerCase, bindingResult);
+        validate(computerCase, idVendor, image, bindingResult, false);
 
         if (!bindingResult.hasErrors()) {
 
@@ -80,6 +73,7 @@ public class ComputerCaseController {
             return "admin/addComputerCase";
         }
     }
+
     @GetMapping("/admin/editComputerCase/{id}")
     public String getEditComputerCase(@PathVariable("id") Long id, Model model) {
 
@@ -98,13 +92,7 @@ public class ComputerCaseController {
                                      @RequestParam("file") MultipartFile image,
                                      Model model, BindingResult bindingResult ) {
 
-        if (idVendor == 0)
-            bindingResult.reject("computerCase.vendor");
-
-        if(computerCase.getPrice() == null)
-            bindingResult.reject("computerCase.price");
-
-        this.computerCaseValidator.validate(computerCase, bindingResult);
+        validate(computerCase, idVendor, image, bindingResult, true);
 
         if (!bindingResult.hasErrors()) {
 
@@ -116,7 +104,13 @@ public class ComputerCaseController {
             {
                 ComputerCase previousCase = this.computerCaseService.findById(id);
                 String fileName = previousCase.getPicture().replace(pictureFolder, "");
-                computerCase.setPicture(MainController.SavePicture(fileName, pictureFolder, image));
+                if(fileName.contains("default.png"))
+                {
+                    computerCase.setPicture(MainController.SavePicture(pictureFolder,image));
+                }
+                else {
+                    computerCase.setPicture(MainController.SavePicture(fileName, pictureFolder, image));
+                }
             }
             else
             {
@@ -155,5 +149,26 @@ public class ComputerCaseController {
         model.addAttribute("computerCaseList",this.computerCaseService.findAll());
 
         return "pageAllProducts";
+    }
+
+    private void validate(@ModelAttribute("computerCase") ComputerCase computerCase,
+                          @RequestParam(value = "idVendor",required = false) Long idVendor,
+                          @RequestParam("file") MultipartFile image,
+                          BindingResult bindingResult,
+                          Boolean isUpdating) {
+        if (idVendor == 0)
+            bindingResult.reject("computerCase.vendor");
+
+        if(computerCase.getPrice() == null){
+            bindingResult.reject("computerCase.price");
+        }
+        if(isUpdating)
+        {
+            this.computerCaseValidator.validateUpdate(computerCase,image,bindingResult);
+        }
+        else
+        {
+            this.computerCaseValidator.validate(computerCase, bindingResult);
+        }
     }
 }

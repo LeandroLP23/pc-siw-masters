@@ -82,7 +82,7 @@
             </div>
 
             <!-- Bottone Modifica -->
-            <a th:href="@{'/admin/editComputerBuild/'+ ${computerBuild.id}}">
+            <a th:href="@{'/admin/editComputerBuild/'+ ${computerBuild.id}}" sec:authorize-url="/admin">
                 <button class="item-button">Modifica Computer Build</button>
             </a>
 

@@ -71,7 +71,7 @@ public class ComputerBuildController {
 
         //Gli accessory non sono necessari, non controllo la loro presenza per chiamare un errore
 
-        paramValidator(computerBuild, idComputerCase, idCpu, idGpu, idMotherboard, idRam, idStorage, idPowerSupply, bindingResult);
+        paramValidator(computerBuild, idComputerCase, idCpu, idGpu, idMotherboard, idRam, idStorage, idPowerSupply, image,bindingResult, false);
 
         if (!bindingResult.hasErrors()) {
 
@@ -132,7 +132,7 @@ public class ComputerBuildController {
 
         //Gli accessory non sono necessari, non controllo la loro presenza per chiamare un errore
 
-        paramValidator(computerBuild, idComputerCase, idCpu, idGpu, idMotherboard, idRam, idStorage, idPowerSupply, bindingResult);
+        paramValidator(computerBuild, idComputerCase, idCpu, idGpu, idMotherboard, idRam, idStorage, idPowerSupply,image, bindingResult, true);
 
         if (!bindingResult.hasErrors()) {
 
@@ -144,7 +144,13 @@ public class ComputerBuildController {
             {
                 ComputerBuild previousBuild = this.computerBuildService.findById(id);
                 String fileName = previousBuild.getPicture().replace(pictureFolder, "");
-                computerBuild.setPicture(MainController.SavePicture(fileName, pictureFolder, image));
+                if(fileName.contains("default.png"))
+                {
+                    computerBuild.setPicture(MainController.SavePicture(pictureFolder,image));
+                }
+                else {
+                    computerBuild.setPicture(MainController.SavePicture(fileName, pictureFolder, image));
+                }
             }
             else
             {
@@ -191,7 +197,17 @@ public class ComputerBuildController {
         return new ArrayList<>();
     }
 
-    private void paramValidator(@ModelAttribute("computerBuild") ComputerBuild computerBuild, @RequestParam(value = "idComputerCase", required = false) Long idComputerCase, @RequestParam(value = "idCpu", required = false) Long idCpu, @RequestParam(value = "idGpu", required = false) Long idGpu, @RequestParam(value = "idMotherboard", required = false) Long idMotherboard, @RequestParam(value = "idRam", required = false) Long idRam, @RequestParam(value = "idStorage", required = false) Long idStorage, @RequestParam(value = "idPowerSupply", required = false) Long idPowerSupply, BindingResult bindingResult) {
+    private void paramValidator(@ModelAttribute("computerBuild") ComputerBuild computerBuild,
+                                @RequestParam(value = "idComputerCase", required = false) Long idComputerCase,
+                                @RequestParam(value = "idCpu", required = false) Long idCpu,
+                                @RequestParam(value = "idGpu", required = false) Long idGpu,
+                                @RequestParam(value = "idMotherboard", required = false) Long idMotherboard,
+                                @RequestParam(value = "idRam", required = false) Long idRam,
+                                @RequestParam(value = "idStorage", required = false) Long idStorage,
+                                @RequestParam(value = "idPowerSupply", required = false) Long idPowerSupply,
+                                @RequestParam("file") MultipartFile image,
+                                BindingResult bindingResult,
+                                Boolean isUpdating) {
         if(idComputerCase == null){
             bindingResult.reject("computerBuild.computerCase");
         }
@@ -219,8 +235,14 @@ public class ComputerBuildController {
         if(idPowerSupply == null){
             bindingResult.reject("computerBuild.powerSupply");
         }
-
-        this.computerBuildValidator.validate(computerBuild, bindingResult);
+        if(isUpdating)
+        {
+            this.computerBuildValidator.validateUpdate(computerBuild,image,bindingResult);
+        }
+        else
+        {
+            this.computerBuildValidator.validate(computerBuild, bindingResult);
+        }
     }
 
     private void getAccessoryAndComputerCaseAndHardwareLists(Model model) {

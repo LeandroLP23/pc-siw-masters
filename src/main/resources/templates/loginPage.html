@@ -14,7 +14,7 @@
 
 <!-- Content -->
 <div class="login-content">
-	<form method="POST" th:action="@{/login}" class="login">
+	<form method="POST" th:action="@{/loginPage}" class="login">
 		<h2>Accedi</h2>
 		<p class="xsmall">Bentornato! Accedi al tuo account</p>
 		<p><strong>Nome Utente o indirizzo email*</strong></p>
@@ -24,6 +24,12 @@
 		<button class="login-button"><strong>Accedi</strong></button>
 		<!--<a class="xsmall">Password dimenticata?</a>-->
 	</form>
+
+	<a href="/oauth2/authorization/github">
+		<button>
+			Login Github
+		</button>
+	</a>
 
 	<hr>
 

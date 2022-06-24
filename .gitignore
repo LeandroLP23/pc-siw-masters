@@ -213,8 +213,6 @@ nbdist/
 .idea/
 
 
-
-
 # End of https://www.toptal.com/developers/gitignore/api/eclipse,intellij,maven,netbeans
 src/main/resources/static/images/accessory/
 src/main/resources/static/images/computerBuild/
@@ -222,4 +220,3 @@ src/main/resources/static/images/hardware/
 src/main/resources/static/images/computerCase/
 src/main/resources/static/images/vendor/
 src/main/resources/static/images/notebook/
-

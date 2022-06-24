@@ -49,14 +49,7 @@ public class NotebookController {
                               @RequestParam("file") MultipartFile image,
                               Model model, BindingResult bindingResult) {
 
-        if (idVendor == 0)
-            bindingResult.reject("notebook.vendor");
-
-        if(notebook.getPrice() == null){
-            bindingResult.reject("notebook.price");
-        }
-
-        this.notebookValidator.validate(notebook, bindingResult);
+        validate(notebook, idVendor, image,bindingResult, false);
 
         if (!bindingResult.hasErrors()) {
 
@@ -83,6 +76,24 @@ public class NotebookController {
         }
     }
 
+    private void validate(@ModelAttribute("notebook") Notebook notebook,
+                          @RequestParam(value = "idVendor", required = false) Long idVendor,
+                          @RequestParam("file") MultipartFile image,
+                          BindingResult bindingResult, boolean isUpdating) {
+        if (idVendor == 0)
+            bindingResult.reject("notebook.vendor");
+
+        if(notebook.getPrice() == null){
+            bindingResult.reject("notebook.price");
+        }
+        if(isUpdating)
+            this.notebookValidator.validateUpdate(notebook,image ,bindingResult);
+        else
+        {
+            this.notebookValidator.validate(notebook, bindingResult);
+        }
+    }
+
     @GetMapping("/admin/editNotebook/{id}")
     public String getEditNotebook(@PathVariable("id") Long id, Model model) {
         Notebook notebook = notebookService.findById(id);
@@ -99,13 +110,8 @@ public class NotebookController {
                                @RequestParam(value = "idVendor", required = false) Long idVendor,
                                @RequestParam("file") MultipartFile image,
                                Model model, BindingResult bindingResult) {
-        if (idVendor == 0)
-            bindingResult.reject("notebook.vendor");
 
-        if(notebook.getPrice() == null){
-            bindingResult.reject("notebook.price");
-        }
-        this.notebookValidator.validate(notebook, bindingResult);
+        validate(notebook, idVendor, image, bindingResult, true);
 
         if (!bindingResult.hasErrors()) {
 
@@ -117,7 +123,13 @@ public class NotebookController {
             {
                 Notebook previousNotebook = this.notebookService.findById(id);
                 String fileName = previousNotebook.getPicture().replace(pictureFolder, "");
-                notebook.setPicture(MainController.SavePicture(fileName, pictureFolder, image));
+                if(fileName.contains("default.png"))
+                {
+                    notebook.setPicture(MainController.SavePicture(pictureFolder,image));
+                }
+                else {
+                    notebook.setPicture(MainController.SavePicture(fileName, pictureFolder, image));
+                }
             }
             else
             {

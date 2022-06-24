@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
+import org.springframework.web.multipart.MultipartFile;
 
 @Component
 public class ComputerCaseValidator implements Validator {
@@ -24,6 +25,14 @@ public class ComputerCaseValidator implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "required");
 
         if(this.computerCaseService.alreadyExists((ComputerCase) target)) {
+            errors.reject("computerCase.duplicate");
+        }
+    }
+
+    public void validateUpdate(Object target, MultipartFile image, Errors errors) {
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "required");
+        if(image.isEmpty() && this.computerCaseService.alreadyExists((ComputerCase) target))
+        {
             errors.reject("computerCase.duplicate");
         }
     }

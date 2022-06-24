@@ -1,5 +1,7 @@
 package it.uniroma3.siw.controller;
 
+import it.uniroma3.siw.model.Credentials;
+import it.uniroma3.siw.model.User;
 import it.uniroma3.siw.service.AccessoryService;
 import it.uniroma3.siw.service.ComputerBuildService;
 import it.uniroma3.siw.service.HardwareService;

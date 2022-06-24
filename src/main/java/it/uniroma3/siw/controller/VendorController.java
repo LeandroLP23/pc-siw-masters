@@ -73,7 +73,8 @@ public class VendorController {
                              @ModelAttribute("vendor") Vendor vendor,
                              @RequestParam("file") MultipartFile image,
                              BindingResult bindingResult, Model model) {
-        this.vendorValidator.validate(vendor, bindingResult);
+
+        this.vendorValidator.validateUpdate(vendor, image, bindingResult);
 
         if (!bindingResult.hasErrors()) {
 
@@ -82,7 +83,13 @@ public class VendorController {
             {
                 Vendor previousVendor = this.vendorService.findById(id);
                 String fileName = previousVendor.getPicture().replace(pictureFolder, "");
-                vendor.setPicture(MainController.SavePicture(fileName, pictureFolder, image));
+                if(fileName.contains("default.png"))
+                {
+                    vendor.setPicture(MainController.SavePicture(pictureFolder,image));
+                }
+                else {
+                    vendor.setPicture(MainController.SavePicture(fileName, pictureFolder, image));
+                }
             }
             else
             {

@@ -50,7 +50,7 @@ public class HardwareController {
                               @RequestParam("file") MultipartFile image,
                               Model model, BindingResult bindingResult) {
 
-        paramValidator(hardware, category, idVendor, bindingResult);
+        paramValidator(hardware, category, idVendor, image,bindingResult, false);
 
         if (!bindingResult.hasErrors()) {
 
@@ -100,7 +100,7 @@ public class HardwareController {
                                  @RequestParam("file") MultipartFile image,
                                  Model model, BindingResult bindingResult) {
 
-        paramValidator(hardware, category, idVendor, bindingResult);
+        paramValidator(hardware, category, idVendor, image, bindingResult, true);
 
         if (!bindingResult.hasErrors()) {
 
@@ -113,7 +113,13 @@ public class HardwareController {
             {
                 Hardware previousHardware = this.hardwareService.findById(id);
                 String fileName = previousHardware.getPicture().replace(pictureFolder+category.name()+"/", "");
-                hardware.setPicture(MainController.SavePicture(fileName, pictureFolder+category.name()+"/", image));
+                if(fileName.contains("default.png"))
+                {
+                    hardware.setPicture(MainController.SavePicture(pictureFolder+category.name()+"/",image));
+                }
+                else {
+                    hardware.setPicture(MainController.SavePicture(fileName, pictureFolder + category.name() + "/", image));
+                }
             }
             else
             {
@@ -160,7 +166,9 @@ public class HardwareController {
     private void paramValidator(@ModelAttribute("hardware") Hardware hardware,
                                 @RequestParam(value = "category", required = false) HardwareCategory category,
                                 @RequestParam(value = "idVendor", required = false) Long idVendor,
-                                BindingResult bindingResult) {
+                                @RequestParam("file") MultipartFile image,
+                                BindingResult bindingResult,
+                                boolean isUpdating) {
         if(category ==  null){
             bindingResult.reject("hardware.category");
         }
@@ -173,6 +181,13 @@ public class HardwareController {
             bindingResult.reject("hardware.price");
         }
 
-        this.hardwareValidator.validate(hardware, bindingResult);
+        if(isUpdating)
+        {
+            this.hardwareValidator.validateUpdate(hardware, image, bindingResult);
+        }
+        else
+        {
+            this.hardwareValidator.validate(hardware,bindingResult);
+        }
     }
 }

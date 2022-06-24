@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
+import org.springframework.web.multipart.MultipartFile;
 
 @Component
 public class AccessoryValidator implements Validator {
@@ -24,6 +25,14 @@ public class AccessoryValidator implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "required");
 
         if(this.accessoryService.alreadyExists((Accessory) target)) {
+            errors.reject("accessory.duplicate");
+        }
+    }
+
+    public void validateUpdate(Object target, MultipartFile image, Errors errors) {
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "required");
+        if(image.isEmpty() && this.accessoryService.alreadyExists((Accessory) target))
+        {
             errors.reject("accessory.duplicate");
         }
     }

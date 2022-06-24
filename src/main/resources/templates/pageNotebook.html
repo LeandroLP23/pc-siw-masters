@@ -39,7 +39,7 @@
 
         </div>
 
-        <a th:href="@{'/admin/editNotebook' +'/'+ ${notebook.id}}">
+        <a th:href="@{'/admin/editNotebook' +'/'+ ${notebook.id}}" sec:authorize-url="/admin">
             <button class="item-button">Modifica Notebook</button>
         </a>
     </div>

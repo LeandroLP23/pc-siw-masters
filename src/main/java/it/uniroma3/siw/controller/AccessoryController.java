@@ -49,7 +49,7 @@ public class AccessoryController {
                                @RequestParam("file") MultipartFile image,
                                Model model, BindingResult bindingResult) {
 
-        paramValidator(accessory, category, idVendor, bindingResult);
+        paramValidator(accessory, category, idVendor, image, bindingResult, false);
 
         if (!bindingResult.hasErrors()) {
 
@@ -100,7 +100,7 @@ public class AccessoryController {
                                   @RequestParam("file") MultipartFile image,
                                   Model model, BindingResult bindingResult) {
 
-        paramValidator(accessory, category, idVendor, bindingResult);
+        paramValidator(accessory, category, idVendor, image, bindingResult, true);
 
         if (!bindingResult.hasErrors()) {
 
@@ -113,7 +113,13 @@ public class AccessoryController {
             {
                 Accessory previousAccessory = this.accessoryService.findById(id);
                 String fileName = previousAccessory.getPicture().replace(pictureFolder+category.name()+"/", "");
-                accessory.setPicture(MainController.SavePicture(fileName, pictureFolder+category.name()+"/", image));
+                if(fileName.contains("default.png"))
+                {
+                    accessory.setPicture(MainController.SavePicture(pictureFolder+category.name()+"/",image));
+                }
+                else {
+                    accessory.setPicture(MainController.SavePicture(fileName, pictureFolder + category.name() + "/", image));
+                }
             }
             else
             {
@@ -161,10 +167,13 @@ public class AccessoryController {
         return "pageAllProducts";
     }
 
+
     private void paramValidator(@ModelAttribute("accessory") Accessory accessory,
                                 @RequestParam(value = "category", required = false) AccessoryCategory category,
                                 @RequestParam(value = "idVendor", required = false) Long idVendor,
-                                BindingResult bindingResult) {
+                                @RequestParam("file") MultipartFile image,
+                                BindingResult bindingResult,
+                                Boolean isUpdating) {
         if(category ==  null){
             bindingResult.reject("accessory.category");
         }
@@ -177,6 +186,13 @@ public class AccessoryController {
             bindingResult.reject("accessory.price");
         }
 
-        this.accessoryValidator.validate(accessory, bindingResult);
+        if(isUpdating)
+        {
+            this.accessoryValidator.validateUpdate(accessory,image,bindingResult);
+        }
+        else
+        {
+            this.accessoryValidator.validate(accessory,bindingResult);
+        }
     }
 }

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html"
       lang="">
+
 <head>
     <meta charset="UTF-8" />
     <link th:href="@{/style.css}" rel="stylesheet" />
@@ -75,6 +76,11 @@
                     </div>
                 </div>
             </a>
+            <a sec:authorize="isAuthenticated()" class="heading link">
+                <form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="POST" class="heading link">
+                    <button type="submit" class="sidebar-item-logout"><div>Logout</div></button>
+                </form>
+            </a>
         </div>
         <div class="sidebar-names">
             <p class="white">@LeandroPlacidi</p>
@@ -93,10 +99,12 @@
             </a>
         </div>
         <!-- Icons -->
-        <div class="header-icons">
-
-            <img class="mini-img-login" src="/images/account.png" alt="Login pic">
-
+        <div class="header-icons" >
+            <div sec:authorize="!isAuthenticated()">
+                <a th:href="@{/loginPage}">
+                    <img class="mini-img-login" src="/images/account.png" alt="Login pic">
+                </a>
+            </div>
             <!--<img class="mini-img" src="/images/search.png">-->
 
             <img id="side-bar-menu" class="mini-img" src="/images/menu.png" alt="Menu pic">
@@ -104,7 +112,7 @@
     </div>
 
     <!-- Second Header Admin -->
-    <div class="header-wrapper-admin">
+    <div class="header-wrapper-admin" sec:authorize-url="/admin">
         <a th:href="@{/admin/addHardware}" class="heading link">
             <div class="header-bar-item">
                 <div>

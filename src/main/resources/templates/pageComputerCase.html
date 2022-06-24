@@ -39,7 +39,7 @@
 
         </div>
 
-        <a th:href="@{'/admin/editComputerCase' +'/'+ ${computerCase.id}}">
+        <a th:href="@{'/admin/editComputerCase' +'/'+ ${computerCase.id}}" sec:authorize-url="/admin">
             <button class="item-button">Modifica Computer Case</button>
         </a>
 
