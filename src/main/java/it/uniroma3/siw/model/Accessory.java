@@ -1,6 +1,7 @@
 package it.uniroma3.siw.model;
 
 import it.uniroma3.siw.model.category.AccessoryCategory;
+import org.springframework.boot.context.properties.bind.Name;
 
 import javax.persistence.*;
 import java.util.List;
@@ -24,7 +25,7 @@ public class Accessory {
     @ManyToOne
     private Vendor vendor;
 
-    @ManyToMany (cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE})
+    @ManyToMany (cascade = {CascadeType.REFRESH, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REMOVE}, mappedBy = "accessoryList")
     private List<ComputerBuild> computerBuildList;
 
     @Column(nullable = false)

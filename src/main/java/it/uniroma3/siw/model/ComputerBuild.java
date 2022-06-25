@@ -19,13 +19,13 @@ public class ComputerBuild {
     @Column(nullable = false)
     private Float price;
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE})
     private List<Hardware> hardwareList;
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE})
     private List<Accessory> accessoryList;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE})
     private ComputerCase computerCase;
 
     @Column(nullable = false)

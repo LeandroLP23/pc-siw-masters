@@ -25,7 +25,7 @@ public class Hardware {
     @ManyToOne
     private Vendor vendor;
 
-    @ManyToMany (cascade = CascadeType.ALL)
+    @ManyToMany (cascade = {CascadeType.REFRESH, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REMOVE}, mappedBy = "hardwareList")
     private List<ComputerBuild> computerBuildList;
 
     @Column(nullable = false)

@@ -18,7 +18,7 @@ public class ComputerCase {
     @ManyToOne
     private Vendor vendor;
 
-    @ManyToMany (cascade = CascadeType.ALL)
+    @OneToMany (cascade = {CascadeType.REFRESH, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REMOVE}, mappedBy = "computerCase")
     private List<ComputerBuild> computerBuildList;
 
     @Column(nullable = false)
