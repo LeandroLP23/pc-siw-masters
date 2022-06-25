@@ -30,16 +30,7 @@
 
     <!-- Vendor -->
     <div th:if="vendorList!=null" class="container">
-        <div th:each="vendor: ${vendorList}">
-            <a th:href="@{'/show/pageAllVendorItems/'+ ${vendor.id}}" class = "link-products">
-
-                <img class = "img-all-item" th:src = "${vendor.picture}" alt = "">
-
-                <div class = "item-details">
-                    <p th:text="${vendor.name}"></p>
-                </div>
-            </a>
-        </div>
+        <div th:insert="fragments/pageItem.html :: allVendorList(${vendorList}, Vendor)"> </div>
     </div>
 
     <!-- Accessory -->

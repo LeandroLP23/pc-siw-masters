@@ -754,6 +754,22 @@ body {
     font-weight: bold;
 }
 
+.item-card-modify{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/*TODO RIVEDERE QUESTO MARGINE E SISTEMARE SE POSSIBILE*/
+.item-card-modify a{
+    margin: -64px;
+}
+
+
 .link-products {
     color: inherit;
     text-decoration: none;

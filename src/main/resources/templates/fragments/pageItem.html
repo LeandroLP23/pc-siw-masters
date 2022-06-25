@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,20 +16,38 @@
 
 <!-- page All Product-->
 <div th:fragment="allItemList(list, pathName,catFlag,vendFlag)" class="container">
-        <div th:each="item: ${list}" class="item-card">
-            <a th:href="@{'/show/page'+ ${pathName} +'/'+ ${item.id}}" class = "link-products">
-                <img class = "img-all-item" th:src="${item.picture}" alt = "">
+    <div th:each="item: ${list}" class="item-card">
+        <a th:href="@{'/show/page'+ ${pathName} +'/'+ ${item.id}}" class = "link-products">
+            <img class = "img-all-item" th:src="${item.picture}" alt = "">
 
-                <div class = "item-details">
-                    <p th:text="${item.name}"></p>
-                    <h4 th:if="${catFlag == 'category'}" th:text="'Categoria: '+ ${item.category}"></h4>
-                    <span th:if="${vendFlag == 'vendor'}" th:text="${item.vendor.name}"></span>
-                    <h3 th:text="${item.price} + ' €'"></h3>
-                </div>
-            </a>
+            <div class = "item-details">
+                <p th:text="${item.name}"></p>
+                <h4 th:if="${catFlag == 'category'}" th:text="'Categoria: '+ ${item.category}"></h4>
+                <span th:if="${vendFlag == 'vendor'}" th:text="${item.vendor.name}"></span>
+                <h3 th:text="${item.price} + ' €'"></h3>
+            </div>
+        </a>
     </div>
 </div>
 
-<
+<!-- page All Vendor-->
+<div th:fragment="allVendorList(vendors, pathName)" class="container">
+    <div th:each="vendor: ${vendors}">
+        <div class="item-card">
+            <a th:href="@{'/show/pageAllVendorItems/' + ${vendor.id}}" class = "link-products">
+                <img class = "img-all-item" th:src="${vendor.picture}" alt = "">
+                <div class = "item-details">
+                    <p th:text="${vendor.name}"></p>
+                </div>
+            </a>
+        </div>
+        <div  class="item-card-modify">
+            <a th:href="@{'/admin/editVendor/' + ${vendor.id}}" sec:authorize-url="/admin">
+                <button class="item-button">Modifica Produttore</button>
+            </a>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
