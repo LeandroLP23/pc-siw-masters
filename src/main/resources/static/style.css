@@ -14,6 +14,18 @@
     filter: invert(100%);
 }
 
+.global-error-message{
+    color: rgba(255,77,67,1);
+}
+
+.error-message{
+    color: rgba(255,77,67, 1);
+}
+
+.error-message-register{
+    color: rgba(255,77,67,1);
+}
+
 .mini-img-login{
     height: 50px;
     margin: .5em;
