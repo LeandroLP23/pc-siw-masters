@@ -177,6 +177,7 @@ align-items: center;
     justify-items: center;
     position: fixed;
     bottom: 0;
+    font-size: 10px;
 }
 .sidebar-names p{
     margin-right: 1em;
@@ -303,6 +304,14 @@ align-items: center;
 .item-button:hover{
     background-color: #1c1b1b;
     color: white;
+}
+
+.item-button img {
+    height: 15px;
+}
+
+.item-button:hover img{
+    content: url("/images/GitHub-Mark-Light-32px.png");
 }
 
 .delete-button{
@@ -545,6 +554,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
+
 }
 
 .rei_flex-container

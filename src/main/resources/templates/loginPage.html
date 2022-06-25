@@ -12,60 +12,70 @@
 <!-- Header -->
 <div th:insert="fragments/header.html :: header"> </div>
 
+<!-- Layout -->
+<div class="add-item-container add-item-infos">
+
 <!-- Content -->
 <div class="login-content">
 	<form method="POST" th:action="@{/loginPage}" class="login">
 		<h2>Accedi</h2>
 		<p class="xsmall">Bentornato! Accedi al tuo account</p>
 		<p><strong>Nome Utente o indirizzo email*</strong></p>
-		<input name="username" placeholder="Username">
+		<input class="input-container" name="username" placeholder="Username">
 		<p><strong>Password*</strong></p>
-		<input name="password" placeholder="Password" type="password">
-		<button class="login-button"><strong>Accedi</strong></button>
+		<input class="input-container" name="password" placeholder="Password" type="password">
 		<!--<a class="xsmall">Password dimenticata?</a>-->
+
+		<!-- Bottoni -->
+		<div class="item-button-container">
+			<button class="login-button item-button"><strong>Accedi</strong></button>
+		<a href="/oauth2/authorization/github" class="link">
+			<div class="item-button">
+				Accedi con <img src="/images/GitHub-Mark-32px.png" />
+			</div>
+		</a>
+		</div>
 	</form>
 
-	<a href="/oauth2/authorization/github">
-		<button>
-			Login Github
-		</button>
-	</a>
+
+
 
 	<hr>
 
-	<form th:action="@{/register}" method="POST" class="registration">
+	<form th:action="@{/register}" method="POST" class="registration add-item-infos">
 		<h2>Registrati</h2>
 
 		<p class="xsmall">Crea il tuo account per tenere sotto controllo i tuoi ordini</p>
 
 		<!-- Email -->
 		<p><strong>Indirizzo email*</strong></p>
-		<input th:field="${user.email}" placeholder="Email">
+		<input class="input-container" th:field="${user.email}" placeholder="Email">
 		<span class="error-message-register" th:if="${#fields.hasErrors('user.email')}" th:errors="${user.email}"></span>
 
 		<!-- Nome -->
 		<p><strong>Nome*</strong></p>
-		<input th:field="${user.nome}" placeholder="Nome">
+		<input class="input-container" th:field="${user.nome}" placeholder="Nome">
 		<span class="error-message-register" th:if="${#fields.hasErrors('user.nome')}" th:errors="${user.nome}"></span>
 
 		<!-- Cognome -->
 		<p><strong>Cognome*</strong></p>
-		<input th:field="${user.cognome}" placeholder="Cognome">
+		<input class="input-container" th:field="${user.cognome}" placeholder="Cognome">
 		<span class="error-message-register" th:if="${#fields.hasErrors('user.cognome')}" th:errors="${user.cognome}"></span>
 
 		<!-- Username -->
 		<p><strong>Username*</strong></p>
-		<input th:field="${credentials.username}" placeholder="Username">
+		<input class="input-container" th:field="${credentials.username}" placeholder="Username">
 		<span class="error-message-register" th:if="${#fields.hasErrors('credentials.username')}" th:errors="${credentials.username}"></span>
 
 		<!-- Password -->
 		<p><strong>Password*</strong></p>
-		<input th:field="${credentials.password}" type="password" placeholder="Password">
+		<input class="input-container" th:field="${credentials.password}" type="password" placeholder="Password">
 		<span class="error-message-register" th:if="${#fields.hasErrors('credentials.password')}" th:errors="${credentials.password}"></span>
 
-		<button class="login-button"><strong>Registrati</strong></button>
+		<button class="login-button item-button margin-bot"><strong>Registrati</strong></button>
 	</form>
 </div>
+	</div>
 
 </body>
 
