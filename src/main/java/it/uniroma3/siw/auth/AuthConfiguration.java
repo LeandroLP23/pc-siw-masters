@@ -149,6 +149,12 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
         };
     }
 
+    @Bean
+    public ClientRegistrationRepository oauthRegistrationRepository()
+    {
+        return null;
+    }
+
     private OAuth2User checkUserOrSave(OAuth2User user) {
         Integer idInt = user.getAttribute("id");
         Long idLong = idInt.longValue();
